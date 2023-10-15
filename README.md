@@ -1,6 +1,6 @@
 # warecheap
 
-A new Flutter project.
+WareCheap is a project that helps you find the cheapest grocery prices in your local community.
 
 ## Getting Started
 
