@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1006300423202",
+    "project_id": "warecheap-8a1cd",
+    "storage_bucket": "warecheap-8a1cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1006300423202:android:65aed3b6ed7886e184967b",
+        "android_client_info": {
+          "package_name": "com.example.warecheap"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUZJj2HoEKuRL7BTpYHdZ8LSPpoc89li8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

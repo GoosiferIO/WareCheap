@@ -1,0 +1,73 @@
+import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
+import 'package:warecheap/navbar.dart';
+import 'package:warecheap/signinprovider.dart';
+
+class LoggedInWidget extends StatelessWidget {
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+
+  @override
+  Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile Page'),
+        centerTitle: true,
+        actions: [
+          TextButton(
+            child: const Text(
+              'Logout',
+              style: TextStyle(
+                color: Colors.white, // Text color
+                fontWeight: FontWeight.bold, // Bold text
+              ),
+            ),
+            onPressed: () {
+              final provider =
+                  Provider.of<GoogleSigninPro>(context, listen: false);
+              provider.Logout(context);
+            },
+          )
+        ],
+      ),
+      drawer: navBar(context),
+      body: Container(
+        alignment: Alignment.center,
+        color: Colors.blueGrey.shade900,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Profile',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.underline,
+              ),
+            ),
+            const SizedBox(height: 32),
+            CircleAvatar(
+              radius: 40,
+              backgroundImage: NetworkImage(user.photoURL ?? ''),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Name: ${user.displayName ?? 'No Name'}',
+              style: const TextStyle(color: Colors.white, fontSize: 16),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            Text(
+              'Email: ${user.email ?? 'No Email'}',
+              style: const TextStyle(color: Colors.white, fontSize: 16),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
