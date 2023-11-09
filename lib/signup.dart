@@ -9,7 +9,13 @@ class SignupWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign-Up/Login'),
+        title: const Text(
+          'Sign-Up/Login',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        centerTitle: true,
         backgroundColor: Colors.lightGreen[900],
       ),
       drawer: navBar(context),

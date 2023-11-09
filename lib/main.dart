@@ -21,6 +21,7 @@ void main() async {
       create: (context) =>
           GoogleSigninPro(), // Provide your GoogleSignInProvider here
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Warecheap',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
