@@ -6,35 +6,41 @@ Widget navBar(context) {
     child: ListView(
       padding: EdgeInsets.zero,
       children: [
-        UserAccountsDrawerHeader(
-          accountName: const Text('Name here'),
-          accountEmail: const Text('Email here'),
-          currentAccountPicture: CircleAvatar(
-              //child: ClipOval(child: Image.asset('image here')),
-              ),
-          decoration: const BoxDecoration(
-            color: Colors.grey,
-          ),
-        ),
+        //Container(color: Colors.lightGreen[900]),
+        // UserAccountsDrawerHeader(
+        //   accountName: const Text(
+        //     'Name here',
+        //     style: TextStyle(
+        //       color: Colors.black,
+        //     ),
+        //   ),
+        //   accountEmail: const Text(
+        //     'Email here',
+        //     style: TextStyle(
+        //       color: Colors.black,
+        //     ),
+        //   ),
+        //   currentAccountPicture: CircleAvatar(
+        //       //child: ClipOval(child: Image.asset('image here')),
+        //       ),
+        //   decoration: const BoxDecoration(),
+        // ),
         ListTile(
-            leading: const Icon(Icons.account_circle),
             title: const Text('Home'),
             onTap: () {
               Navigator.pushNamedAndRemoveUntil(
                   context, '/first', (route) => false);
             }),
-        const Divider(), //wasnt const
+        //const Divider(),
         ListTile(
-          leading: const Icon(Icons.settings),
-          title: const Text('Page1'),
+          title: const Text('Browse'),
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
                 context, '/second', (route) => false);
           },
         ),
         ListTile(
-          leading: const Icon(Icons.settings),
-          title: const Text('Page2'),
+          title: const Text('Forum'),
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
                 context, '/third', (route) => false);

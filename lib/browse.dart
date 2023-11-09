@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:warecheap/navbar.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class Browse extends StatelessWidget {
+  const Browse({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,16 +16,8 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.lightGreen[900],
       ),
       drawer: navBar(context),
-      body: Column(
-        children: <Widget>[
-          const Center(
-            child: Text(
-              'Home Page',
-              style: TextStyle(height: 1, fontSize: 20),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ],
+      body: Center(
+        child: Placeholder(),
       ),
     );
   }
