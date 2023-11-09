@@ -10,7 +10,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile Page'),
+        title: const Text('Home', style: TextStyle(color: Colors.white)),
         centerTitle: true,
         actions: [
           TextButton(
@@ -28,6 +28,7 @@ class Home extends StatelessWidget {
             },
           )
         ],
+        backgroundColor: Colors.lightGreen[900],
       ),
       drawer: navBar(context),
       body: Center(

@@ -10,6 +10,7 @@ class SignupWidget extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Sign-Up/Login'),
+        backgroundColor: Colors.lightGreen[900],
       ),
       drawer: navBar(context),
       body: Padding(

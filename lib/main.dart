@@ -22,6 +22,10 @@ void main() async {
           GoogleSigninPro(), // Provide your GoogleSignInProvider here
       child: MaterialApp(
         title: 'Warecheap',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
+          useMaterial3: true,
+        ),
         initialRoute: '/first',
         routes: {
           '/first': (context) => const Home(),

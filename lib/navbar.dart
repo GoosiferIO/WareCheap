@@ -9,7 +9,7 @@ Widget navBar(context) {
         // Add the big text at the top
         Container(
           padding: const EdgeInsets.all(16.0),
-          color: Colors.blue, // Set the background color to blue
+          color: Colors.lightGreen[900], // Set the background color to blue
           child: const Text(
             'Warecheap', // Replace with your app's name
             style: TextStyle(
@@ -30,7 +30,7 @@ Widget navBar(context) {
         const Divider(),
         ListTile(
           leading: const Icon(Icons.settings),
-          title: const Text('Page1'),
+          title: const Text('Browse'),
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
                 context, '/second', (route) => false);
@@ -38,7 +38,7 @@ Widget navBar(context) {
         ),
         ListTile(
           leading: const Icon(Icons.settings),
-          title: const Text('Page2'),
+          title: const Text('Forum'),
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
                 context, '/third', (route) => false);

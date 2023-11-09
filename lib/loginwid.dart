@@ -3,13 +3,20 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:warecheap/navbar.dart';
 import 'package:warecheap/signinprovider.dart';
+import 'package:warecheap/signup.dart';
 
 class LoggedInWidget extends StatelessWidget {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser!;
+    final user = FirebaseAuth.instance.currentUser;
+
+    // Check if the user is not authenticated
+    if (user == null) {
+      // Redirect to LoginPage if not authenticated
+      return SignupWidget();
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -20,8 +27,8 @@ class LoggedInWidget extends StatelessWidget {
             child: const Text(
               'Logout',
               style: TextStyle(
-                color: Colors.white, // Text color
-                fontWeight: FontWeight.bold, // Bold text
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
             ),
             onPressed: () {
@@ -31,6 +38,7 @@ class LoggedInWidget extends StatelessWidget {
             },
           )
         ],
+        backgroundColor: Colors.lightGreen[900],
       ),
       drawer: navBar(context),
       body: Container(

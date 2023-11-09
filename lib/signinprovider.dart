@@ -25,10 +25,15 @@ class GoogleSigninPro extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future Logout(BuildContext context) async {
-    await googlesignin.disconnect();
-    FirebaseAuth.instance.signOut();
+  Future<void> Logout(BuildContext context) async {
+    // Check if there is a user logged in
+    if (FirebaseAuth.instance.currentUser != null) {
+      await googlesignin.disconnect();
+      await FirebaseAuth.instance.signOut();
+      Navigator.pushReplacementNamed(context, '/Google');
+    }
 
+    // Navigate to the desired page, in this case, '/Google'
     Navigator.pushReplacementNamed(context, '/Google');
   }
 }
