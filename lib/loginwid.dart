@@ -20,7 +20,12 @@ class LoggedInWidget extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile Page'),
+        title: const Text(
+          'Profile Page',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
         centerTitle: true,
         actions: [
           TextButton(
