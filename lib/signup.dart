@@ -55,7 +55,7 @@ class SignupWidget extends StatelessWidget {
                 onPressed: () {
                   final provider =
                       Provider.of<GoogleSigninPro>(context, listen: false);
-                  provider.googleLogin();
+                  provider.googleLogin(context);
                 }),
             const SizedBox(height: 40),
             const SizedBox(
