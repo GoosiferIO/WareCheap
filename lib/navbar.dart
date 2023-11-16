@@ -34,7 +34,7 @@ Widget navBar(context) {
         ),
         const Divider(),
         ListTile(
-          leading: const Icon(Icons.settings),
+          leading: const Icon(Icons.set_meal),
           title: const Text('Browse'),
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
@@ -45,9 +45,8 @@ Widget navBar(context) {
           },
         ),
         const Divider(),
-        // Adding ExpansionTile for 'Forum'
         ExpansionTile(
-          leading: const Icon(Icons.settings),
+          leading: const Icon(Icons.format_list_bulleted),
           title: const Text('Forum'),
           children: [
             ListTile(
