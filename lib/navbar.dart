@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:warecheap/storereview.dart';
 import 'package:warecheap/itemreview.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 @override
 Widget navBar(context) {
@@ -22,7 +24,8 @@ Widget navBar(context) {
         ),
         const Divider(),
         ListTile(
-          leading: const Icon(Icons.account_circle),
+          // ignore: deprecated_member_use
+          leading: const FaIcon(FontAwesomeIcons.home),
           title: const Text('Home'),
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
@@ -50,7 +53,7 @@ Widget navBar(context) {
           title: const Text('Forum'),
           children: [
             ListTile(
-              leading: const Icon(Icons.subdirectory_arrow_right),
+              leading: const FaIcon(FontAwesomeIcons.comment),
               title: const Text('Leave a review for a store'),
               onTap: () {
                 // Navigate to Screen2 (View2)
@@ -61,7 +64,7 @@ Widget navBar(context) {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.subdirectory_arrow_right),
+              leading: const FaIcon(FontAwesomeIcons.comment),
               title: const Text('Leave a review for an item'),
               onTap: () {
                 // Navigate to Screen2 (View2)
@@ -75,7 +78,7 @@ Widget navBar(context) {
         ),
         const Divider(),
         ListTile(
-          leading: const Icon(Icons.settings),
+          leading: const FaIcon(FontAwesomeIcons.google),
           title: const Text('Google Sign Up'),
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
@@ -87,7 +90,8 @@ Widget navBar(context) {
         ),
         const Divider(),
         ListTile(
-          leading: const Icon(Icons.settings),
+          // ignore: deprecated_member_use
+          leading: const FaIcon(FontAwesomeIcons.solidUserCircle),
           title: const Text('Profile Page'),
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
@@ -99,7 +103,7 @@ Widget navBar(context) {
         ),
         const Divider(),
         ListTile(
-          leading: const Icon(Icons.settings),
+          leading: const FaIcon(FontAwesomeIcons.solidIdBadge),
           title: const Text('Authors'),
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(

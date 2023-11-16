@@ -86,7 +86,7 @@ class Home extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 100),
-            const Text('Recent Discussions:',
+            const Text('Forum Discussions:',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             const SizedBox(height: 10),
             Column(
@@ -99,10 +99,12 @@ class Home extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => reviewStore()),
                     );
                   },
-                  child: Text('Discussion 1:',
-                      style: TextStyle(
-                          backgroundColor: Color.fromARGB(255, 139, 204, 141),
-                          fontSize: 24)),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(
+                        255, 139, 204, 141), // Change button color
+                  ),
+                  child: const Text('Leave a review for a store',
+                      style: TextStyle(color: Colors.black, fontSize: 24)),
                 ),
                 const SizedBox(height: 10),
                 ElevatedButton(
@@ -112,10 +114,12 @@ class Home extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => reviewStore()),
                     );
                   },
-                  child: Text('Discussion 2:',
-                      style: TextStyle(
-                          backgroundColor: Color.fromARGB(255, 139, 204, 141),
-                          fontSize: 24)),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(
+                        255, 139, 204, 141), // Change button color
+                  ),
+                  child: const Text('Leave a review for an item',
+                      style: TextStyle(color: Colors.black, fontSize: 24)),
                 ),
               ],
             ),
