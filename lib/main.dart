@@ -33,11 +33,11 @@ void main() async {
         routes: {
           '/first': (context) => const Home(),
           '/second': (context) => const Page1(),
-          '/third': (context) => const Page2(),
           '/Google': (context) => SignupWidget(),
           '/Profile': (context) => LoggedInWidget(),
           '/ItemRev': (context) => reviewItem(),
           '/StoreRev': (context) => reviewStore(),
+          '/Author': (context) => const Page2(),
         },
       ),
     ),
