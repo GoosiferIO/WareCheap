@@ -21,7 +21,7 @@ Widget navBar(context) {
         ),
         const Divider(),
         ListTile(
-            leading: const Icon(Icons.account_circle),
+            leading: const Icon(Icons.home),
             title: const Text('Home'),
             onTap: () {
               Navigator.pushNamedAndRemoveUntil(
@@ -29,7 +29,7 @@ Widget navBar(context) {
             }),
         const Divider(),
         ListTile(
-          leading: const Icon(Icons.settings),
+          leading: const Icon(Icons.set_meal),
           title: const Text('Browse'),
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
@@ -37,7 +37,7 @@ Widget navBar(context) {
           },
         ),
         ListTile(
-          leading: const Icon(Icons.settings),
+          leading: const Icon(Icons.format_list_bulleted),
           title: const Text('Forum'),
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
@@ -45,7 +45,7 @@ Widget navBar(context) {
           },
         ),
         ListTile(
-          leading: const Icon(Icons.settings),
+          leading: const Icon(Icons.login),
           title: const Text('Google Sign Up'),
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
@@ -53,7 +53,7 @@ Widget navBar(context) {
           },
         ),
         ListTile(
-          leading: const Icon(Icons.settings),
+          leading: const Icon(Icons.person),
           title: const Text('Profile Page'),
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
