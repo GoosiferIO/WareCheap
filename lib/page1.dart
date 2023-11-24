@@ -31,7 +31,7 @@ class Page1 extends StatelessWidget {
         backgroundColor: Colors.lightGreen[900],
       ),
       drawer: navBar(context),
-      body: Center(
+      body: const Center(
         child: Placeholder(),
       ),
     );

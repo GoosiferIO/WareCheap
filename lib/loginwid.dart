@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
@@ -12,9 +14,7 @@ class LoggedInWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
 
-    // Check if the user is not authenticated
     if (user == null) {
-      // Redirect to LoginPage if not authenticated
       return SignupWidget();
     }
 
@@ -49,6 +49,7 @@ class LoggedInWidget extends StatelessWidget {
       body: Container(
         alignment: Alignment.center,
         color: Colors.blueGrey.shade900,
+        padding: const EdgeInsets.all(20), // Added padding for better spacing
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -56,27 +57,26 @@ class LoggedInWidget extends StatelessWidget {
               'Profile',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                decoration: TextDecoration.underline,
+                fontSize: 32, // Increased font size
+                fontWeight: FontWeight.bold, // Added bold
               ),
             ),
             const SizedBox(height: 32),
             CircleAvatar(
-              radius: 40,
+              radius: 75, // Increased avatar size
               backgroundImage: NetworkImage(user.photoURL ?? ''),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'Name: ${user.displayName ?? 'No Name'}',
+              style: const TextStyle(
+                  color: Colors.white, fontSize: 20), // Increased font size
             ),
             const SizedBox(height: 8),
             Text(
-              'Name: ${user.displayName ?? 'No Name'}',
-              style: const TextStyle(color: Colors.white, fontSize: 16),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Text(
               'Email: ${user.email ?? 'No Email'}',
-              style: const TextStyle(color: Colors.white, fontSize: 16),
+              style: const TextStyle(
+                  color: Colors.white, fontSize: 20), // Increased font size
             ),
           ],
         ),

@@ -27,17 +27,29 @@ class Home extends StatelessWidget {
                   Provider.of<GoogleSigninPro>(context, listen: false);
               provider.Logout(context);
             },
-          )
+          ),
         ],
         backgroundColor: Colors.lightGreen[900],
       ),
       drawer: navBar(context),
       body: Center(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            const SizedBox(height: 100),
-            const Text('Lowest Prices Near You!',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            // Reduce the gap between image and text
+            SizedBox(
+              width: 350,
+              height: 130,
+              child: Image.asset(
+                'assets/Logo.png',
+                fit: BoxFit.fill,
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Lowest Prices Near You!',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 10), // Add space
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -85,7 +97,7 @@ class Home extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 100),
+            const SizedBox(height: 40),
             const Text('Forum Discussions:',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             const SizedBox(height: 10),

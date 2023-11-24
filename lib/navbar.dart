@@ -1,4 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:warecheap/storereview.dart';
 import 'package:warecheap/itemreview.dart';
@@ -11,18 +12,13 @@ Widget navBar(context) {
       padding: EdgeInsets.zero,
       children: [
         Container(
-          padding: const EdgeInsets.all(16.0),
           color: Colors.lightGreen[900],
-          child: const Text(
-            'Warecheap',
-            style: TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+          child: Image.asset(
+            'assets/Logo.png', // Replace 'your_image_name.png' with your actual image file name
+            width: 150, // Set width as per your requirement
+            height: 100, // Set height as per your requirement
           ),
         ),
-        const Divider(),
         ListTile(
           // ignore: deprecated_member_use
           leading: const FaIcon(FontAwesomeIcons.home),

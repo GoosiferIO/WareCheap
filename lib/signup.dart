@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -5,6 +7,8 @@ import 'package:warecheap/navbar.dart';
 import 'package:warecheap/signinprovider.dart';
 
 class SignupWidget extends StatelessWidget {
+  const SignupWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +40,7 @@ class SignupWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             const SizedBox(
               child: Text(
                 'Please sign in with your Google account.',
