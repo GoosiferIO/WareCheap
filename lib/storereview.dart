@@ -1,4 +1,5 @@
-// ignore_for_file: avoid_print, prefer_const_constructors, no_leading_underscores_for_local_identifiers, camel_case_types
+// ignore_for_file: avoid_print, prefer_const_constructors, camel_case_types
+// ignore_for_file: no_leading_underscores_for_local_identifiers
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

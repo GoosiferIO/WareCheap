@@ -1,4 +1,5 @@
-// ignore_for_file: camel_case_types, no_leading_underscores_for_local_identifiers, prefer_const_constructors
+// ignore_for_file: camel_case_types, prefer_const_constructors
+// ignore_for_file: no_leading_underscores_for_local_identifiers
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';

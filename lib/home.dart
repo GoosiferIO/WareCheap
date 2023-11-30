@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:warecheap/itemreview.dart';
 import 'package:warecheap/navbar.dart';
 import 'package:warecheap/signinprovider.dart';
 import 'package:warecheap/storereview.dart';
@@ -46,57 +47,6 @@ class Home extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-            const Text(
-              'Lowest Prices Near You!',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10), // Add space
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Column(
-                  //Names of items
-                  children: <Widget>[
-                    Text('Item 1:',
-                        style: TextStyle(
-                            backgroundColor: Color.fromARGB(255, 139, 204, 141),
-                            fontSize: 24)),
-                    SizedBox(height: 10),
-                    Text('Item 2:',
-                        style: TextStyle(
-                            backgroundColor: Color.fromARGB(255, 139, 204, 141),
-                            fontSize: 24)),
-                    SizedBox(height: 10),
-                    Text('Item 3:',
-                        style: TextStyle(
-                            backgroundColor: Color.fromARGB(255, 139, 204, 141),
-                            fontSize: 24)),
-                  ],
-                ),
-                Column(
-                  //Price of items
-                  children: <Widget>[
-                    Text('Price 1:',
-                        style: TextStyle(
-                            backgroundColor: Color.fromARGB(255, 139, 204, 141),
-                            color: Colors.red,
-                            fontSize: 24)),
-                    SizedBox(height: 10),
-                    Text('Price 2:',
-                        style: TextStyle(
-                            backgroundColor: Color.fromARGB(255, 139, 204, 141),
-                            color: Colors.red,
-                            fontSize: 24)),
-                    SizedBox(height: 10),
-                    Text('Price 3:',
-                        style: TextStyle(
-                            backgroundColor: Color.fromARGB(255, 139, 204, 141),
-                            color: Colors.red,
-                            fontSize: 24)),
-                  ],
-                ),
-              ],
-            ),
             const SizedBox(height: 40),
             const Text('Forum Discussions:',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
@@ -108,7 +58,8 @@ class Home extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => reviewStore()),
+                      MaterialPageRoute(
+                          builder: (context) => const reviewStore()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -123,7 +74,8 @@ class Home extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => reviewStore()),
+                      MaterialPageRoute(
+                          builder: (context) => const reviewItem()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
