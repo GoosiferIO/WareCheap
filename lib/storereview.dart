@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:warecheap/navbar.dart';
 import 'package:warecheap/signinprovider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:warecheap/wcCore.dart';
 
 class reviewStore extends StatelessWidget {
   const reviewStore({Key? key}) : super(key: key);
@@ -21,33 +22,8 @@ class reviewStore extends StatelessWidget {
       return '${dateTime.day}/${dateTime.month}/${dateTime.year} ${dateTime.hour}:${dateTime.minute}';
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Forum for Stores',
-          style: TextStyle(color: Colors.white),
-        ),
-        centerTitle: true,
-        actions: [
-          TextButton(
-            child: const Text(
-              'Logout',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            onPressed: () {
-              final provider =
-                  Provider.of<GoogleSigninPro>(context, listen: false);
-              provider.Logout(context);
-            },
-          )
-        ],
-        backgroundColor: Colors.lightGreen[900],
-      ),
-      drawer: navBar(context),
-      body: Padding(
+    return wcCore.coreUI(context, 'Browse', 
+      Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
