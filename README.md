@@ -16,6 +16,6 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 ### Linter
-To use the Linter do commands:
-"Flutter pub get"
-"dart analyze"
+To use the Linter do the commands:
+- "Flutter pub get"
+- "dart analyze"
