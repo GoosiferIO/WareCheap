@@ -38,7 +38,7 @@ Widget navBar(context) {
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
               context,
-              '/second',
+              '/Browse',
               (route) => false,
             );
           },
@@ -109,6 +109,7 @@ Widget navBar(context) {
             );
           },
         ),
+        
       ],
     ),
   );

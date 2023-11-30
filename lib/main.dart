@@ -8,6 +8,7 @@ import 'package:warecheap/page2.dart';
 import 'package:warecheap/itemreview.dart';
 import 'package:warecheap/storereview.dart';
 import 'package:warecheap/signup.dart';
+import 'package:warecheap/browse.dart';
 import 'package:provider/provider.dart';
 import 'package:warecheap/signinprovider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -40,6 +41,7 @@ void main() async {
           '/ItemRev': (context) => reviewItem(),
           '/StoreRev': (context) => reviewStore(),
           '/Author': (context) => const Page2(),
+          '/Browse':(context) => const Browse(),
         },
       ),
     ),
