@@ -14,9 +14,9 @@ Widget navBar(context) {
         Container(
           color: Colors.lightGreen[900],
           child: Image.asset(
-            'assets/Logo.png', // Replace 'your_image_name.png' with your actual image file name
-            width: 150, // Set width as per your requirement
-            height: 100, // Set height as per your requirement
+            'assets/Logo.png',
+            width: 150,
+            height: 100,
           ),
         ),
         ListTile(

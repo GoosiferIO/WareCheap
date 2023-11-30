@@ -33,7 +33,7 @@ class SignupWidget extends StatelessWidget {
             const Align(
               alignment: Alignment.center,
               child: Text(
-                "Hello! Welcome Back!",
+                'Hello! Welcome Back!',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
