@@ -9,11 +9,15 @@ import 'package:warecheap/wcCore.dart';
 @override
 Widget navBar(context) {
   return Drawer(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.zero,
+    ),
+    backgroundColor: wcColors.bgPrimary,
     child: ListView(
       padding: EdgeInsets.zero,
       children: [
         Container(
-          color: wcColors.bgPrimary,
+          padding: EdgeInsets.only(top: 20),
           child: Image.asset(
             'assets/Logo.png',
             width: 150,
@@ -32,7 +36,9 @@ Widget navBar(context) {
             );
           },
         ),
-        const Divider(),
+        const Divider(
+          color: wcColors.borderPrimary,
+        ),
         ListTile(
           leading: const Icon(Icons.set_meal),
           title: const Text('Browse'),
@@ -44,7 +50,9 @@ Widget navBar(context) {
             );
           },
         ),
-        const Divider(),
+        const Divider(
+          color: wcColors.borderPrimary,
+        ),
         ExpansionTile(
           leading: const Icon(Icons.format_list_bulleted),
           title: const Text('Forum'),
@@ -73,7 +81,9 @@ Widget navBar(context) {
             ),
           ],
         ),
-        const Divider(),
+        const Divider(
+          color: wcColors.borderPrimary,
+        ),
         ListTile(
           leading: const FaIcon(FontAwesomeIcons.google),
           title: const Text('Google Sign Up'),
@@ -85,7 +95,9 @@ Widget navBar(context) {
             );
           },
         ),
-        const Divider(),
+        const Divider(
+          color: wcColors.borderPrimary,
+        ),
         ListTile(
           // ignore: deprecated_member_use
           leading: const FaIcon(FontAwesomeIcons.solidUserCircle),
@@ -98,7 +110,9 @@ Widget navBar(context) {
             );
           },
         ),
-        const Divider(),
+        const Divider(
+          color: wcColors.borderPrimary,
+        ),
         ListTile(
           leading: const FaIcon(FontAwesomeIcons.solidIdBadge),
           title: const Text('Authors'),

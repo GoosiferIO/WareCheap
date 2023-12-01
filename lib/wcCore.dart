@@ -15,6 +15,9 @@ class wcColors {
       Color.fromARGB(255, 204, 213, 174); // used: scaffold
   static const Color bgSecondary =
       Color.fromARGB(255, 254, 250, 224); // used: navbar, drawer
+
+  // border colors
+  static const Color borderPrimary = Color.fromARGB(255, 187, 196, 160);
 }
 
 /// this class stores a skeleton scaffold that is used in most of the app
