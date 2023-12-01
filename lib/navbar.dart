@@ -109,7 +109,6 @@ Widget navBar(context) {
             );
           },
         ),
-        
       ],
     ),
   );

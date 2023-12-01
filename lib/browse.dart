@@ -93,6 +93,67 @@ class _BrowseState extends State<Browse> {
           ),
           // Show the current selection
           Text('Current Selection: $_selectedSegment'),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 241, 238, 208),
+                      borderRadius: BorderRadius.circular(10.0),
+                      // Other decoration properties
+                    ),
+                    margin: const EdgeInsets.only(
+                        left: 30.0, top: 20.0, right: 30.0, bottom: 20.0),
+                    padding: const EdgeInsets.only(bottom: 20.0),
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 204, 213, 174),
+                            borderRadius: BorderRadius.circular(10.0),
+                            // Other decoration properties
+                          ),
+                          alignment: Alignment.center,
+                          margin: const EdgeInsets.only(
+                              left: 30.0, top: 20.0, right: 30.0),
+                          child: const Text(
+                            'Product 1',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: wcColors.primaryText,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(
+                              left: 30.0, top: 20.0, right: 30.0),
+                          child: const Text(
+                            'Product 2',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: wcColors.primaryText,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(
+                              left: 30.0, top: 20.0, right: 30.0),
+                          child: const Text(
+                            'Product 3',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: wcColors.primaryText,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            ],
+          )
         ],
       ),
     );

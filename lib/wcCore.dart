@@ -4,20 +4,24 @@ import 'package:warecheap/navbar.dart';
 import 'package:warecheap/signinprovider.dart';
 import 'package:warecheap/storereview.dart';
 
-class wcCore {
+class wcColors {
+  static const Color primaryText = Color.fromARGB(255, 80, 80, 80);
+}
 
+class wcCore {
   // constructor
   wcCore(BuildContext context, String appbarTitle, Widget bodyContext) {
     coreUI(context, appbarTitle, bodyContext);
   }
 
   // coreUI
-  static Scaffold coreUI(BuildContext context, String appbarTitle, Widget bodyContext) {
+  static Scaffold coreUI(
+      BuildContext context, String appbarTitle, Widget bodyContext) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
           appbarTitle,
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: wcColors.primaryText),
         ),
         centerTitle: true,
         actions: [
@@ -25,7 +29,7 @@ class wcCore {
             child: const Text(
               'Logout',
               style: TextStyle(
-                color: Colors.white, // Text color
+                color: Color.fromARGB(255, 80, 80, 80), // Text color
                 fontWeight: FontWeight.bold, // Bold text
               ),
             ),
@@ -36,11 +40,11 @@ class wcCore {
             },
           ),
         ],
-        backgroundColor: Colors.lightGreen[900],
+        backgroundColor: Color.fromARGB(255, 204, 213, 174),
       ),
       drawer: navBar(context),
       body: bodyContext,
+      backgroundColor: Color.fromARGB(255, 254, 250, 224),
     );
   }
-  
 }
