@@ -4,36 +4,15 @@ import 'package:warecheap/itemreview.dart';
 import 'package:warecheap/navbar.dart';
 import 'package:warecheap/signinprovider.dart';
 import 'package:warecheap/storereview.dart';
+import 'package:warecheap/wcCore.dart';
+
 
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home', style: TextStyle(color: Colors.white)),
-        centerTitle: true,
-        actions: [
-          TextButton(
-            child: const Text(
-              'Logout',
-              style: TextStyle(
-                color: Colors.white, // Text color
-                fontWeight: FontWeight.bold, // Bold text
-              ),
-            ),
-            onPressed: () {
-              final provider =
-                  Provider.of<GoogleSigninPro>(context, listen: false);
-              provider.Logout(context);
-            },
-          ),
-        ],
-        backgroundColor: Colors.lightGreen[900],
-      ),
-      drawer: navBar(context),
-      body: Center(
+    return wcCore.coreUI(context, 'Home', Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
