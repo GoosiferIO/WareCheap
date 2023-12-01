@@ -21,28 +21,32 @@ class _BrowseState extends State<Browse> {
       Column(
         children: <Widget>[
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Container(
-                margin: const EdgeInsets.only(left: 30.0, top: 20.0),
-                child: const Text(
-                  'Add New Ware',
-                  style: TextStyle(
-                    fontSize: 15.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey,
+              Expanded(
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  margin: const EdgeInsets.only(left: 30.0, top: 20.0),
+                  child: const Text(
+                    'Add New Ware',
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
               ),
-              Container(),
-              Container(
-                margin: const EdgeInsets.only(left: 30.0, top: 20.0),
-                child: const Text(
-                  'Visit Forum',
-                  style: TextStyle(
-                    fontSize: 15.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey,
+              Expanded(
+                child: Container(
+                  alignment: Alignment.centerRight,
+                  margin: const EdgeInsets.only(right: 30.0, top: 20.0),
+                  child: const Text(
+                    'Visit Forum',
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
               ),
