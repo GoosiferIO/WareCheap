@@ -41,7 +41,7 @@ void main() async {
           '/ItemRev': (context) => reviewItem(),
           '/StoreRev': (context) => reviewStore(),
           '/Author': (context) => const Page2(),
-          '/Browse':(context) => const Browse(),
+          '/Browse': (context) => const Browse(),
         },
       ),
     ),
