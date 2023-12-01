@@ -62,6 +62,7 @@ class _BrowseState extends State<Browse> {
                   style: TextStyle(
                     fontSize: 30.0,
                     fontWeight: FontWeight.bold,
+                    color: wcColors.primaryText,
                   ),
                 ),
               ),

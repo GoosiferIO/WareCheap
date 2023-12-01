@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:warecheap/storereview.dart';
 import 'package:warecheap/itemreview.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:warecheap/wcCore.dart';
 
 @override
 Widget navBar(context) {
@@ -12,7 +13,7 @@ Widget navBar(context) {
       padding: EdgeInsets.zero,
       children: [
         Container(
-          color: Colors.lightGreen[900],
+          color: wcColors.bgPrimary,
           child: Image.asset(
             'assets/Logo.png',
             width: 150,
