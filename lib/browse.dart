@@ -3,17 +3,54 @@ import 'package:flutter/cupertino.dart';
 import 'package:warecheap/wcCore.dart';
 import 'package:flutter/material.dart';
 
-class Browse extends StatelessWidget {
-  const Browse({super.key});
+class Browse extends StatefulWidget {
+  const Browse({Key? key});
+
+  @override
+  _BrowseState createState() => _BrowseState();
+}
+
+class _BrowseState extends State<Browse> {
+  int _selectedSegment = 0;
 
   @override
   Widget build(BuildContext context) {
     return wcCore.coreUI(
-        context,
-        'Browse',
-        Column(
-          children: <Widget>[
-            Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
+      context,
+      'Browse',
+      Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Container(
+                margin: const EdgeInsets.only(left: 30.0, top: 20.0),
+                child: const Text(
+                  'Add New Ware',
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
+              Container(),
+              Container(
+                margin: const EdgeInsets.only(left: 30.0, top: 20.0),
+                child: const Text(
+                  'Visit Forum',
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
               Container(
                 margin: const EdgeInsets.only(left: 30.0, top: 20.0),
                 child: const Text(
@@ -24,8 +61,11 @@ class Browse extends StatelessWidget {
                   ),
                 ),
               ),
-            ]),
-            Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
               Expanded(
                 child: Container(
                   margin:
@@ -37,13 +77,20 @@ class Browse extends StatelessWidget {
                       2: Text('By Location'),
                     },
                     onValueChanged: (value) {
-                      // Handle the value change here
+                      setState(() {
+                        _selectedSegment = value!;
+                      });
                     },
+                    groupValue: _selectedSegment,
                   ),
                 ),
               ),
-            ]),
-          ],
-        ));
+            ],
+          ),
+          // Show the current selection
+          Text('Current Selection: $_selectedSegment'),
+        ],
+      ),
+    );
   }
 }
