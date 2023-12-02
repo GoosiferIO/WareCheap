@@ -12,7 +12,7 @@ Widget navBar(context) {
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.zero,
     ),
-    backgroundColor: wcColors.bgPrimary,
+    backgroundColor: wcColors.bgTertiary,
     child: ListView(
       padding: EdgeInsets.zero,
       children: [
