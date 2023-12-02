@@ -163,8 +163,8 @@ class _BrowseState extends State<Browse> {
                   color: Color.fromARGB(255, 241, 238, 208),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                margin:
-                    const EdgeInsets.only(left: 30.0, top: 20.0, right: 30.0),
+                margin: const EdgeInsets.only(
+                    left: 30.0, top: 20.0, right: 30.0, bottom: 20.0),
                 padding: const EdgeInsets.all(10.0),
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
