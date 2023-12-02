@@ -21,6 +21,8 @@ class wcColors {
   // background colors
   static const Color bgPrimary =
       Color.fromARGB(255, 204, 213, 174); // used: scaffold
+  static const Color bgPrimaryAccent =
+      Color.fromARGB(255, 187, 196, 160); // used:
   static const Color bgSecondary =
       Color.fromARGB(255, 254, 250, 224); // used: navbar, drawer
   static const Color bgTertiary =
