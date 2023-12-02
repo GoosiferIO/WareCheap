@@ -92,7 +92,7 @@ class _BrowseState extends State<Browse> {
                       style: TextStyle(
                         fontSize: 15.0,
                         fontWeight: FontWeight.bold,
-                        color: Colors.grey,
+                        color: wcColors.linkText,
                       ),
                     ),
                   ),
@@ -106,7 +106,7 @@ class _BrowseState extends State<Browse> {
                       style: TextStyle(
                         fontSize: 15.0,
                         fontWeight: FontWeight.bold,
-                        color: Colors.grey,
+                        color: wcColors.linkText,
                       ),
                     ),
                   ),
@@ -137,10 +137,24 @@ class _BrowseState extends State<Browse> {
                     margin: const EdgeInsets.only(
                         left: 30.0, top: 20.0, right: 30.0),
                     child: CupertinoSlidingSegmentedControl(
+                      backgroundColor: wcColors.bgTertiary,
+                      thumbColor: wcColors.bgPrimary,
                       children: const <int, Widget>{
-                        0: Text('Recent'),
-                        1: Text('By Product'),
-                        2: Text('By Location'),
+                        0: DefaultTextStyle(
+                            style: TextStyle(
+                              color: wcColors.primaryText,
+                            ),
+                            child: Text('Recent')),
+                        1: DefaultTextStyle(
+                            style: TextStyle(
+                              color: wcColors.primaryText,
+                            ),
+                            child: Text('By Product')),
+                        2: DefaultTextStyle(
+                            style: TextStyle(
+                              color: wcColors.primaryText,
+                            ),
+                            child: Text('By Location')),
                       },
                       onValueChanged: (value) {
                         setState(() {

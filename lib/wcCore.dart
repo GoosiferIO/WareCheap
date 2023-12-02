@@ -18,6 +18,7 @@ class wcColors {
   // text colors
   static const Color primaryText = Color.fromARGB(255, 80, 80, 80);
   static const Color secondaryText = Color.fromARGB(255, 120, 120, 120);
+  static const Color linkText = Color.fromARGB(255, 167, 124, 81);
 
   // background colors
   static const Color bgPrimary =
@@ -59,7 +60,7 @@ class wcCore {
             child: const Text(
               'Logout',
               style: TextStyle(
-                color: Color.fromARGB(255, 80, 80, 80), // Text color
+                color: wcColors.linkText, // Text color
                 fontWeight: FontWeight.bold, // Bold text
               ),
             ),

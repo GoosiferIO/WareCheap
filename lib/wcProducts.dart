@@ -39,7 +39,7 @@ class wcProduct {
             ),
             title: Text(product.name!),
             titleTextStyle: const TextStyle(
-              color: wcColors.primaryText,
+              color: wcColors.linkText,
               fontWeight: FontWeight.bold,
             ),
             subtitle: Text(product.brand!),
@@ -51,11 +51,17 @@ class wcProduct {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               TextButton(
+                style: TextButton.styleFrom(
+                  primary: wcColors.linkText,
+                ),
                 child: const Text('View'),
                 onPressed: () {/* ... */},
               ),
               const SizedBox(width: 8),
               TextButton(
+                style: TextButton.styleFrom(
+                  primary: wcColors.linkText,
+                ),
                 child: const Text('Add to Cart'),
                 onPressed: () {/* ... */},
               ),
