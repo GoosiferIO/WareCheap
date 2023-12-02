@@ -17,14 +17,22 @@ import 'package:warecheap/signinprovider.dart';
 class wcColors {
   // text colors
   static const Color primaryText = Color.fromARGB(255, 80, 80, 80);
+  static const Color secondaryText = Color.fromARGB(255, 120, 120, 120);
+  static const Color linkText = Color.fromARGB(255, 167, 124, 81);
 
   // background colors
   static const Color bgPrimary =
       Color.fromARGB(255, 204, 213, 174); // used: scaffold
+  static const Color bgPrimaryAccent =
+      Color.fromARGB(255, 187, 196, 160); // used:
   static const Color bgSecondary =
       Color.fromARGB(255, 254, 250, 224); // used: navbar, drawer
   static const Color bgTertiary =
       Color.fromARGB(255, 233, 237, 201); // used: body
+
+  // card bg colors
+  static const Color bgCard =
+      Color.fromARGB(255, 248, 245, 225); // used: product cards in wcProducts
 
   // border colors
   static const Color borderPrimary = Color.fromARGB(255, 217, 221, 186);
@@ -52,7 +60,7 @@ class wcCore {
             child: const Text(
               'Logout',
               style: TextStyle(
-                color: Color.fromARGB(255, 80, 80, 80), // Text color
+                color: wcColors.linkText, // Text color
                 fontWeight: FontWeight.bold, // Bold text
               ),
             ),

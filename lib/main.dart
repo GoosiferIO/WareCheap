@@ -13,9 +13,18 @@ import 'package:provider/provider.dart';
 import 'package:warecheap/signinprovider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:warecheap/wcUploadFile.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Upload the file to BunnyCDN. This is just a test to make sure that the
+  // uploadFile function works.
+  int runCount = 1;
+
+  for (int i = 0; i < runCount; i++) {
+    uploadFile('', 'Logo.png');
+  }
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

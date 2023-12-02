@@ -10,6 +10,7 @@ ideal solution will involve Firebase integration to pull data from the database.
 */
 
 import 'package:flutter/material.dart';
+import 'package:warecheap/wcCore.dart';
 
 /// this class is used to test UI features by filling it with dummy data
 class wcProduct {
@@ -25,6 +26,7 @@ class wcProduct {
 
   Widget pCard(wcProduct product) {
     return Card(
+      color: wcColors.bgCard,
       elevation: 0,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -36,17 +38,30 @@ class wcProduct {
               height: 100,
             ),
             title: Text(product.name!),
+            titleTextStyle: const TextStyle(
+              color: wcColors.linkText,
+              fontWeight: FontWeight.bold,
+            ),
             subtitle: Text(product.brand!),
+            subtitleTextStyle: const TextStyle(
+              color: wcColors.secondaryText,
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               TextButton(
+                style: TextButton.styleFrom(
+                  primary: wcColors.linkText,
+                ),
                 child: const Text('View'),
                 onPressed: () {/* ... */},
               ),
               const SizedBox(width: 8),
               TextButton(
+                style: TextButton.styleFrom(
+                  primary: wcColors.linkText,
+                ),
                 child: const Text('Add to Cart'),
                 onPressed: () {/* ... */},
               ),
