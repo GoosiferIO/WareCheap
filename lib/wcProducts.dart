@@ -25,6 +25,7 @@ class wcProduct {
 
   Widget pCard(wcProduct product) {
     return Card(
+      elevation: 0,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

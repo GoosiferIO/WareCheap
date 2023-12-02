@@ -158,29 +158,28 @@ class _BrowseState extends State<Browse> {
           Row(
             children: <Widget>[
               Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: products.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 241, 238, 208),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      margin: const EdgeInsets.only(
-                          left: 30.0, top: 20.0, right: 30.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: products.map((product) {
-                          // map products to product cards
-                          return product.pCard(product);
-                        }).toList(),
-                      ),
-                    );
-                  },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 241, 238, 208),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  margin:
+                      const EdgeInsets.only(left: 30.0, top: 20.0, right: 30.0),
+                  padding: const EdgeInsets.all(10.0),
+                  child: ListView.builder(
+                    padding: EdgeInsets.zero,
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    /* this actually isn't needed, but here for testing. set to 
+             NeverScrollableScrollPhysics() to disable scrolling */
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    itemCount: 4,
+                    itemBuilder: (BuildContext context, int index) {
+                      return products[index].pCard(products[index]);
+                    },
+                  ),
                 ),
-              )
+              ),
             ],
           )
         ],
