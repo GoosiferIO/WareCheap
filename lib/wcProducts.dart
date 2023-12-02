@@ -22,7 +22,43 @@ class wcProduct {
 
   // constructor; defines named parameters
   wcProduct({this.name, this.brand, this.date, this.price, this.image});
+
+  Widget pCard(wcProduct product) {
+    return Card(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ListTile(
+            leading: Image.asset(
+              product.image!,
+              width: 100,
+              height: 100,
+            ),
+            title: Text(product.name!),
+            subtitle: Text(product.brand!),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              TextButton(
+                child: const Text('View'),
+                onPressed: () {/* ... */},
+              ),
+              const SizedBox(width: 8),
+              TextButton(
+                child: const Text('Add to Cart'),
+                onPressed: () {/* ... */},
+              ),
+              const SizedBox(width: 8),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
 }
+
+
 
 // example usage of wcProduct
 
