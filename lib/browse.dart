@@ -77,113 +77,110 @@ class _BrowseState extends State<Browse> {
   @override
   Widget build(BuildContext context) {
     return wcCore.coreUI(
-      context,
-      'Browse',
-      Column(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: Container(
-                  alignment: Alignment.centerLeft,
+        context,
+        'Browse',
+        Column(
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    margin: const EdgeInsets.only(left: 30.0, top: 20.0),
+                    child: const Text(
+                      'Add New Ware',
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.centerRight,
+                    margin: const EdgeInsets.only(right: 30.0, top: 20.0),
+                    child: const Text(
+                      'Visit Forum',
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Container(
                   margin: const EdgeInsets.only(left: 30.0, top: 20.0),
                   child: const Text(
-                    'Add New Ware',
+                    'Search Wares',
                     style: TextStyle(
-                      fontSize: 15.0,
+                      fontSize: 30.0,
                       fontWeight: FontWeight.bold,
-                      color: Colors.grey,
+                      color: wcColors.primaryText,
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: Container(
-                  alignment: Alignment.centerRight,
-                  margin: const EdgeInsets.only(right: 30.0, top: 20.0),
-                  child: const Text(
-                    'Visit Forum',
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey,
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Expanded(
+                  child: Container(
+                    margin: const EdgeInsets.only(
+                        left: 30.0, top: 20.0, right: 30.0),
+                    child: CupertinoSlidingSegmentedControl(
+                      children: const <int, Widget>{
+                        0: Text('Recent'),
+                        1: Text('By Product'),
+                        2: Text('By Location'),
+                      },
+                      onValueChanged: (value) {
+                        setState(() {
+                          _selectedSegment = value!;
+                        });
+                      },
+                      groupValue: _selectedSegment,
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                margin: const EdgeInsets.only(left: 30.0, top: 20.0),
-                child: const Text(
-                  'Search Wares',
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.bold,
-                    color: wcColors.primaryText,
-                  ),
+              ],
+            ),
+            // // This just makes sure that 'current selection' is active.
+            // Text('Current Selection: $_selectedSegment'),
+
+            Expanded(
+              child: Container(
+                constraints: const BoxConstraints(maxHeight: 100.0),
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 241, 238, 208),
+                  borderRadius: BorderRadius.circular(10.0),
                 ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Expanded(
-                child: Container(
-                  margin:
-                      const EdgeInsets.only(left: 30.0, top: 20.0, right: 30.0),
-                  child: CupertinoSlidingSegmentedControl(
-                    children: const <int, Widget>{
-                      0: Text('Recent'),
-                      1: Text('By Product'),
-                      2: Text('By Location'),
-                    },
-                    onValueChanged: (value) {
-                      setState(() {
-                        _selectedSegment = value!;
-                      });
-                    },
-                    groupValue: _selectedSegment,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          // This just makes sure that 'current selection' is active.
-          Text('Current Selection: $_selectedSegment'),
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 241, 238, 208),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  margin:
-                      const EdgeInsets.only(left: 30.0, top: 20.0, right: 30.0),
-                  padding: const EdgeInsets.all(10.0),
-                  child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    /* this actually isn't needed, but here for testing. set to 
+                margin:
+                    const EdgeInsets.only(left: 30.0, top: 20.0, right: 30.0),
+                padding: const EdgeInsets.all(10.0),
+                child: ListView.builder(
+                  padding: EdgeInsets.zero,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  /* this actually isn't needed, but here for testing. set to 
              NeverScrollableScrollPhysics() to disable scrolling */
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemCount: 4,
-                    itemBuilder: (BuildContext context, int index) {
-                      return products[index].pCard(products[index]);
-                    },
-                  ),
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemCount: products.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return products[index].pCard(products[index]);
+                  },
                 ),
               ),
-            ],
-          )
-        ],
-      ),
-    );
+            ),
+          ],
+        ));
   }
 }
