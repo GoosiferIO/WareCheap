@@ -17,6 +17,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:warecheap/services/wcUploadFile.dart';
 import 'package:warecheap/pages/signin.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 // decide which page to go to based on if the user is logged in or not
 String _initRoute(User? user) {
@@ -29,7 +30,7 @@ String _initRoute(User? user) {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await DotEnv().load();
   // Upload the file to BunnyCDN. This is just a test to make sure that the
   // uploadFile function works.
   // int runCount = 1;

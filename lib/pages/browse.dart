@@ -5,6 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:warecheap/interface/wcProducts.dart';
 import 'package:warecheap/services/wcUploadFile.dart';
 import 'package:google_place/google_place.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+Future main() async {
+  await dotenv.load();
+}
 
 class Browse extends StatefulWidget {
   const Browse({Key? key});
@@ -91,7 +96,7 @@ class _BrowseState extends State<Browse> {
               height: 500,
               width: 400.0,
               padding: EdgeInsets.all(20.0),
-              child: SingleChildScrollView(
+              child: const SingleChildScrollView(
                 child: ListBody(
                   children: <Widget>[
                     Text(
