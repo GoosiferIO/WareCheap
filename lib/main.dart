@@ -11,10 +11,20 @@ import 'package:warecheap/signup.dart';
 import 'package:warecheap/pages/browse.dart';
 import 'package:provider/provider.dart';
 import 'package:warecheap/services/signinprovider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:warecheap/services/wcUploadFile.dart';
 import 'package:warecheap/pages/signin.dart';
+
+// decide which page to go to based on if the user is logged in or not
+String _initRoute(User? user) {
+  if (user != null) {
+    return '/first';
+  } else {
+    return '/Google';
+  }
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,7 +52,7 @@ void main() async {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
           useMaterial3: true,
         ),
-        initialRoute: '/first',
+        initialRoute: _initRoute(FirebaseAuth.instance.currentUser),
         routes: {
           '/first': (context) => const Home(),
           '/second': (context) => const Page1(),
