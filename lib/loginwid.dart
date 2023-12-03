@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:warecheap/navbar.dart';
 import 'package:warecheap/services/signinprovider.dart';
 import 'package:warecheap/signup.dart';
+import 'package:warecheap/interface/wcCore.dart';
 
 class LoggedInWidget extends StatelessWidget {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
@@ -18,35 +19,10 @@ class LoggedInWidget extends StatelessWidget {
       return SignupWidget();
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Profile Page',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-        centerTitle: true,
-        actions: [
-          TextButton(
-            child: const Text(
-              'Logout',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            onPressed: () {
-              final provider =
-                  Provider.of<GoogleSigninPro>(context, listen: false);
-              provider.Logout(context);
-            },
-          )
-        ],
-        backgroundColor: Colors.lightGreen[900],
-      ),
-      drawer: navBar(context),
-      body: Container(
+    return wcCore.coreUI(
+      context,
+      'Profile Page',
+      Container(
         alignment: Alignment.center,
         color: Colors.blueGrey.shade900,
         padding: const EdgeInsets.all(20), // Added padding for better spacing

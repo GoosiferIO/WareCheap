@@ -5,25 +5,17 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:warecheap/navbar.dart';
 import 'package:warecheap/services/signinprovider.dart';
+import 'package:warecheap/interface/wcCore.dart';
 
 class SignupWidget extends StatelessWidget {
   const SignupWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Sign-Up/Login',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.lightGreen[900],
-      ),
-      drawer: navBar(context),
-      body: Padding(
+    return wcCore.coreUI(
+      context,
+      'Sign In',
+      Padding(
         padding: const EdgeInsets.all(32),
         child: Column(
           children: [

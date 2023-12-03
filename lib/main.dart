@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:warecheap/pages/home.dart';
-import 'package:warecheap/loginwid.dart';
+//import 'package:warecheap/loginwid.dart';
 import 'package:warecheap/page1.dart';
 import 'package:warecheap/page2.dart';
 import 'package:warecheap/itemreview.dart';
@@ -14,17 +14,18 @@ import 'package:warecheap/services/signinprovider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:warecheap/services/wcUploadFile.dart';
+import 'package:warecheap/pages/signin.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Upload the file to BunnyCDN. This is just a test to make sure that the
   // uploadFile function works.
-  int runCount = 1;
+  // int runCount = 1;
 
-  for (int i = 0; i < runCount; i++) {
-    uploadFile('', 'Logo.png');
-  }
+  // for (int i = 0; i < runCount; i++) {
+  //   uploadFile('', 'Logo.png');
+  // }
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -45,8 +46,8 @@ void main() async {
         routes: {
           '/first': (context) => const Home(),
           '/second': (context) => const Page1(),
-          '/Google': (context) => SignupWidget(),
-          '/Profile': (context) => LoggedInWidget(),
+          '/Google': (context) => SigninPage(),
+          '/Profile': (context) => SigninPage(), // edit profile page
           '/ItemRev': (context) => reviewItem(),
           '/StoreRev': (context) => reviewStore(),
           '/Author': (context) => const Page2(),
