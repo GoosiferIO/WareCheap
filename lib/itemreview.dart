@@ -7,7 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:warecheap/navbar.dart';
-import 'package:warecheap/signinprovider.dart';
+import 'package:warecheap/services/signinprovider.dart';
 
 class reviewItem extends StatelessWidget {
   const reviewItem({super.key});

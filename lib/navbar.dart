@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:warecheap/storereview.dart';
 import 'package:warecheap/itemreview.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:warecheap/wcCore.dart';
+import 'package:warecheap/interface/wcCore.dart';
 
 @override
 Widget navBar(context) {
@@ -40,7 +40,7 @@ Widget navBar(context) {
           color: wcColors.borderPrimary,
         ),
         ListTile(
-          leading: const Icon(Icons.set_meal),
+          leading: Icon(Icons.local_grocery_store),
           title: const Text('Browse'),
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
@@ -53,47 +53,39 @@ Widget navBar(context) {
         const Divider(
           color: wcColors.borderPrimary,
         ),
-        ExpansionTile(
-          leading: const Icon(Icons.format_list_bulleted),
-          title: const Text('Forum'),
-          children: [
-            ListTile(
-              leading: const FaIcon(FontAwesomeIcons.comment),
-              title: const Text('Leave a review for a store'),
-              onTap: () {
-                // Navigate to Screen2 (View2)
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => reviewStore()),
-                );
-              },
-            ),
-            ListTile(
-              leading: const FaIcon(FontAwesomeIcons.comment),
-              title: const Text('Leave a review for an item'),
-              onTap: () {
-                // Navigate to Screen2 (View2)
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => reviewItem()),
-                );
-              },
-            ),
-          ],
-        ),
-        const Divider(
-          color: wcColors.borderPrimary,
-        ),
-        ListTile(
-          leading: const FaIcon(FontAwesomeIcons.google),
-          title: const Text('Google Sign Up'),
-          onTap: () {
-            Navigator.pushNamedAndRemoveUntil(
-              context,
-              '/Google',
-              (route) => false,
-            );
-          },
+        Theme(
+          data: ThemeData(
+            dividerColor: Colors.transparent,
+          ),
+          child: ExpansionTile(
+            leading: const Icon(Icons.format_list_bulleted),
+            title: const Text('Forum'),
+            backgroundColor: wcColors.bgPrimary,
+            children: [
+              ListTile(
+                leading: const FaIcon(FontAwesomeIcons.comment),
+                title: const Text('Leave a review for a store'),
+                onTap: () {
+                  // Navigate to Screen2 (View2)
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => reviewStore()),
+                  );
+                },
+              ),
+              ListTile(
+                leading: const FaIcon(FontAwesomeIcons.comment),
+                title: const Text('Leave a review for an item'),
+                onTap: () {
+                  // Navigate to Screen2 (View2)
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => reviewItem()),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
         const Divider(
           color: wcColors.borderPrimary,

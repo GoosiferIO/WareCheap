@@ -16,11 +16,11 @@ class GoogleSigninPro extends ChangeNotifier {
 
   GoogleSignInAccount get user => _user!;
 
-  Future<void> googleLogin(BuildContext context) async {
+  Future<bool> googleLogin(BuildContext context) async {
     try {
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
       if (googleUser == null) {
-        return;
+        return false;
       }
 
       final GoogleSignInAuthentication googleAuth =
@@ -39,10 +39,13 @@ class GoogleSigninPro extends ChangeNotifier {
         await saveUserProfile(firebaseUser);
         notifyListeners();
       }
+
+      return true;
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());
       }
+      return false;
     }
   }
 

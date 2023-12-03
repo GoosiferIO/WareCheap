@@ -10,7 +10,7 @@ ideal solution will involve Firebase integration to pull data from the database.
 */
 
 import 'package:flutter/material.dart';
-import 'package:warecheap/wcCore.dart';
+import 'package:warecheap/interface/wcCore.dart';
 
 /// this class is used to test UI features by filling it with dummy data
 class wcProduct {
@@ -27,7 +27,7 @@ class wcProduct {
   Widget pCard(wcProduct product) {
     return Card(
       color: wcColors.bgCard,
-      elevation: 0,
+      elevation: 0.4,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
