@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:warecheap/navbar.dart';
-import 'package:warecheap/signinprovider.dart';
+import 'package:warecheap/services/signinprovider.dart';
 
 class SignupWidget extends StatelessWidget {
   const SignupWidget({super.key});

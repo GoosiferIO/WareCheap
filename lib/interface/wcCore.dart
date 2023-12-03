@@ -10,7 +10,7 @@ wcCore: This class stores a skeleton scaffold that is used in most of the app.
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:warecheap/navbar.dart';
-import 'package:warecheap/signinprovider.dart';
+import 'package:warecheap/services/signinprovider.dart';
 
 /// this class is used to store the colors used in the app so that
 /// they can be easily changed
@@ -35,7 +35,8 @@ class wcColors {
       Color.fromARGB(255, 248, 245, 225); // used: product cards in wcProducts
 
   // border colors
-  static const Color borderPrimary = Color.fromARGB(255, 217, 221, 186);
+  static const Color borderPrimary =
+      Color.fromARGB(255, 217, 221, 186); // used: navbar dividers
 }
 
 /// this class stores a skeleton scaffold that is used in most of the app
@@ -50,6 +51,9 @@ class wcCore {
       BuildContext context, String appbarTitle, Widget bodyContext) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: wcColors.primaryText, // Set the desired color here
+        ),
         title: Text(
           appbarTitle,
           style: TextStyle(color: wcColors.primaryText),

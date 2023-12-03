@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:warecheap/itemreview.dart';
 import 'package:warecheap/navbar.dart';
-import 'package:warecheap/signinprovider.dart';
+import 'package:warecheap/services/signinprovider.dart';
 import 'package:warecheap/storereview.dart';
-import 'package:warecheap/wcCore.dart';
-
+import 'package:warecheap/interface/wcCore.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return wcCore.coreUI(context, 'Home', Center(
+    return wcCore.coreUI(
+      context,
+      'Home',
+      Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[

@@ -5,9 +5,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:warecheap/navbar.dart';
-import 'package:warecheap/signinprovider.dart';
+import 'package:warecheap/services/signinprovider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:warecheap/wcCore.dart';
+import 'package:warecheap/interface/wcCore.dart';
 
 class reviewStore extends StatelessWidget {
   const reviewStore({Key? key}) : super(key: key);
@@ -23,7 +23,9 @@ class reviewStore extends StatelessWidget {
       return '${dateTime.day}/${dateTime.month}/${dateTime.year} ${dateTime.hour}:${dateTime.minute}';
     }
 
-    return wcCore.coreUI(context, 'Browse', 
+    return wcCore.coreUI(
+      context,
+      'Browse',
       Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

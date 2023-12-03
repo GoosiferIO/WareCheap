@@ -1,19 +1,19 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:warecheap/home.dart';
+import 'package:warecheap/pages/home.dart';
 import 'package:warecheap/loginwid.dart';
 import 'package:warecheap/page1.dart';
 import 'package:warecheap/page2.dart';
 import 'package:warecheap/itemreview.dart';
 import 'package:warecheap/storereview.dart';
 import 'package:warecheap/signup.dart';
-import 'package:warecheap/browse.dart';
+import 'package:warecheap/pages/browse.dart';
 import 'package:provider/provider.dart';
-import 'package:warecheap/signinprovider.dart';
+import 'package:warecheap/services/signinprovider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'package:warecheap/wcUploadFile.dart';
+import 'package:warecheap/services/wcUploadFile.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

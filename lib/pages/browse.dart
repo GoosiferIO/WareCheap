@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:warecheap/wcCore.dart';
+import 'package:warecheap/interface/wcCore.dart';
 import 'package:flutter/material.dart';
-import 'package:warecheap/wcProducts.dart';
+import 'package:warecheap/interface/wcProducts.dart';
 
 class Browse extends StatefulWidget {
   const Browse({Key? key});

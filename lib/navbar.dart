@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:warecheap/storereview.dart';
 import 'package:warecheap/itemreview.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:warecheap/wcCore.dart';
+import 'package:warecheap/interface/wcCore.dart';
 
 @override
 Widget navBar(context) {
