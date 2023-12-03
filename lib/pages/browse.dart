@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:warecheap/interface/wcCore.dart';
 import 'package:flutter/material.dart';
 import 'package:warecheap/interface/wcProducts.dart';
@@ -19,12 +20,6 @@ class Browse extends StatefulWidget {
 
 class _BrowseState extends State<Browse> {
   int _selectedSegment = 0;
-
-  @override
-  void initState() {
-    String placesKey = dotenv.env['placesAPIKey']!;
-    super.initState();
-  }
 
   // temporary list of products; will be replaced with Firebase integration
   List<wcProduct> products = [
@@ -99,7 +94,7 @@ class _BrowseState extends State<Browse> {
               height: 500,
               width: 400.0,
               padding: EdgeInsets.all(20.0),
-              child: const SingleChildScrollView(
+              child: SingleChildScrollView(
                 child: ListBody(
                   children: <Widget>[
                     Text(
@@ -108,6 +103,18 @@ class _BrowseState extends State<Browse> {
                         fontSize: 20.0,
                         color: wcColors.primaryText,
                       ),
+                    ),
+                    SizedBox(height: 10),
+                    Container(
+                      height: 300,
+                      child: GoogleMap(
+                          mapType: MapType.normal,
+                          myLocationEnabled: true,
+                          initialCameraPosition: CameraPosition(
+                            target:
+                                LatLng(39.74567542998422, -121.83336938113182),
+                            zoom: 11.0,
+                          )),
                     ),
                     SizedBox(height: 10),
                     TextField(

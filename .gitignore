@@ -49,5 +49,5 @@ macos/Flutter/GeneratedPluginRegistrant.swift
 
 # Environment variables/Files with secrets
 *.env
-
+/android/app/src/main/AndroidManifest.xml
 
