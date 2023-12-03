@@ -4,7 +4,6 @@ import 'package:warecheap/interface/wcCore.dart';
 import 'package:flutter/material.dart';
 import 'package:warecheap/interface/wcProducts.dart';
 import 'package:warecheap/services/wcUploadFile.dart';
-import 'package:google_place/google_place.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future main() async {
@@ -20,13 +19,10 @@ class Browse extends StatefulWidget {
 
 class _BrowseState extends State<Browse> {
   int _selectedSegment = 0;
-  GooglePlace? googlePlace;
-  List<AutocompletePrediction> predictions = [];
 
   @override
   void initState() {
     String placesKey = dotenv.env['placesAPIKey']!;
-    googlePlace = GooglePlace(placesKey);
     super.initState();
   }
 
