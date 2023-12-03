@@ -19,6 +19,7 @@ class wcColors {
   static const Color primaryText = Color.fromARGB(255, 80, 80, 80);
   static const Color secondaryText = Color.fromARGB(255, 120, 120, 120);
   static const Color linkText = Color.fromARGB(255, 167, 124, 81);
+  static const Color errorText = Color.fromARGB(255, 167, 98, 81);
 
   // background colors
   static const Color bgPrimary =
@@ -41,45 +42,61 @@ class wcColors {
 
 /// this class stores a skeleton scaffold that is used in most of the app
 class wcCore {
+  // properties
+  BuildContext context;
+  String appbarTitle;
+  Widget bodyContext;
+  bool? enableDrawer;
+
   // constructor
-  wcCore(BuildContext context, String appbarTitle, Widget bodyContext) {
-    coreUI(context, appbarTitle, bodyContext);
+  wcCore(this.context, this.appbarTitle, this.bodyContext,
+      {this.enableDrawer}) {
+    coreUI(this.context, this.appbarTitle, this.bodyContext,
+        enableDrawer: this.enableDrawer);
   }
 
   // coreUI
   static Scaffold coreUI(
-      BuildContext context, String appbarTitle, Widget bodyContext) {
-    return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: wcColors.primaryText, // Set the desired color here
-        ),
-        title: Text(
-          appbarTitle,
-          style: TextStyle(color: wcColors.primaryText),
-        ),
-        centerTitle: true,
-        actions: [
-          TextButton(
-            child: const Text(
-              'Logout',
-              style: TextStyle(
-                color: wcColors.linkText, // Text color
-                fontWeight: FontWeight.bold, // Bold text
-              ),
-            ),
-            onPressed: () {
-              final provider =
-                  Provider.of<GoogleSigninPro>(context, listen: false);
-              provider.Logout(context);
-            },
-          ),
-        ],
+      BuildContext context, String appbarTitle, Widget bodyContext,
+      {bool? enableDrawer = true}) {
+    if (enableDrawer == false) {
+      return Scaffold(
+        body: bodyContext,
         backgroundColor: wcColors.bgPrimary,
-      ),
-      drawer: navBar(context),
-      body: bodyContext,
-      backgroundColor: wcColors.bgSecondary,
-    );
+      );
+    } else {
+      return Scaffold(
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: wcColors.primaryText, // Set the desired color here
+          ),
+          title: Text(
+            appbarTitle,
+            style: TextStyle(color: wcColors.primaryText),
+          ),
+          centerTitle: true,
+          actions: [
+            TextButton(
+              child: const Text(
+                'Logout',
+                style: TextStyle(
+                  color: wcColors.linkText, // Text color
+                  fontWeight: FontWeight.bold, // Bold text
+                ),
+              ),
+              onPressed: () {
+                final provider =
+                    Provider.of<GoogleSigninPro>(context, listen: false);
+                provider.Logout(context);
+              },
+            ),
+          ],
+          backgroundColor: wcColors.bgPrimary,
+        ),
+        drawer: navBar(context),
+        body: bodyContext,
+        backgroundColor: wcColors.bgSecondary,
+      );
+    }
   }
 }

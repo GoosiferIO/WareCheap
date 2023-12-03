@@ -26,23 +26,34 @@ class _SigninPageState extends State<SigninPage> {
       Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              alignment: Alignment.center,
-              child: TextButton(
-                onPressed: () async {
-                  //_registerWithEmailAndPassword();
-                },
-                child: const Text('Register'),
+            SizedBox(
+              width: 350,
+              height: 130,
+              child: Image.asset(
+                'assets/Logo.png',
+                fit: BoxFit.fill,
               ),
             ),
             Container(
+              margin: const EdgeInsets.only(top: 20.0),
               alignment: Alignment.center,
               child: TextButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    wcColors.bgPrimaryAccent,
+                  ),
+                ),
                 onPressed: () async {
                   //_signInWithGoogle();
                 },
-                child: const Text('Sign In with Google'),
+                child: const Text(
+                  'Sign In with Google',
+                  style: TextStyle(
+                    color: wcColors.primaryText, // Change the color to blue
+                  ),
+                ),
               ),
             ),
             Container(
@@ -53,12 +64,16 @@ class _SigninPageState extends State<SigninPage> {
                     : (_success
                         ? 'Successfully signed in $_userEmail'
                         : 'Sign in failed'),
-                style: const TextStyle(color: Colors.red),
+                style: const TextStyle(
+                  color: wcColors.errorText,
+                  fontStyle: FontStyle.italic,
+                ),
               ),
             )
           ],
         ),
       ),
+      enableDrawer: false,
     );
   }
 }
