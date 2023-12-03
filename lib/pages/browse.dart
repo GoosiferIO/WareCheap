@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:warecheap/interface/wcCore.dart';
 import 'package:flutter/material.dart';
 import 'package:warecheap/interface/wcProducts.dart';
+import 'package:warecheap/services/wcUploadFile.dart';
+import 'package:google_place/google_place.dart';
 
 class Browse extends StatefulWidget {
   const Browse({Key? key});
@@ -13,6 +15,8 @@ class Browse extends StatefulWidget {
 
 class _BrowseState extends State<Browse> {
   int _selectedSegment = 0;
+  GooglePlace? googlePlace;
+  List<AutocompletePrediction> predictions = [];
 
   // temporary list of products; will be replaced with Firebase integration
   List<wcProduct> products = [
@@ -87,7 +91,7 @@ class _BrowseState extends State<Browse> {
               height: 500,
               width: 400.0,
               padding: EdgeInsets.all(20.0),
-              child: const SingleChildScrollView(
+              child: SingleChildScrollView(
                 child: ListBody(
                   children: <Widget>[
                     Text(
@@ -140,14 +144,6 @@ class _BrowseState extends State<Browse> {
                       ),
                     ),
                     SizedBox(height: 10),
-                    TextField(
-                      autofocus: false,
-                      showCursor: false,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Store Location',
-                      ),
-                    )
                   ],
                 ),
               ),
