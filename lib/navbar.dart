@@ -56,6 +56,7 @@ Widget navBar(context) {
         ExpansionTile(
           leading: const Icon(Icons.format_list_bulleted),
           title: const Text('Forum'),
+          backgroundColor: wcColors.bgPrimary,
           children: [
             ListTile(
               leading: const FaIcon(FontAwesomeIcons.comment),
@@ -80,20 +81,6 @@ Widget navBar(context) {
               },
             ),
           ],
-        ),
-        const Divider(
-          color: wcColors.borderPrimary,
-        ),
-        ListTile(
-          leading: const FaIcon(FontAwesomeIcons.google),
-          title: const Text('Google Sign Up'),
-          onTap: () {
-            Navigator.pushNamedAndRemoveUntil(
-              context,
-              '/Google',
-              (route) => false,
-            );
-          },
         ),
         const Divider(
           color: wcColors.borderPrimary,
