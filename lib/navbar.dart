@@ -53,34 +53,39 @@ Widget navBar(context) {
         const Divider(
           color: wcColors.borderPrimary,
         ),
-        ExpansionTile(
-          leading: const Icon(Icons.format_list_bulleted),
-          title: const Text('Forum'),
-          backgroundColor: wcColors.bgPrimary,
-          children: [
-            ListTile(
-              leading: const FaIcon(FontAwesomeIcons.comment),
-              title: const Text('Leave a review for a store'),
-              onTap: () {
-                // Navigate to Screen2 (View2)
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => reviewStore()),
-                );
-              },
-            ),
-            ListTile(
-              leading: const FaIcon(FontAwesomeIcons.comment),
-              title: const Text('Leave a review for an item'),
-              onTap: () {
-                // Navigate to Screen2 (View2)
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => reviewItem()),
-                );
-              },
-            ),
-          ],
+        Theme(
+          data: ThemeData(
+            dividerColor: Colors.transparent,
+          ),
+          child: ExpansionTile(
+            leading: const Icon(Icons.format_list_bulleted),
+            title: const Text('Forum'),
+            backgroundColor: wcColors.bgPrimary,
+            children: [
+              ListTile(
+                leading: const FaIcon(FontAwesomeIcons.comment),
+                title: const Text('Leave a review for a store'),
+                onTap: () {
+                  // Navigate to Screen2 (View2)
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => reviewStore()),
+                  );
+                },
+              ),
+              ListTile(
+                leading: const FaIcon(FontAwesomeIcons.comment),
+                title: const Text('Leave a review for an item'),
+                onTap: () {
+                  // Navigate to Screen2 (View2)
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => reviewItem()),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
         const Divider(
           color: wcColors.borderPrimary,

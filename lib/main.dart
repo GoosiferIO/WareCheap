@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:warecheap/loginwid.dart';
 import 'package:warecheap/pages/home.dart';
 //import 'package:warecheap/loginwid.dart';
 import 'package:warecheap/page1.dart';
@@ -57,7 +58,7 @@ void main() async {
           '/first': (context) => const Home(),
           '/second': (context) => const Page1(),
           '/Google': (context) => SigninPage(), // not needed if signed in
-          //'/Profile': (context) => SigninPage(), // edit profile page
+          '/Profile': (context) => LoggedInWidget(), // edit profile page
           '/ItemRev': (context) => reviewItem(),
           '/StoreRev': (context) => reviewStore(),
           '/Author': (context) => const Page2(),
