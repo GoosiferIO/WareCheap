@@ -56,7 +56,7 @@ class _SigninPageState extends State<SigninPage> {
 
                     // if success go to home page
                     if (success) {
-                      Navigator.pushNamed(context, '/home');
+                      Navigator.pushNamed(context, '/first');
                     }
                   });
                 },
