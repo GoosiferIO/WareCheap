@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:warecheap/interface/wcProducts.dart';
+import 'package:warecheap/services/signinprovider.dart';
 import 'package:warecheap/interface/wcCore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
 
 class SigninPage extends StatefulWidget {
   const SigninPage({Key? key});
@@ -15,7 +16,7 @@ class _SigninPageState extends State<SigninPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  bool _success = false;
+  bool? _success; // start with null so it defaults to no error
   String _userEmail = '';
 
   @override
@@ -46,7 +47,18 @@ class _SigninPageState extends State<SigninPage> {
                   ),
                 ),
                 onPressed: () async {
-                  //_signInWithGoogle();
+                  final provider =
+                      Provider.of<GoogleSigninPro>(context, listen: false);
+                  bool success = await provider.googleLogin(context);
+
+                  setState(() {
+                    _success = success;
+
+                    // if success go to home page
+                    if (success) {
+                      Navigator.pushNamed(context, '/home');
+                    }
+                  });
                 },
                 child: const Text(
                   'Sign In with Google',
@@ -61,7 +73,7 @@ class _SigninPageState extends State<SigninPage> {
               child: Text(
                 _success == null
                     ? ''
-                    : (_success
+                    : (_success == true
                         ? 'Successfully signed in $_userEmail'
                         : 'Sign in failed'),
                 style: const TextStyle(

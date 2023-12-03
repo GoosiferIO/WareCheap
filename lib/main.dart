@@ -56,8 +56,8 @@ void main() async {
         routes: {
           '/first': (context) => const Home(),
           '/second': (context) => const Page1(),
-          '/Google': (context) => SigninPage(),
-          '/Profile': (context) => SigninPage(), // edit profile page
+          '/Google': (context) => SigninPage(), // not needed if signed in
+          //'/Profile': (context) => SigninPage(), // edit profile page
           '/ItemRev': (context) => reviewItem(),
           '/StoreRev': (context) => reviewStore(),
           '/Author': (context) => const Page2(),
