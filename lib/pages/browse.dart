@@ -74,6 +74,80 @@ class _BrowseState extends State<Browse> {
     ),
   ];
 
+  Future<void> _addProductPopup(BuildContext context) async {
+    return showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+            child: Container(
+              decoration: BoxDecoration(
+                color: wcColors.bgPrimary,
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              height: 500,
+              width: 400.0,
+              padding: EdgeInsets.all(20.0),
+              child: const SingleChildScrollView(
+                child: ListBody(
+                  children: <Widget>[
+                    Text(
+                      'Add New Ware',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: wcColors.primaryText,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Product Name',
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Product Brand',
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Product Price',
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Product Location',
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Product Image',
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Product Description',
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return wcCore.coreUI(
@@ -81,38 +155,6 @@ class _BrowseState extends State<Browse> {
         'Browse',
         Column(
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    margin: const EdgeInsets.only(left: 30.0, top: 20.0),
-                    child: const Text(
-                      'Add New Ware',
-                      style: TextStyle(
-                        fontSize: 15.0,
-                        fontWeight: FontWeight.bold,
-                        color: wcColors.linkText,
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.centerRight,
-                    margin: const EdgeInsets.only(right: 30.0, top: 20.0),
-                    child: const Text(
-                      'Visit Forum',
-                      style: TextStyle(
-                        fontSize: 15.0,
-                        fontWeight: FontWeight.bold,
-                        color: wcColors.linkText,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -193,6 +235,42 @@ class _BrowseState extends State<Browse> {
                   },
                 ),
               ),
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.centerRight,
+                    margin: const EdgeInsets.only(right: 30.0, bottom: 20.0),
+                    child: TextButton(
+                      onPressed: () {
+                        _addProductPopup(context);
+                      },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          wcColors.bgPrimaryAccent,
+                        ),
+                      ),
+                      child: TextButton.icon(
+                        label: const Text(
+                          'Add New Ware',
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: wcColors.primaryText,
+                          ),
+                        ),
+                        icon: const Icon(Icons.add),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                            wcColors.bgPrimaryAccent,
+                          ),
+                        ),
+                        onPressed: null,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ));

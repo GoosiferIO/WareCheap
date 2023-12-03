@@ -1,3 +1,9 @@
+/*
+  This page is the sign in page for the app. It allows the user to sign in with
+  their google account. It's the first thing a user sees when they open the app
+  and they cannot see anything else until they sign in.
+*/
+
 import 'package:flutter/material.dart';
 import 'package:warecheap/services/signinprovider.dart';
 import 'package:warecheap/interface/wcCore.dart';

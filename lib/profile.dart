@@ -21,7 +21,8 @@ class HomePage extends StatelessWidget {
               } else if (snapshot.hasError) {
                 return const Center(child: Text('Something went wrong!'));
               } else {
-                return SignupWidget();
+                // return SignupWidget(); commented out for now
+                return Placeholder();
               }
             }),
       );

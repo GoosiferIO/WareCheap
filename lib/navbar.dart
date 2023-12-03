@@ -40,7 +40,7 @@ Widget navBar(context) {
           color: wcColors.borderPrimary,
         ),
         ListTile(
-          leading: const Icon(Icons.set_meal),
+          leading: Icon(Icons.local_grocery_store),
           title: const Text('Browse'),
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
