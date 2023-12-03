@@ -23,6 +23,13 @@ class _BrowseState extends State<Browse> {
   GooglePlace? googlePlace;
   List<AutocompletePrediction> predictions = [];
 
+  @override
+  void initState() {
+    String placesKey = dotenv.env['placesAPIKey']!;
+    googlePlace = GooglePlace(placesKey);
+    super.initState();
+  }
+
   // temporary list of products; will be replaced with Firebase integration
   List<wcProduct> products = [
     wcProduct(
