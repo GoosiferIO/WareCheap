@@ -30,6 +30,8 @@ class wcColors {
       Color.fromARGB(255, 254, 250, 224); // used: navbar, drawer
   static const Color bgTertiary =
       Color.fromARGB(255, 233, 237, 201); // used: body
+  static const Color bgTertiaryAccent =
+      Color.fromARGB(255, 241, 238, 208); // used: browse product bg
 
   // card bg colors
   static const Color bgCard =

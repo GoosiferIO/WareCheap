@@ -140,6 +140,14 @@ class _BrowseState extends State<Browse> {
                       ),
                     ),
                     SizedBox(height: 10),
+                    TextField(
+                      autofocus: false,
+                      showCursor: false,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Store Location',
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -216,7 +224,7 @@ class _BrowseState extends State<Browse> {
               child: Container(
                 constraints: const BoxConstraints(maxHeight: 100.0),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 241, 238, 208),
+                  color: wcColors.bgTertiaryAccent,
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 margin: const EdgeInsets.only(
