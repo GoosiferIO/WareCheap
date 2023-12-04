@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:warecheap/interface/wcProducts.dart';
 import 'package:warecheap/services/wcUploadFile.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:warecheap/interface/wcTextField.dart';
 
 Future main() async {
   await dotenv.load();
@@ -93,21 +94,21 @@ class _BrowseState extends State<Browse> {
               ),
               height: 500,
               width: 400.0,
-              padding: EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(20.0),
               child: SingleChildScrollView(
                 child: ListBody(
                   children: <Widget>[
-                    Text(
+                    const Text(
                       'Add New Ware',
                       style: TextStyle(
                         fontSize: 20.0,
                         color: wcColors.primaryText,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Container(
                       height: 300,
-                      child: GoogleMap(
+                      child: const GoogleMap(
                           mapType: MapType.normal,
                           myLocationEnabled: true,
                           initialCameraPosition: CameraPosition(
@@ -116,49 +117,21 @@ class _BrowseState extends State<Browse> {
                             zoom: 11.0,
                           )),
                     ),
-                    SizedBox(height: 10),
-                    TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Product Name',
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Product Brand',
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Product Price',
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Product Location',
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Product Image',
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Product Description',
-                      ),
-                    ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
+                    wcTextField.tField(
+                        label: 'Product Name',
+                        icon: const Icon(Icons.abc_outlined)),
+                    const SizedBox(height: 10),
+                    wcTextField.tField(label: 'Product Brand'),
+                    const SizedBox(height: 10),
+                    wcTextField.tField(label: 'Product Price'),
+                    const SizedBox(height: 10),
+                    wcTextField.tField(label: 'Product Location'),
+                    const SizedBox(height: 10),
+                    wcTextField.tField(label: 'Product Image'),
+                    const SizedBox(height: 10),
+                    wcTextField.tField(label: 'Product Description'),
+                    const SizedBox(height: 10),
                   ],
                 ),
               ),
