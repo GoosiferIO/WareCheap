@@ -29,7 +29,6 @@ String _initRoute(User? user) {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   // Upload the file to BunnyCDN. This is just a test to make sure that the
   // uploadFile function works.
   // int runCount = 1;

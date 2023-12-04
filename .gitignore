@@ -47,6 +47,7 @@ windows/flutter/generated_plugins.cmake
 windows/flutter/generated_plugin_registrant.cc
 macos/Flutter/GeneratedPluginRegistrant.swift
 
-# File Storage api
-wcUploadFile.dart
+# Environment variables/Files with secrets
+*.env
+/android/app/src/main/AndroidManifest.xml
 
