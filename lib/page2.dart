@@ -9,9 +9,9 @@ class Page2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return wcCore.coreUI(
-      context,
-      'Authors',
-      const Center(
+      context: context,
+      appbarTitle: 'Authors',
+      bodyContext: const Center(
         child: Padding(
           padding: EdgeInsets.all(20.0),
           child: Column(

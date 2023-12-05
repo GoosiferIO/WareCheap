@@ -46,23 +46,12 @@ class wcColors {
 
 /// this class stores a skeleton scaffold that is used in most of the app
 class wcCore {
-  // properties
-  BuildContext context;
-  String appbarTitle;
-  Widget bodyContext;
-  bool? enableDrawer;
-
-  // constructor
-  wcCore(this.context, this.appbarTitle, this.bodyContext,
-      {this.enableDrawer}) {
-    coreUI(this.context, this.appbarTitle, this.bodyContext,
-        enableDrawer: this.enableDrawer);
-  }
-
   // coreUI
   static Scaffold coreUI(
-      BuildContext context, String appbarTitle, Widget bodyContext,
-      {bool? enableDrawer = true}) {
+      {required BuildContext context,
+      String? appbarTitle,
+      Widget? bodyContext,
+      bool? enableDrawer = true}) {
     if (enableDrawer == false) {
       return Scaffold(
         body: bodyContext,
@@ -75,7 +64,7 @@ class wcCore {
             color: wcColors.primaryText, // Set the desired color here
           ),
           title: Text(
-            appbarTitle,
+            appbarTitle ?? 'WareCheap',
             style: TextStyle(color: wcColors.primaryText),
           ),
           centerTitle: true,

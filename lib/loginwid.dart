@@ -18,9 +18,9 @@ class LoggedInWidget extends StatelessWidget {
     }
 
     return wcCore.coreUI(
-      context,
-      'Profile',
-      Container(
+      context: context,
+      appbarTitle: 'Profile',
+      bodyContext: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.all(16), // Added padding for better spacing
         child: Container(

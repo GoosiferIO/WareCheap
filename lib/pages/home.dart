@@ -9,9 +9,9 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return wcCore.coreUI(
-      context,
-      'Home',
-      Center(
+      context: context,
+      appbarTitle: 'Home',
+      bodyContext: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[

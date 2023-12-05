@@ -21,9 +21,9 @@ class reviewStore extends StatelessWidget {
     }
 
     return wcCore.coreUI(
-      context,
-      'Review for Stores',
-      Padding(
+      context: context,
+      appbarTitle: 'Review for Stores',
+      bodyContext: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [

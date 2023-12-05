@@ -31,9 +31,9 @@ class _SigninPageState extends State<SigninPage> {
   @override
   Widget build(BuildContext context) {
     return wcCore.coreUI(
-      context,
-      'Sign In',
-      Padding(
+      context: context,
+      appbarTitle: 'Sign In',
+      bodyContext: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

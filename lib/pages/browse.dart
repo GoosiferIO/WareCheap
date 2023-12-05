@@ -3,10 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:warecheap/interface/wcCore.dart';
 import 'package:warecheap/interface/wcProducts.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:warecheap/interface/wcTextField.dart';
+import 'package:warecheap/listeners/wcGeolocListener.dart';
 
 Future main() async {
   await dotenv.load();
@@ -144,129 +146,134 @@ class _BrowseState extends State<Browse> {
 
   @override
   Widget build(BuildContext context) {
-    return wcCore.coreUI(
-        context,
-        'Browse',
-        Column(
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  margin: const EdgeInsets.only(left: 30.0, top: 20.0),
-                  child: const Text(
-                    'Search Wares',
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
-                      color: wcColors.primaryText,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.only(
-                        left: 30.0, top: 20.0, right: 30.0),
-                    child: CupertinoSlidingSegmentedControl(
-                      backgroundColor: wcColors.bgTertiary,
-                      thumbColor: wcColors.bgPrimary,
-                      children: const <int, Widget>{
-                        0: DefaultTextStyle(
-                            style: TextStyle(
-                              color: wcColors.primaryText,
-                            ),
-                            child: Text('Recent')),
-                        1: DefaultTextStyle(
-                            style: TextStyle(
-                              color: wcColors.primaryText,
-                            ),
-                            child: Text('By Product')),
-                        2: DefaultTextStyle(
-                            style: TextStyle(
-                              color: wcColors.primaryText,
-                            ),
-                            child: Text('By Location')),
-                      },
-                      onValueChanged: (value) {
-                        setState(() {
-                          _selectedSegment = value!;
-                        });
-                      },
-                      groupValue: _selectedSegment,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            // // This just makes sure that 'current selection' is active.
-            // Text('Current Selection: $_selectedSegment'),
+    final geoListener = Provider.of<geoLocatorListener>(context);
 
-            Expanded(
-              child: Container(
-                constraints: const BoxConstraints(maxHeight: 100.0),
-                decoration: BoxDecoration(
-                  color: wcColors.bgTertiaryAccent,
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                margin: const EdgeInsets.only(
-                    left: 30.0, top: 20.0, right: 30.0, bottom: 20.0),
-                padding: const EdgeInsets.all(10.0),
-                child: ListView.builder(
-                  padding: EdgeInsets.zero,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  /* this actually isn't needed, but here for testing. set to 
+    return ChangeNotifierProvider(
+      create: (context) => geoLocatorListener(),
+      child: wcCore.coreUI(
+          context: context,
+          appbarTitle: 'Browse',
+          bodyContext: Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    margin: const EdgeInsets.only(left: 30.0, top: 20.0),
+                    child: const Text(
+                      'Search Wares',
+                      style: TextStyle(
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold,
+                        color: wcColors.primaryText,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.only(
+                          left: 30.0, top: 20.0, right: 30.0),
+                      child: CupertinoSlidingSegmentedControl(
+                        backgroundColor: wcColors.bgTertiary,
+                        thumbColor: wcColors.bgPrimary,
+                        children: const <int, Widget>{
+                          0: DefaultTextStyle(
+                              style: TextStyle(
+                                color: wcColors.primaryText,
+                              ),
+                              child: Text('Recent')),
+                          1: DefaultTextStyle(
+                              style: TextStyle(
+                                color: wcColors.primaryText,
+                              ),
+                              child: Text('By Product')),
+                          2: DefaultTextStyle(
+                              style: TextStyle(
+                                color: wcColors.primaryText,
+                              ),
+                              child: Text('By Location')),
+                        },
+                        onValueChanged: (value) {
+                          setState(() {
+                            _selectedSegment = value!;
+                          });
+                        },
+                        groupValue: _selectedSegment,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              // // This just makes sure that 'current selection' is active.
+              // Text('Current Selection: $_selectedSegment'),
+
+              Expanded(
+                child: Container(
+                  constraints: const BoxConstraints(maxHeight: 100.0),
+                  decoration: BoxDecoration(
+                    color: wcColors.bgTertiaryAccent,
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  margin: const EdgeInsets.only(
+                      left: 30.0, top: 20.0, right: 30.0, bottom: 20.0),
+                  padding: const EdgeInsets.all(10.0),
+                  child: ListView.builder(
+                    padding: EdgeInsets.zero,
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    /* this actually isn't needed, but here for testing. set to 
              NeverScrollableScrollPhysics() to disable scrolling */
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  itemCount: products.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return products[index].pCard(products[index]);
-                  },
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    itemCount: products.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return products[index].pCard(products[index]);
+                    },
+                  ),
                 ),
               ),
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.centerRight,
-                    margin: const EdgeInsets.only(right: 30.0, bottom: 20.0),
-                    child: TextButton(
-                      onPressed: () {
-                        _addProductPopup(context);
-                      },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                          wcColors.bgPrimaryAccent,
-                        ),
-                      ),
-                      child: TextButton.icon(
-                        label: const Text(
-                          'Add New Ware',
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            color: wcColors.primaryText,
-                          ),
-                        ),
-                        icon: const Icon(Icons.add),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.centerRight,
+                      margin: const EdgeInsets.only(right: 30.0, bottom: 20.0),
+                      child: TextButton(
+                        onPressed: () {
+                          _addProductPopup(context);
+                        },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
                             wcColors.bgPrimaryAccent,
                           ),
                         ),
-                        onPressed: null,
+                        child: TextButton.icon(
+                          label: const Text(
+                            'Add New Ware',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              color: wcColors.primaryText,
+                            ),
+                          ),
+                          icon: const Icon(Icons.add),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                              wcColors.bgPrimaryAccent,
+                            ),
+                          ),
+                          onPressed: null,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
-        ));
+                ],
+              ),
+            ],
+          )),
+    );
   }
 }
