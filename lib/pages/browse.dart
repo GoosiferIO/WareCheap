@@ -1,10 +1,10 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:warecheap/interface/wcCore.dart';
-import 'package:flutter/material.dart';
 import 'package:warecheap/interface/wcProducts.dart';
-import 'package:warecheap/services/wcUploadFile.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:warecheap/interface/wcTextField.dart';
 
@@ -16,6 +16,7 @@ class Browse extends StatefulWidget {
   const Browse({Key? key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _BrowseState createState() => _BrowseState();
 }
 
@@ -106,6 +107,7 @@ class _BrowseState extends State<Browse> {
                       ),
                     ),
                     const SizedBox(height: 10),
+                    // ignore: sized_box_for_whitespace
                     Container(
                       height: 300,
                       child: const GoogleMap(

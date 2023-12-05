@@ -1,11 +1,8 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors,
+// ignore_for_file: unnecessary_string_interpolations
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:provider/provider.dart';
-import 'package:warecheap/navbar.dart';
-import 'package:warecheap/services/signinprovider.dart';
-import 'package:warecheap/signup.dart';
 import 'package:warecheap/pages/signin.dart';
 import 'package:warecheap/interface/wcCore.dart';
 
@@ -25,9 +22,9 @@ class LoggedInWidget extends StatelessWidget {
       'Profile',
       Container(
         alignment: Alignment.center,
-        padding: const EdgeInsets.all(20), // Added padding for better spacing
+        padding: const EdgeInsets.all(16), // Added padding for better spacing
         child: Container(
-          padding: const EdgeInsets.all(20), // Added padding for better spacing
+          padding: const EdgeInsets.all(16), // Added padding for better spacing
           color: wcColors.bgTertiaryAccent,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,

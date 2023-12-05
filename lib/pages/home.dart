@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:warecheap/itemreview.dart';
-import 'package:warecheap/navbar.dart';
-import 'package:warecheap/services/signinprovider.dart';
 import 'package:warecheap/storereview.dart';
 import 'package:warecheap/interface/wcCore.dart';
 

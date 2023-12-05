@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_single_quotes, file_names
+
 /*
 This class contains the the uploadFile function, which is used to upload files
 to BunnyCDN. This code is based on the example code provided by 
@@ -6,6 +8,7 @@ https://docs.bunny.net/reference/put_-storagezonename-path-filename.
 */
 
 import 'dart:convert';
+// ignore: unused_import
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart';
@@ -43,5 +46,6 @@ Future<void> uploadFile(String dir, String fileName) async {
   var response = await http.Client().send(request);
   var responseString = await utf8.decodeStream(response.stream);
 
+  // ignore: avoid_print
   print(responseString);
 }

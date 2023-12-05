@@ -46,7 +46,8 @@
 //                     primary: Colors.blue,
 //                     onPrimary: Colors.white,
 //                     minimumSize: const Size(double.infinity, 50)),
-//                 icon: const FaIcon(FontAwesomeIcons.google, color: Colors.red),
+//                 icon: const FaIcon(FontAwesomeIcons.google, color: 
+// Colors.red),
 //                 label: const Text('Sign In with Google'),
 //                 onPressed: () {
 //                   final provider =

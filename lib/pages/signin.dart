@@ -1,3 +1,6 @@
+// ignore_for_file: use_key_in_widget_constructors,, prefer_final_fields
+// ignore_for_file: library_private_types_in_public_api, unused_field
+
 /*
   This page is the sign in page for the app. It allows the user to sign in with
   their google account. It's the first thing a user sees when they open the app

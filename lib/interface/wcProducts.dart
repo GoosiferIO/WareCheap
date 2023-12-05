@@ -52,6 +52,7 @@ class wcProduct {
             children: [
               TextButton(
                 style: TextButton.styleFrom(
+                  // ignore: deprecated_member_use
                   primary: wcColors.linkText,
                 ),
                 child: const Text('View'),
@@ -60,6 +61,7 @@ class wcProduct {
               const SizedBox(width: 8),
               TextButton(
                 style: TextButton.styleFrom(
+                  // ignore: deprecated_member_use
                   primary: wcColors.linkText,
                 ),
                 child: const Text('Add to Cart'),

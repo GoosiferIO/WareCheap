@@ -5,9 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:warecheap/navbar.dart';
-import 'package:warecheap/services/signinprovider.dart';
+import 'package:warecheap/interface/wcCore.dart';
 
 class reviewItem extends StatelessWidget {
   const reviewItem({super.key});
@@ -23,33 +21,10 @@ class reviewItem extends StatelessWidget {
       return '${dateTime.day}/${dateTime.month}/${dateTime.year} ${dateTime.hour}:${dateTime.minute}';
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Forum for Items',
-          style: TextStyle(color: Colors.white),
-        ),
-        centerTitle: true,
-        actions: [
-          TextButton(
-            child: const Text(
-              'Logout',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            onPressed: () {
-              final provider =
-                  Provider.of<GoogleSigninPro>(context, listen: false);
-              provider.Logout(context);
-            },
-          )
-        ],
-        backgroundColor: Colors.lightGreen[900],
-      ),
-      drawer: navBar(context),
-      body: Padding(
+    return wcCore.coreUI(
+      context,
+      'Review for Items',
+      Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [

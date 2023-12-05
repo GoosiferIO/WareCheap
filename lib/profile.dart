@@ -3,7 +3,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:warecheap/loginwid.dart';
-import 'package:warecheap/signup.dart';
 
 class HomePage extends StatelessWidget {
   final User? user; // User object to be passed from parent widget

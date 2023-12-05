@@ -1,38 +1,56 @@
-// ignore_for_file: use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:warecheap/navbar.dart';
-import 'package:warecheap/services/signinprovider.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:warecheap/interface/wcCore.dart';
 
 class Page2 extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const Page2({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Authors', style: TextStyle(color: Colors.white)),
-          centerTitle: true,
-          actions: [
-            TextButton(
-              child: const Text(
-                'Logout',
-                style: TextStyle(
-                  color: Colors.white, // Text color
-                  fontWeight: FontWeight.bold, // Bold text
-                ),
+    return wcCore.coreUI(
+      context,
+      'Authors',
+      const Center(
+        child: Padding(
+          padding: EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  FaIcon(
+                    // ignore: deprecated_member_use
+                    FontAwesomeIcons.solidUserCircle,
+                    size: 50,
+                    color: Colors.black, // Change color as needed
+                  ),
+                  SizedBox(width: 10),
+                  Text(
+                    'Authors Page',
+                    style: TextStyle(
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
-              onPressed: () {
-                final provider =
-                    Provider.of<GoogleSigninPro>(context, listen: false);
-                provider.Logout(context);
-              },
-            )
-          ],
-          backgroundColor: Colors.lightGreen[900],
+              SizedBox(height: 20.0),
+              // Add information about authors here
+              // Example: List of author names
+              Text(
+                'Nathan Mortell\nEric Galvan\nAlexander Rosete',
+                style: TextStyle(fontSize: 18.0),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
         ),
-        drawer: navBar(context),
-        body: const Center());
+      ),
+    );
   }
 }
