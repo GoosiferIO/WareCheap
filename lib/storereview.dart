@@ -3,9 +3,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:warecheap/navbar.dart';
-import 'package:warecheap/services/signinprovider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:warecheap/interface/wcCore.dart';
 
@@ -25,7 +22,7 @@ class reviewStore extends StatelessWidget {
 
     return wcCore.coreUI(
       context,
-      'Browse',
+      'Review for Stores',
       Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

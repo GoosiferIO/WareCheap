@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_this, prefer_const_constructors
+
 /*
 The wcCore library defines the core UI elements used in the WareCheap app.
 

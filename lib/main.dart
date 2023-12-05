@@ -8,14 +8,12 @@ import 'package:warecheap/page1.dart';
 import 'package:warecheap/page2.dart';
 import 'package:warecheap/itemreview.dart';
 import 'package:warecheap/storereview.dart';
-import 'package:warecheap/signup.dart';
 import 'package:warecheap/pages/browse.dart';
 import 'package:provider/provider.dart';
 import 'package:warecheap/services/signinprovider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'package:warecheap/services/wcUploadFile.dart';
 import 'package:warecheap/pages/signin.dart';
 
 // decide which page to go to based on if the user is logged in or not
