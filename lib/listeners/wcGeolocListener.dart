@@ -11,16 +11,16 @@ import 'package:warecheap/services/geolocatorService.dart';
 
 class geoLocatorListener with ChangeNotifier {
   // properities
-  Position? _currentPosition;
+  Position? currentPosition;
 
   // immediately get the user's current location without waiting for the
   // setCurrentLocation() method to be called
   geoLocatorListener() {
-    setCurrentLocation();
+    currentLocation();
   }
 
-  setCurrentLocation() async {
-    _currentPosition = await GeolocatorService().getCurrentLocation();
+  currentLocation() async {
+    currentPosition = await GeolocatorService().getCurrentLocation();
     notifyListeners();
   }
 }
