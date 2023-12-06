@@ -88,7 +88,7 @@ class _BrowseState extends State<Browse> {
 
   Future<void> _addProductPopup(BuildContext context) async {
     LocationPermission? permission = await Geolocator.checkPermission();
-    geoLocatorListener geoListener = geoLocatorListener();
+    // geoLocatorListener geoListener = geoLocatorListener();
     if (permission == LocationPermission.denied ||
         permission == LocationPermission.deniedForever) {
       permission = await Geolocator.requestPermission();
@@ -146,7 +146,7 @@ class _BrowseState extends State<Browse> {
                                             geoListener
                                                 .currentPosition!.longitude,
                                           ),
-                                          zoom: 11.0,
+                                          zoom: 14.0,
                                         ),
                                       ),
                                     );
