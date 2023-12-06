@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:warecheap/interface/wcCore.dart';
+import 'package:warecheap/widgets/wcCore.dart';
 
 class wcTextField {
   static Widget tField({Icon? icon, String? label, String? hint}) {

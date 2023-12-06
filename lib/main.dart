@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:warecheap/loginwid.dart';
 import 'package:warecheap/pages/home.dart';
 //import 'package:warecheap/loginwid.dart';
-import 'package:warecheap/page1.dart';
+// import 'package:warecheap/page1.dart';
 import 'package:warecheap/page2.dart';
 import 'package:warecheap/itemreview.dart';
 import 'package:warecheap/storereview.dart';
@@ -53,7 +53,7 @@ void main() async {
         initialRoute: _initRoute(FirebaseAuth.instance.currentUser),
         routes: {
           '/first': (context) => const Home(),
-          '/second': (context) => const Page1(),
+          // '/second': (context) => const Page1(),
           '/Google': (context) => SigninPage(), // not needed if signed in
           '/Profile': (context) => LoggedInWidget(), // edit profile page
           '/ItemRev': (context) => reviewItem(),

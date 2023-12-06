@@ -9,7 +9,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:warecheap/services/signinprovider.dart';
-import 'package:warecheap/interface/wcCore.dart';
+import 'package:warecheap/widgets/wcCore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 

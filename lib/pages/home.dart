@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:warecheap/itemreview.dart';
 import 'package:warecheap/storereview.dart';
-import 'package:warecheap/interface/wcCore.dart';
+import 'package:warecheap/widgets/wcCore.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});

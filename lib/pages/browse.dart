@@ -5,10 +5,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:warecheap/interface/wcCore.dart';
-import 'package:warecheap/interface/wcProducts.dart';
+import 'package:warecheap/widgets/wcCore.dart';
+import 'package:warecheap/widgets/wcProducts.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:warecheap/interface/wcTextField.dart';
+import 'package:warecheap/widgets/wcTextField.dart';
 import 'package:warecheap/listeners/wcGeolocListener.dart';
 
 Future main() async {

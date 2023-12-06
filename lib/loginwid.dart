@@ -4,7 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:warecheap/pages/signin.dart';
-import 'package:warecheap/interface/wcCore.dart';
+import 'package:warecheap/widgets/wcCore.dart';
 
 class LoggedInWidget extends StatelessWidget {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
