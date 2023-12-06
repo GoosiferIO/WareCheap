@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:warecheap/interface/wcCore.dart';
+import 'package:warecheap/widgets/wcCore.dart';
 
 class reviewItem extends StatelessWidget {
   const reviewItem({super.key});
@@ -22,9 +22,9 @@ class reviewItem extends StatelessWidget {
     }
 
     return wcCore.coreUI(
-      context,
-      'Review for Items',
-      Padding(
+      context: context,
+      appbarTitle: 'Review for Items',
+      bodyContext: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [

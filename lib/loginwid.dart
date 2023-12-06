@@ -4,7 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:warecheap/pages/signin.dart';
-import 'package:warecheap/interface/wcCore.dart';
+import 'package:warecheap/widgets/wcCore.dart';
 
 class LoggedInWidget extends StatelessWidget {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
@@ -18,9 +18,9 @@ class LoggedInWidget extends StatelessWidget {
     }
 
     return wcCore.coreUI(
-      context,
-      'Profile',
-      Container(
+      context: context,
+      appbarTitle: 'Profile',
+      bodyContext: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.all(16), // Added padding for better spacing
         child: Container(

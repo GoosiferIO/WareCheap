@@ -9,7 +9,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:warecheap/services/signinprovider.dart';
-import 'package:warecheap/interface/wcCore.dart';
+import 'package:warecheap/widgets/wcCore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
@@ -31,9 +31,9 @@ class _SigninPageState extends State<SigninPage> {
   @override
   Widget build(BuildContext context) {
     return wcCore.coreUI(
-      context,
-      'Sign In',
-      Padding(
+      context: context,
+      appbarTitle: 'Sign In',
+      bodyContext: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

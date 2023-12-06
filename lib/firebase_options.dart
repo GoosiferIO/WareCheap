@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -14,6 +15,11 @@ import 'package:flutter/foundation.dart'
 ///   options: DefaultFirebaseOptions.currentPlatform,
 /// );
 /// ```
+
+Future main() async {
+  await dotenv.load();
+}
+
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
@@ -43,38 +49,38 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDFpvvBRnC6ItIjZUvEE-xWNN8NBUQ5RuQ',
-    appId: '1:1006300423202:web:da735b7fafcee64e84967b',
-    messagingSenderId: '1006300423202',
-    projectId: 'warecheap-8a1cd',
-    authDomain: 'warecheap-8a1cd.firebaseapp.com',
-    storageBucket: 'warecheap-8a1cd.appspot.com',
+  static FirebaseOptions web = FirebaseOptions(
+    apiKey: dotenv.env['fbWebAPIKey']!,
+    appId: dotenv.env['fbWebAppID']!,
+    messagingSenderId: dotenv.env['fbWebMsgSenderID']!,
+    projectId: dotenv.env['fbWebProjectID']!,
+    authDomain: dotenv.env['fbWebAuthDomain']!,
+    storageBucket: dotenv.env['fbWebStorageBucket']!,
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDUZJj2HoEKuRL7BTpYHdZ8LSPpoc89li8',
-    appId: '1:1006300423202:android:65aed3b6ed7886e184967b',
-    messagingSenderId: '1006300423202',
-    projectId: 'warecheap-8a1cd',
-    storageBucket: 'warecheap-8a1cd.appspot.com',
+  static FirebaseOptions android = FirebaseOptions(
+    apiKey: dotenv.env['fbAndroidAPIKey']!,
+    appId: dotenv.env['fbAndroidAppID']!,
+    messagingSenderId: dotenv.env['fbAndroidMsgSenderID']!,
+    projectId: dotenv.env['fbAndroidProjectID']!,
+    storageBucket: dotenv.env['fbAndroidStorageBucket']!,
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBd9MAPAyopbT8Crdt2ck1Ib0TVfhEltUQ',
-    appId: '1:1006300423202:ios:247b95b66bfaf1be84967b',
-    messagingSenderId: '1006300423202',
-    projectId: 'warecheap-8a1cd',
-    storageBucket: 'warecheap-8a1cd.appspot.com',
-    iosBundleId: 'com.example.warecheap',
+  static FirebaseOptions ios = FirebaseOptions(
+    apiKey: dotenv.env['fbIOSAPIKey']!,
+    appId: dotenv.env['fbIOSAppID']!,
+    messagingSenderId: dotenv.env['fbIOSMsgSenderID']!,
+    projectId: dotenv.env['fbIOSProjectID']!,
+    storageBucket: dotenv.env['fbIOSStorageBucket']!,
+    iosBundleId: dotenv.env['fbIOSBundleID']!,
   );
 
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBd9MAPAyopbT8Crdt2ck1Ib0TVfhEltUQ',
-    appId: '1:1006300423202:ios:08036efdc3359a3284967b',
-    messagingSenderId: '1006300423202',
-    projectId: 'warecheap-8a1cd',
-    storageBucket: 'warecheap-8a1cd.appspot.com',
-    iosBundleId: 'com.example.warecheap.RunnerTests',
+  static FirebaseOptions macos = FirebaseOptions(
+    apiKey: dotenv.env['fbMacOSAPIKey']!,
+    appId: dotenv.env['fbMacOSAppID']!,
+    messagingSenderId: dotenv.env['fbMacOSMsgSenderID']!,
+    projectId: dotenv.env['fbMacOSProjectID']!,
+    storageBucket: dotenv.env['fbMacOSStorageBucket']!,
+    iosBundleId: dotenv.env['fbMacOSBundleID']!,
   );
 }

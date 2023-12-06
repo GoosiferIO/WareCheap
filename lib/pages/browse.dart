@@ -2,11 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:warecheap/interface/wcCore.dart';
-import 'package:warecheap/interface/wcProducts.dart';
+import 'package:provider/provider.dart';
+import 'package:warecheap/widgets/wcCore.dart';
+import 'package:warecheap/widgets/wcProducts.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:warecheap/interface/wcTextField.dart';
+import 'package:warecheap/widgets/wcTextField.dart';
+import 'package:warecheap/listeners/wcGeolocListener.dart';
 
 Future main() async {
   await dotenv.load();
@@ -84,70 +87,88 @@ class _BrowseState extends State<Browse> {
   ];
 
   Future<void> _addProductPopup(BuildContext context) async {
-    return showDialog<void>(
+    LocationPermission? permission = await Geolocator.checkPermission();
+    // geoLocatorListener geoListener = geoLocatorListener();
+    if (permission == LocationPermission.denied ||
+        permission == LocationPermission.deniedForever) {
+      permission = await Geolocator.requestPermission();
+    } else {
+      return showDialog<void>(
         context: context,
-        builder: (BuildContext context) {
-          return Dialog(
-            child: Container(
-              decoration: BoxDecoration(
-                color: wcColors.bgPrimary,
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              height: 500,
-              width: 400.0,
-              padding: const EdgeInsets.all(20.0),
-              child: SingleChildScrollView(
-                child: ListBody(
-                  children: <Widget>[
-                    const Text(
-                      'Add New Ware',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        color: wcColors.primaryText,
+        builder: (context) {
+          return ChangeNotifierProvider(
+            create: (context) => geoLocatorListener(),
+            child: Dialog(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: wcColors.bgPrimary,
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                height: 500,
+                width: 400.0,
+                padding: const EdgeInsets.all(20.0),
+                child: SingleChildScrollView(
+                  child: ListBody(
+                    children: <Widget>[
+                      const Text(
+                        'Add New Ware',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          color: wcColors.primaryText,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    // ignore: sized_box_for_whitespace
-                    Container(
-                      height: 300,
-                      child: const GoogleMap(
-                          mapType: MapType.normal,
-                          myLocationEnabled: true,
-                          initialCameraPosition: CameraPosition(
-                            target:
-                                LatLng(39.74567542998422, -121.83336938113182),
-                            zoom: 11.0,
-                          )),
-                    ),
-                    const SizedBox(height: 10),
-                    wcTextField.tField(
-                        label: 'Product Name',
-                        icon: const Icon(Icons.abc_outlined)),
-                    const SizedBox(height: 10),
-                    wcTextField.tField(label: 'Product Brand'),
-                    const SizedBox(height: 10),
-                    wcTextField.tField(label: 'Product Price'),
-                    const SizedBox(height: 10),
-                    wcTextField.tField(label: 'Product Location'),
-                    const SizedBox(height: 10),
-                    wcTextField.tField(label: 'Product Image'),
-                    const SizedBox(height: 10),
-                    wcTextField.tField(label: 'Product Description'),
-                    const SizedBox(height: 10),
-                  ],
+                      const SizedBox(height: 10),
+                      Consumer<geoLocatorListener>(
+                        builder: (context, geoListener, child) {
+                          return (geoListener == null)
+                              ? Container(
+                                  height: 300,
+                                  child: const Center(
+                                    child: Text('geoListener is null'),
+                                  ),
+                                )
+                              : (geoListener.currentPosition == null)
+                                  ? Container(
+                                      height: 300,
+                                      child: const Center(
+                                        child: CircularProgressIndicator(),
+                                      ),
+                                    )
+                                  : Container(
+                                      height: 300,
+                                      child: GoogleMap(
+                                        mapType: MapType.normal,
+                                        myLocationEnabled: true,
+                                        initialCameraPosition: CameraPosition(
+                                          target: LatLng(
+                                            geoListener
+                                                .currentPosition!.latitude,
+                                            geoListener
+                                                .currentPosition!.longitude,
+                                          ),
+                                          zoom: 14.0,
+                                        ),
+                                      ),
+                                    );
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
           );
-        });
+        },
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return wcCore.coreUI(
-        context,
-        'Browse',
-        Column(
+        context: context,
+        appbarTitle: 'Browse',
+        bodyContext: Column(
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.start,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:warecheap/interface/wcCore.dart';
+import 'package:warecheap/widgets/wcCore.dart';
 
 class Page2 extends StatelessWidget {
   // ignore: use_key_in_widget_constructors
@@ -9,9 +9,9 @@ class Page2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return wcCore.coreUI(
-      context,
-      'Authors',
-      const Center(
+      context: context,
+      appbarTitle: 'Authors',
+      bodyContext: const Center(
         child: Padding(
           padding: EdgeInsets.all(20.0),
           child: Column(
