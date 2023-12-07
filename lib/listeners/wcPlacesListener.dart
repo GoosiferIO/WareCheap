@@ -21,7 +21,7 @@ class placesListener with ChangeNotifier {
 
   // immediately get the user's current location without waiting for the
   // setCurrentLocation() method to be called
-  geoLocatorListener() {
+  placesListener() {
     currentLocation();
   }
 

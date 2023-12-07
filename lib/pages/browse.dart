@@ -118,11 +118,6 @@ class _BrowseState extends State<Browse> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      wcTextField.locationSearchField(
-                        icon: const Icon(Icons.search),
-                        label: 'Search Location',
-                      ),
-                      const SizedBox(height: 10),
                       Consumer<placesListener>(
                         builder: (context, geoListener, child) {
                           return (geoListener == null)
