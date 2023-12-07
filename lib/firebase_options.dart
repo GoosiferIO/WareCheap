@@ -16,8 +16,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 /// );
 /// ```
 
-Future main() async {
-  await dotenv.load();
+Future<void> main() async {
+  await dotenv.load(fileName: 'serviceKeys.env');
 }
 
 class DefaultFirebaseOptions {
@@ -52,7 +52,7 @@ class DefaultFirebaseOptions {
   static FirebaseOptions web = FirebaseOptions(
     apiKey: dotenv.env['fbWebAPIKey']!,
     appId: dotenv.env['fbWebAppID']!,
-    messagingSenderId: dotenv.env['fbWebMsgSenderID']!,
+    messagingSenderId: dotenv.env['fbMsgSenderID']!,
     projectId: dotenv.env['fbWebProjectID']!,
     authDomain: dotenv.env['fbWebAuthDomain']!,
     storageBucket: dotenv.env['fbWebStorageBucket']!,

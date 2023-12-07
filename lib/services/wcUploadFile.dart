@@ -16,7 +16,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() async {
   await uploadFile('', '');
-  await dotenv.load();
+  await dotenv.load(fileName: 'serviceKeys.env');
 }
 
 Future<void> uploadFile(String dir, String fileName) async {
@@ -27,7 +27,7 @@ Future<void> uploadFile(String dir, String fileName) async {
   String? storageZoneName = dotenv.env['storageZoneName'];
   String fileNameToUpload = fileName;
   String? accessKey = dotenv.env['bunnyAccessKey'];
-  String? contentType = dotenv.env["application/octet-stream"];
+  String? contentType = dotenv.env["contentType"];
 
   String url = "https://$hostname/$storageZoneName$dir/$fileNameToUpload";
 

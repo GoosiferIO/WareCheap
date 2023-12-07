@@ -11,9 +11,9 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:warecheap/widgets/wcTextField.dart';
 import 'package:warecheap/listeners/wcPlacesListener.dart';
 
-Future main() async {
-  await dotenv.load();
-}
+// Future main() async {
+//   await dotenv.load();
+// }
 
 class Browse extends StatefulWidget {
   const Browse({Key? key});
@@ -116,6 +116,11 @@ class _BrowseState extends State<Browse> {
                           fontSize: 20.0,
                           color: wcColors.primaryText,
                         ),
+                      ),
+                      const SizedBox(height: 10),
+                      wcTextField.locationSearchField(
+                        icon: const Icon(Icons.search),
+                        label: 'Search Location',
                       ),
                       const SizedBox(height: 10),
                       Consumer<placesListener>(
