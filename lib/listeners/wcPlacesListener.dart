@@ -9,7 +9,7 @@ import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:warecheap/services/geolocatorService.dart';
 
-class geoLocatorListener with ChangeNotifier {
+class placesListener with ChangeNotifier {
   // properities
   Position? currentPosition;
 

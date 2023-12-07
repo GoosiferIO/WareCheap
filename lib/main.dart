@@ -6,7 +6,7 @@ import 'package:warecheap/pages/home.dart';
 //import 'package:warecheap/loginwid.dart';
 // import 'package:warecheap/page1.dart';
 import 'package:warecheap/pages/page2.dart';
-import 'package:warecheap/itemreview.dart';
+import 'package:warecheap/pages/itemreview.dart';
 import 'package:warecheap/storereview.dart';
 import 'package:warecheap/pages/browse.dart';
 import 'package:provider/provider.dart';
