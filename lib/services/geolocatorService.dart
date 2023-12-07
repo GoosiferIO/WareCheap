@@ -1,7 +1,8 @@
 /*
 This class allows us to use the Google GeoLocator API to get the user's current
-location. Potentially we can use this to find the nearest store to the user to 
-add as a product attribute.
+location. Its use is primarily to update the Maps API to the current location of
+the user, but we can also use it to find the nearest store to the user in tandem
+with the Google Places API.
 */
 
 import 'package:geolocator/geolocator.dart';
