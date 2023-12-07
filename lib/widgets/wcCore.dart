@@ -11,7 +11,7 @@ wcCore: This class stores a skeleton scaffold that is used in most of the app.
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:warecheap/navbar.dart';
+import 'package:warecheap/widgets/navbar.dart';
 import 'package:warecheap/services/signinprovider.dart';
 
 /// this class is used to store the colors used in the app so that

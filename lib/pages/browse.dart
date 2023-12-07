@@ -9,11 +9,11 @@ import 'package:warecheap/widgets/wcCore.dart';
 import 'package:warecheap/widgets/wcProducts.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:warecheap/widgets/wcTextField.dart';
-import 'package:warecheap/listeners/wcGeolocListener.dart';
+import 'package:warecheap/listeners/wcPlacesListener.dart';
 
-Future main() async {
-  await dotenv.load();
-}
+// Future main() async {
+//   await dotenv.load();
+// }
 
 class Browse extends StatefulWidget {
   const Browse({Key? key});
@@ -97,7 +97,7 @@ class _BrowseState extends State<Browse> {
         context: context,
         builder: (context) {
           return ChangeNotifierProvider(
-            create: (context) => geoLocatorListener(),
+            create: (context) => placesListener(),
             child: Dialog(
               child: Container(
                 decoration: BoxDecoration(
@@ -118,7 +118,7 @@ class _BrowseState extends State<Browse> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      Consumer<geoLocatorListener>(
+                      Consumer<placesListener>(
                         builder: (context, geoListener, child) {
                           return (geoListener == null)
                               ? Container(

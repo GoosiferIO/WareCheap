@@ -8,19 +8,30 @@ store to the user and display it as a product attribute.
 import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:warecheap/services/geolocatorService.dart';
+import 'package:warecheap/services/placesService.dart';
+import 'package:warecheap/widgets/wcPlacesSearch.dart';
 
-class geoLocatorListener with ChangeNotifier {
+class placesListener with ChangeNotifier {
+  final geoLocatorService = GeolocatorService();
+  final placesService = PlacesService();
+
   // properities
   Position? currentPosition;
+  List<wcPlacesSearch>? searchResults;
 
   // immediately get the user's current location without waiting for the
   // setCurrentLocation() method to be called
-  geoLocatorListener() {
+  placesListener() {
     currentLocation();
   }
 
   currentLocation() async {
     currentPosition = await GeolocatorService().getCurrentLocation();
+    notifyListeners();
+  }
+
+  searchGroceryStores(String search) async {
+    searchResults = await placesService.searchGroceries(search);
     notifyListeners();
   }
 }

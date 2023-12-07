@@ -6,7 +6,7 @@ import 'package:warecheap/pages/home.dart';
 //import 'package:warecheap/loginwid.dart';
 // import 'package:warecheap/page1.dart';
 import 'package:warecheap/pages/page2.dart';
-import 'package:warecheap/itemreview.dart';
+import 'package:warecheap/pages/itemreview.dart';
 import 'package:warecheap/storereview.dart';
 import 'package:warecheap/pages/browse.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +15,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:warecheap/pages/signin.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 // decide which page to go to based on if the user is logged in or not
 String _initRoute(User? user) {
@@ -26,6 +27,7 @@ String _initRoute(User? user) {
 }
 
 void main() async {
+  await dotenv.load(fileName: 'serviceKeys.env');
   WidgetsFlutterBinding.ensureInitialized();
   // Upload the file to BunnyCDN. This is just a test to make sure that the
   // uploadFile function works.
