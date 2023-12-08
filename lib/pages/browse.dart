@@ -10,6 +10,7 @@ import 'package:warecheap/widgets/wcProducts.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:warecheap/widgets/wcTextField.dart';
 import 'package:warecheap/listeners/wcPlacesListener.dart';
+import 'package:warecheap/pages/addproduct.dart';
 
 // Future main() async {
 //   await dotenv.load();
@@ -86,82 +87,21 @@ class _BrowseState extends State<Browse> {
     ),
   ];
 
-  Future<void> _addProductPopup(BuildContext context) async {
-    LocationPermission? permission = await Geolocator.checkPermission();
-    // geoLocatorListener geoListener = geoLocatorListener();
-    if (permission == LocationPermission.denied ||
-        permission == LocationPermission.deniedForever) {
-      permission = await Geolocator.requestPermission();
-    } else {
-      return showDialog<void>(
-        context: context,
-        builder: (context) {
-          return ChangeNotifierProvider(
-            create: (context) => placesListener(),
-            child: Dialog(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: wcColors.bgPrimary,
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                height: 500,
-                width: 400.0,
-                padding: const EdgeInsets.all(20.0),
-                child: SingleChildScrollView(
-                  child: ListBody(
-                    children: <Widget>[
-                      const Text(
-                        'Add New Ware',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          color: wcColors.primaryText,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      Consumer<placesListener>(
-                        builder: (context, geoListener, child) {
-                          return (geoListener == null)
-                              ? Container(
-                                  height: 300,
-                                  child: const Center(
-                                    child: Text('geoListener is null'),
-                                  ),
-                                )
-                              : (geoListener.currentPosition == null)
-                                  ? Container(
-                                      height: 300,
-                                      child: const Center(
-                                        child: CircularProgressIndicator(),
-                                      ),
-                                    )
-                                  : Container(
-                                      height: 300,
-                                      child: GoogleMap(
-                                        mapType: MapType.normal,
-                                        myLocationEnabled: true,
-                                        initialCameraPosition: CameraPosition(
-                                          target: LatLng(
-                                            geoListener
-                                                .currentPosition!.latitude,
-                                            geoListener
-                                                .currentPosition!.longitude,
-                                          ),
-                                          zoom: 14.0,
-                                        ),
-                                      ),
-                                    );
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          );
-        },
-      );
-    }
-  }
+  // Future<void> _addProductPopup(BuildContext context) async {
+  //   LocationPermission? permission = await Geolocator.checkPermission();
+  //   // geoLocatorListener geoListener = geoLocatorListener();
+  //   if (permission == LocationPermission.denied ||
+  //       permission == LocationPermission.deniedForever) {
+  //     permission = await Geolocator.requestPermission();
+  //   } else {
+  //     return showDialog<void>(
+  //       context: context,
+  //       builder: (context) {
+  //         return
+  //       },
+  //     );
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -259,7 +199,11 @@ class _BrowseState extends State<Browse> {
                     margin: const EdgeInsets.only(right: 30.0, bottom: 20.0),
                     child: TextButton(
                       onPressed: () {
-                        _addProductPopup(context);
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          '/AddProduct',
+                          (route) => false,
+                        );
                       },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
