@@ -8,6 +8,9 @@ import 'package:warecheap/widgets/wcProducts.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:warecheap/widgets/wcTextField.dart';
 import 'package:warecheap/listeners/wcPlacesListener.dart';
+import 'package:warecheap/pages/addproductp1.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class AddProduct extends StatefulWidget {
   const AddProduct({Key? key}) : super(key: key);
@@ -19,6 +22,23 @@ class AddProduct extends StatefulWidget {
 class _AddProductState extends State<AddProduct> {
   Future<LocationPermission?> permission() async =>
       await Geolocator.checkPermission();
+  final ImagePicker picker = ImagePicker();
+  File? imageFile;
+
+  @override
+  initState() {
+    super.initState();
+    _getPhoto();
+  }
+
+  void _getPhoto() async {
+    final XFile? photo = await picker.pickImage(source: ImageSource.camera);
+    if (photo != null) {
+      setState(() {
+        imageFile = File(photo.path);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext build) {
