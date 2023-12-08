@@ -11,6 +11,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:warecheap/widgets/wcTextField.dart';
 import 'package:warecheap/listeners/wcPlacesListener.dart';
 import 'package:warecheap/pages/addproduct.dart';
+import 'package:warecheap/widgets/wcVoidWidget.dart';
+import 'package:warecheap/widgets/wcCam.dart';
 
 // Future main() async {
 //   await dotenv.load();
@@ -197,34 +199,32 @@ class _BrowseState extends State<Browse> {
                   child: Container(
                     alignment: Alignment.centerRight,
                     margin: const EdgeInsets.only(right: 30.0, bottom: 20.0),
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.pushNamedAndRemoveUntil(
-                          context,
-                          '/AddProduct',
-                          (route) => false,
-                        );
-                      },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                          wcColors.bgPrimaryAccent,
-                        ),
-                      ),
-                      child: TextButton.icon(
-                        label: const Text(
-                          'Add New Ware',
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            color: wcColors.primaryText,
-                          ),
-                        ),
-                        icon: const Icon(Icons.add),
+                    child: Expanded(
+                      child: TextButton(
+                        onPressed: () {
+                          wcCamState(context).getPhoto();
+                        },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
                             wcColors.bgPrimaryAccent,
                           ),
                         ),
-                        onPressed: null,
+                        child: TextButton.icon(
+                          label: const Text(
+                            'Add New Ware',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              color: wcColors.primaryText,
+                            ),
+                          ),
+                          icon: const Icon(Icons.add),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                              wcColors.bgPrimaryAccent,
+                            ),
+                          ),
+                          onPressed: null,
+                        ),
                       ),
                     ),
                   ),
@@ -234,4 +234,23 @@ class _BrowseState extends State<Browse> {
           ],
         ));
   }
+
+  // Route _createAddProductRoute() {
+  //   return PageRouteBuilder(
+  //     pageBuilder: (context, animation, secondaryAnimation) => const wcCam(),
+  //     transitionsBuilder: (context, animation, secondaryAnimation, child) {
+  //       const begin = Offset(1.0, 0.0);
+  //       const end = Offset.zero;
+  //       const curve = Curves.ease;
+
+  //       var tween =
+  //           Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+  //       return SlideTransition(
+  //         position: animation.drive(tween),
+  //         child: child,
+  //       );
+  //     },
+  //   );
+  // }
 }

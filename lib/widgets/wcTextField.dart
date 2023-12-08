@@ -7,6 +7,7 @@ class wcTextField {
     return Card(
       elevation: 2.0,
       child: TextField(
+        textCapitalization: TextCapitalization.words,
         decoration: InputDecoration(
           prefixIcon: icon,
           prefixIconColor: const Color.fromARGB(255, 169, 179, 139),
