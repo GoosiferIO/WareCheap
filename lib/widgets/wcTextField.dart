@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:warecheap/widgets/wcCore.dart';
+import 'package:warecheap/listeners/wcPlacesListener.dart';
 
 class wcTextField {
   static Widget tField({Icon? icon, String? label, String? hint}) {
@@ -44,6 +45,9 @@ class wcTextField {
             color: wcColors.secondaryText,
           ),
         ),
+        onChanged: (value) {
+          PlacesListener().searchGroceryStores(value);
+        },
       ),
     );
   }

@@ -11,7 +11,7 @@ import 'package:warecheap/services/geolocatorService.dart';
 import 'package:warecheap/services/placesService.dart';
 import 'package:warecheap/widgets/wcPlacesSearch.dart';
 
-class placesListener with ChangeNotifier {
+class PlacesListener with ChangeNotifier {
   final geoLocatorService = GeolocatorService();
   final placesService = PlacesService();
 
@@ -21,7 +21,7 @@ class placesListener with ChangeNotifier {
 
   // immediately get the user's current location without waiting for the
   // setCurrentLocation() method to be called
-  placesListener() {
+  PlacesListener() {
     currentLocation();
   }
 
@@ -31,7 +31,7 @@ class placesListener with ChangeNotifier {
   }
 
   searchGroceryStores(String search) async {
-    searchResults = await placesService.searchGroceries(search);
+    searchResults = await placesService.populateAutoComplete(search);
     notifyListeners();
   }
 }

@@ -12,8 +12,8 @@ class wcPlacesSearch {
 
   factory wcPlacesSearch.fromJson(Map<String, dynamic> json) {
     return wcPlacesSearch(
-      description: json['description'],
-      placeId: json['place_id'],
+      description: json['description'] as String? ?? '',
+      placeId: json['place_id'] as String? ?? '',
     );
   }
 }
