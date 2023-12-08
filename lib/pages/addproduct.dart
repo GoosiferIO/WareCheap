@@ -9,8 +9,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:warecheap/widgets/wcTextField.dart';
 import 'package:warecheap/listeners/wcPlacesListener.dart';
 import 'package:warecheap/pages/addproductp1.dart';
-import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'package:warecheap/models/wcImageModel.dart';
 
 class AddProduct extends StatefulWidget {
   const AddProduct({Key? key}) : super(key: key);
@@ -22,31 +22,26 @@ class AddProduct extends StatefulWidget {
 class _AddProductState extends State<AddProduct> {
   Future<LocationPermission?> permission() async =>
       await Geolocator.checkPermission();
-  final ImagePicker picker = ImagePicker();
-  File? imageFile;
+
+  // Future<void> initializeData() async {
+  //   try {
+  //     _getPhoto();
+  //     print(imageFile!.path);
+  //   } catch (e) {
+  //     print(e);
+  //     //Navigator.pop(context);
+  //   }
+  // }
 
   @override
   initState() {
     super.initState();
-    try {
-      _getPhoto();
-      print(imageFile!.path);
-      if (imageFile == null) {
-        Navigator.pop(context);
-      }
-    } catch (e) {
-      print(e);
-      Navigator.pop(context);
-    }
+    //initializeData();
   }
 
-  void _getPhoto() async {
-    final XFile? photo = await picker.pickImage(source: ImageSource.camera);
-    if (photo != null) {
-      setState(() {
-        imageFile = File(photo.path);
-      });
-    }
+  @override
+  dispose() {
+    super.dispose();
   }
 
   @override
@@ -86,17 +81,21 @@ class _AddProductState extends State<AddProduct> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    child: imageFile != null
-                        ? Image.file(imageFile!)
-                        : Placeholder(
-                            fallbackHeight: 300,
-                            fallbackWidth: double.infinity,
-                            child: Image.network(
-                              'https://t3.ftcdn.net/jpg/03/46/83/96/240_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
-                            )),
-                    height: 300,
-                    width: double.infinity,
+                  Container(
+                    color: wcColors.bgPrimaryAccent,
+                    child: SizedBox(
+                      child: Provider.of<ImageModel>(context).imageFile != null
+                          ? Image.file(
+                              Provider.of<ImageModel>(context).imageFile!)
+                          : Placeholder(
+                              fallbackHeight: 300,
+                              fallbackWidth: double.infinity,
+                              child: Image.network(
+                                'https://t3.ftcdn.net/jpg/03/46/83/96/240_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
+                              )),
+                      height: 300,
+                      width: double.infinity,
+                    ),
                   ),
                   Consumer<PlacesListener>(
                     builder: (context, geoListener, child) {
