@@ -28,7 +28,16 @@ class _AddProductState extends State<AddProduct> {
   @override
   initState() {
     super.initState();
-    _getPhoto();
+    try {
+      _getPhoto();
+      print(imageFile!.path);
+      if (imageFile == null) {
+        Navigator.pop(context);
+      }
+    } catch (e) {
+      print(e);
+      Navigator.pop(context);
+    }
   }
 
   void _getPhoto() async {
@@ -63,6 +72,32 @@ class _AddProductState extends State<AddProduct> {
             child: SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Spacer(),
+                      TextButton.icon(
+                        icon: Icon(Icons.cancel, color: wcColors.linkText),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        label: const Text('Cancel',
+                            style: TextStyle(color: wcColors.linkText)),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    child: imageFile != null
+                        ? Image.file(imageFile!)
+                        : Placeholder(
+                            fallbackHeight: 300,
+                            fallbackWidth: double.infinity,
+                            child: Image.network(
+                              'https://t3.ftcdn.net/jpg/03/46/83/96/240_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
+                            )),
+                    height: 300,
+                    width: double.infinity,
+                  ),
                   Consumer<PlacesListener>(
                     builder: (context, geoListener, child) {
                       return (geoListener == null)
@@ -81,23 +116,6 @@ class _AddProductState extends State<AddProduct> {
                                 )
                               : Column(
                                   children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Spacer(),
-                                        TextButton.icon(
-                                          icon: Icon(Icons.cancel,
-                                              color: wcColors.linkText),
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          label: const Text('Cancel',
-                                              style: TextStyle(
-                                                  color: wcColors.linkText)),
-                                        ),
-                                      ],
-                                    ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: TextField(
