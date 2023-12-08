@@ -61,7 +61,6 @@ class _AddProductState extends State<AddProduct> {
         bodyContext: ChangeNotifierProvider(
           create: (context) => PlacesListener(),
           child: Container(
-            height: 500,
             width: 400.0,
             padding: const EdgeInsets.all(20.0),
             child: SingleChildScrollView(
@@ -81,6 +80,21 @@ class _AddProductState extends State<AddProduct> {
                       ),
                     ],
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                        child: const Text(
+                          'Product Image',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: wcColors.primaryText,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   Container(
                     color: wcColors.bgPrimaryAccent,
                     child: SizedBox(
@@ -96,6 +110,19 @@ class _AddProductState extends State<AddProduct> {
                       height: 300,
                       width: double.infinity,
                     ),
+                  ),
+                  SizedBox(height: 16.0),
+                  wcTextField.tField(
+                    icon:
+                        const Icon(Icons.text_fields, color: wcColors.linkText),
+                    label: 'Product Name',
+                    hint: 'Enter product name',
+                  ),
+                  SizedBox(height: 16.0),
+                  wcTextField.tField(
+                    icon: const Icon(Icons.money, color: wcColors.linkText),
+                    label: 'Price',
+                    hint: 'Enter product price',
                   ),
                   Consumer<PlacesListener>(
                     builder: (context, geoListener, child) {
