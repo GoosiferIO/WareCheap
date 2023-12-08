@@ -1,3 +1,6 @@
+// ignore_for_file: prefer_adjacent_string_concatenation,
+// ignore_for_file: prefer_interpolation_to_compose_strings
+
 import 'package:flutter/material.dart';
 import 'package:warecheap/pages/itemreview.dart';
 import 'package:warecheap/storereview.dart';
@@ -25,6 +28,11 @@ class Home extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
+            Text(
+              GroceryAppText.groceryAppText,
+              style: myTextStyle,
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(height: 40),
             const Text('Forum Discussions:',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
@@ -71,3 +79,17 @@ class Home extends StatelessWidget {
     );
   }
 }
+
+class GroceryAppText {
+  static const String groceryAppText =
+      'Introducing an interactive grocery app revolutionizing shopping: ' +
+          'report and find the best prices, create wishlists, and join ' +
+          'a vibrant community forum to share reviews and tips on local ' +
+          'ingredients and stores. Say goodbye to guesswork and ' +
+          'hello to savings while connecting with fellow foodies!';
+}
+
+TextStyle myTextStyle = const TextStyle(
+    color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold);
+
+// Usage in the widget:
