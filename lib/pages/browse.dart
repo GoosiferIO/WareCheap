@@ -199,11 +199,7 @@ class _BrowseState extends State<Browse> {
                     margin: const EdgeInsets.only(right: 30.0, bottom: 20.0),
                     child: TextButton(
                       onPressed: () {
-                        Navigator.pushNamedAndRemoveUntil(
-                          context,
-                          '/AddProduct',
-                          (route) => false,
-                        );
+                        Navigator.of(context).push(_createAddProductRoute());
                       },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
@@ -233,5 +229,25 @@ class _BrowseState extends State<Browse> {
             ),
           ],
         ));
+  }
+
+  Route _createAddProductRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          const AddProduct(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(1.0, 0.0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
   }
 }

@@ -31,6 +31,7 @@ class _AddProductState extends State<AddProduct> {
       );
     }
     return wcCore.coreUI(
+        enableDrawer: false,
         context: context,
         appbarTitle: 'Add Ware',
         bodyContext: ChangeNotifierProvider(
@@ -60,6 +61,23 @@ class _AddProductState extends State<AddProduct> {
                                 )
                               : Column(
                                   children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Spacer(),
+                                        TextButton.icon(
+                                          icon: Icon(Icons.cancel,
+                                              color: wcColors.linkText),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          label: const Text('Cancel',
+                                              style: TextStyle(
+                                                  color: wcColors.linkText)),
+                                        ),
+                                      ],
+                                    ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: TextField(
