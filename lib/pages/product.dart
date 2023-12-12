@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:warecheap/widgets/wcCore.dart';
 import 'package:warecheap/widgets/wcProducts.dart';
+import 'package:intl/intl.dart';
 
 class ProductPage extends StatelessWidget {
   final wcProduct? product;
@@ -48,11 +49,108 @@ class ProductPage extends StatelessWidget {
                   },
                 ),
               ),
-              Text(product!.name!),
-              Text(product!.price.toString()),
-              Text(product!.store!),
-              Text(product!.dept!),
-              Text(product!.date!.toString()),
+              Expanded(
+                child: ListView(
+                    padding: EdgeInsets.zero,
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    /* this actually isn't needed, but here for testing. set to 
+                           NeverScrollableScrollPhysics() to disable scrolling */
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    children: <Widget>[
+                      Column(
+                        children: [
+                          SizedBox(height: 16.0),
+                          Container(
+                              decoration: BoxDecoration(
+                                color: wcColors.bgTertiary,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              padding: const EdgeInsets.all(20.0),
+                              child: Row(
+                                children: [
+                                  Text('Product Name: ',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold)),
+                                  Text(product!.name!,
+                                      style: TextStyle(fontSize: 16)),
+                                ],
+                              )),
+                          SizedBox(height: 16.0),
+                          Container(
+                              decoration: BoxDecoration(
+                                color: wcColors.bgTertiary,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              padding: const EdgeInsets.all(20.0),
+                              child: Row(
+                                children: [
+                                  Text('Price: ',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold)),
+                                  Text("\$${product!.price!.toString()}",
+                                      style: TextStyle(fontSize: 16)),
+                                ],
+                              )),
+                          SizedBox(height: 16.0),
+                          Container(
+                              decoration: BoxDecoration(
+                                color: wcColors.bgTertiary,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              padding: const EdgeInsets.all(20.0),
+                              child: Row(
+                                children: [
+                                  Text('Location: ',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold)),
+                                  Text(product!.store!,
+                                      style: TextStyle(fontSize: 16)),
+                                ],
+                              )),
+                          SizedBox(height: 16.0),
+                          Container(
+                              decoration: BoxDecoration(
+                                color: wcColors.bgTertiary,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              padding: const EdgeInsets.all(20.0),
+                              child: Row(
+                                children: [
+                                  Text('Department: ',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold)),
+                                  Text(product!.dept!,
+                                      style: TextStyle(fontSize: 16)),
+                                ],
+                              )),
+                          SizedBox(height: 16.0),
+                          Container(
+                              decoration: BoxDecoration(
+                                color: wcColors.bgTertiary,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              padding: const EdgeInsets.all(20.0),
+                              child: Row(
+                                children: [
+                                  Text('Published: ',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold)),
+                                  Text(
+                                      DateFormat('MMM d, yyyy')
+                                          .format(product!.date!),
+                                      style: TextStyle(fontSize: 16)),
+                                ],
+                              )),
+                        ],
+                      ),
+                    ]),
+              ),
             ],
           ),
         ),
