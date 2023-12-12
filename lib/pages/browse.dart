@@ -29,10 +29,10 @@ class _BrowseState extends State<Browse> {
   @override
   void initState() {
     super.initState();
-    _fetchProductsFromFirestore(0);
+    _fetchProductsFromFirestore(0, context);
   }
 
-  void _fetchProductsFromFirestore(int segment) async {
+  void _fetchProductsFromFirestore(int segment, BuildContext context) async {
     Query query;
     switch (segment) {
       case 0: // Recent
@@ -45,12 +45,6 @@ class _BrowseState extends State<Browse> {
         query = FirebaseFirestore.instance
             .collection('wcProducts')
             .orderBy('name')
-            .limit(10);
-        break;
-      case 2: // By Location
-        query = FirebaseFirestore.instance
-            .collection('wcProducts')
-            .orderBy('geoloc')
             .limit(10);
         break;
       default:
@@ -69,13 +63,14 @@ class _BrowseState extends State<Browse> {
         _products = fetchedProducts;
         _prettyProducts = _products
             .map((product) => wcProduct(
+                  context: context,
                   name: (product.name == null ? 'Unknown' : product.name!),
                   price: (product.price == null ? 0.0 : product.price!),
                   store: (product.storeName == null
                       ? 'Unknown'
                       : product.storeName!),
                   image: (product.imageDir == null
-                      ? 'assets/images/placeholder.png'
+                      ? 'assets/placeholder.png'
                       : product.imageDir!),
                   dept: (product.department == null
                       ? 'Unknown'
@@ -152,16 +147,12 @@ class _BrowseState extends State<Browse> {
                               color: wcColors.primaryText,
                             ),
                             child: Text('By Product')),
-                        2: DefaultTextStyle(
-                            style: TextStyle(
-                              color: wcColors.primaryText,
-                            ),
-                            child: Text('By Location')),
                       },
                       onValueChanged: (value) {
                         setState(() {
                           _selectedSegment = value!;
-                          _fetchProductsFromFirestore(_selectedSegment);
+                          _fetchProductsFromFirestore(
+                              _selectedSegment, context);
                         });
                       },
                       groupValue: _selectedSegment,

@@ -7,6 +7,7 @@ import 'package:warecheap/widgets/wcTextField.dart';
 import 'package:warecheap/models/wcProductModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:warecheap/services/wcUploadFile.dart';
+import 'dart:async';
 
 class AddProductLocation extends StatefulWidget {
   final ProductModel product;
@@ -18,6 +19,8 @@ class AddProductLocation extends StatefulWidget {
 
 class _AddProductLocationState extends State<AddProductLocation> {
   final TextEditingController _locationController = TextEditingController();
+
+  Completer<GoogleMapController> _controller = Completer();
 
   void _submitForm() {
     String fileName = "${DateTime.now()}";
@@ -113,6 +116,7 @@ class _AddProductLocationState extends State<AddProductLocation> {
                               : Column(
                                   children: [
                                     wcTextField.locationSearchField(
+                                        controller: _locationController,
                                         icon: const Icon(Icons.search),
                                         label: 'Search for Grocery Store',
                                         hint: 'Search for Grocery Store',
@@ -199,6 +203,8 @@ class _AddProductLocationState extends State<AddProductLocation> {
                             ),
                           ),
                           onPressed: () {
+                            widget.product.storeName =
+                                _locationController.text.toString();
                             _submitForm(); // add product to Firebase
                             Navigator.pushNamedAndRemoveUntil(
                               context,
@@ -216,5 +222,14 @@ class _AddProductLocationState extends State<AddProductLocation> {
             );
           }),
         ));
+  }
+
+  // lets us update the map to the current location
+  Future<void> _goToPlace(PlacesListener geoListener) async {
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+        target: LatLng(geoListener.currentPosition!.latitude,
+            geoListener.currentPosition!.longitude),
+        zoom: 14.0)));
   }
 }

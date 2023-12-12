@@ -3,7 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:warecheap/pages/itemreview.dart';
-import 'package:warecheap/storereview.dart';
+import 'package:warecheap/pages/storereview.dart';
 import 'package:warecheap/widgets/wcCore.dart';
 
 class Home extends StatelessWidget {
@@ -15,65 +15,85 @@ class Home extends StatelessWidget {
       context: context,
       appbarTitle: 'Home',
       bodyContext: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            // Reduce the gap between image and text
-            SizedBox(
-              width: 350,
-              height: 178,
-              child: Image.asset(
-                'assets/wcLogo.png',
-                fit: BoxFit.fill,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              // Reduce the gap between image and text
+              SizedBox(
+                width: 350,
+                height: 178,
+                child: Image.asset(
+                  'assets/wcLogo.png',
+                  fit: BoxFit.fill,
+                ),
               ),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              GroceryAppText.groceryAppText,
-              style: myTextStyle,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 40),
-            const Text('Forum Discussions:',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 10),
-            Column(
-              //Price of items
-              children: <Widget>[
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const reviewStore()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(
-                        255, 139, 204, 141), // Change button color
-                  ),
-                  child: const Text('Leave a review for a store',
-                      style: TextStyle(color: Colors.black, fontSize: 24)),
+              const SizedBox(height: 16),
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: wcColors.bgTertiary,
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const reviewItem()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(
-                        255, 139, 204, 141), // Change button color
+                child: Text(
+                  GroceryAppText.groceryAppText,
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: wcColors.primaryText,
                   ),
-                  child: const Text('Leave a review for an item',
-                      style: TextStyle(color: Colors.black, fontSize: 24)),
+                  textAlign: TextAlign.left,
                 ),
-              ],
-            ),
-          ],
+              ),
+              const SizedBox(height: 16),
+              const Text('Forum Discussions:',
+                  style: TextStyle(fontSize: 24, color: wcColors.primaryText)),
+              const SizedBox(height: 10),
+              Column(
+                //Price of items
+                children: <Widget>[
+                  TextButton.icon(
+                    icon: Icon(Icons.store, color: wcColors.primaryText),
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all<EdgeInsets>(
+                          const EdgeInsets.all(20)),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        wcColors.bgPrimaryAccent,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const reviewStore()),
+                      );
+                    },
+                    label: const Text('Leave a review for a store.'),
+                  ),
+                  const SizedBox(height: 10),
+                  TextButton.icon(
+                    icon:
+                        Icon(Icons.edit_document, color: wcColors.primaryText),
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all<EdgeInsets>(
+                          const EdgeInsets.all(20)),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        wcColors.bgPrimaryAccent,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const reviewItem()),
+                      );
+                    },
+                    label: const Text('Leave a review for an item.'),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -82,7 +102,7 @@ class Home extends StatelessWidget {
 
 class GroceryAppText {
   static const String groceryAppText =
-      'Introducing an interactive grocery app revolutionizing shopping: ' +
+      '     Introducing an interactive grocery app revolutionizing shopping: ' +
           'report and find the best prices, create wishlists, and join ' +
           'a vibrant community forum to share reviews and tips on local ' +
           'ingredients and stores. Say goodbye to guesswork and ' +
