@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductModel {
   // Specific to product
@@ -21,5 +22,20 @@ class ProductModel {
     this.imageDir,
     this.department,
     this.geoloc,
+    this.dateAdded,
   });
+
+  factory ProductModel.fromFirestore(DocumentSnapshot doc) {
+    return ProductModel(
+      name: doc['name'],
+      price: doc['price'],
+      storeID: doc['storeID'],
+      storeName: doc['storeName'],
+      imageDir: doc['imageDir'],
+      department: doc['department'],
+      dateAdded: doc['dateAdded'],
+      geoloc: doc['location'],
+      // Initialize other fields
+    );
+  }
 }

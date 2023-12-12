@@ -13,6 +13,7 @@ import 'package:warecheap/listeners/wcPlacesListener.dart';
 import 'package:warecheap/pages/addproduct.dart';
 import 'package:warecheap/widgets/wcVoidWidget.dart';
 import 'package:warecheap/widgets/wcCam.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 // Future main() async {
 //   await dotenv.load();
@@ -24,6 +25,39 @@ class Browse extends StatefulWidget {
   @override
   // ignore: library_private_types_in_public_api
   _BrowseState createState() => _BrowseState();
+}
+
+void _fetchProductsFromFirestore(int segment) async {
+  Query query;
+  switch (segment) {
+    case 0: // Recent
+      query = FirebaseFirestore.instance
+          .collection('wcProducts')
+          .orderBy('dateAdded', descending: true);
+      break;
+    case 1: // By Product
+      query =
+          FirebaseFirestore.instance.collection('wcProducts').orderBy('name');
+      break;
+    case 2: // By Location
+      query = FirebaseFirestore.instance
+          .collection('wcProducts')
+          .orderBy('location');
+      break;
+    default:
+      return;
+  }
+
+  // Fetch data and update state
+  query.get().then((QuerySnapshot querySnapshot) {
+    List<wcProduct> fetchedProducts =
+        querySnapshot.docs.map((doc) => Product.fromFirestore(doc)).toList();
+    setState(() {
+      _products = fetchedProducts;
+    });
+  }).catchError((error) {
+    // Handle errors
+  });
 }
 
 class _BrowseState extends State<Browse> {
