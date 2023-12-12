@@ -38,6 +38,10 @@ class wcProduct {
               product.image!,
               width: 100,
               height: 100,
+              errorBuilder: (BuildContext context, Object exception,
+                  StackTrace? stackTrace) {
+                return Image.asset('assets/placeholder.png');
+              },
             ),
             title: Text(product.name!),
             titleTextStyle: const TextStyle(
