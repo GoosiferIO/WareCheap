@@ -8,6 +8,7 @@ class ProductModel {
   String? storeName;
   String? imageDir;
   String? department;
+  DateTime? dateAdded;
 
   // Specific to 'add product' form
   String? geoloc;

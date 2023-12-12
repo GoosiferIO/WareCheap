@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:warecheap/widgets/wcTextField.dart';
 import 'package:warecheap/models/wcProductModel.dart';
 import 'package:warecheap/pages/browse.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AddProductLocation extends StatefulWidget {
   final ProductModel product;
@@ -18,6 +19,33 @@ class AddProductLocation extends StatefulWidget {
 }
 
 class _AddProductLocationState extends State<AddProductLocation> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _locationController = TextEditingController();
+
+  void _submitForm() {
+    try {
+      // add product to Firebase
+      FirebaseFirestore.instance.collection('products').add({
+        'name': widget.product.name,
+        'price': widget.product.price,
+        'storeID': widget.product.storeID,
+        'storeName': widget.product.storeName,
+        'imageDir': widget.product.imageDir,
+        'department': widget.product.department,
+        'geoloc': widget.product.geoloc,
+        'dateAdded': DateTime.now(),
+      });
+      // go back to browse page
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        '/Browse',
+        (route) => false,
+      );
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext build) {
     // final geoListener = Provider.of<PlacesListener>(context);
@@ -172,6 +200,7 @@ class _AddProductLocationState extends State<AddProductLocation> {
                             ),
                           ),
                           onPressed: () {
+                            _submitForm(); // add product to Firebase
                             Navigator.pushNamedAndRemoveUntil(
                               context,
                               '/Browse',
