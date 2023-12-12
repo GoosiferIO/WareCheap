@@ -64,7 +64,7 @@ void main() async {
           '/StoreRev': (context) => reviewStore(),
           '/Author': (context) => const Page2(),
           '/Browse': (context) => const Browse(),
-          '/AddProduct': (context) => AddProduct(),
+          '/AddProduct': (context) => AddProduct(imgDir: ''),
           //'/CaptureImg': (context) => const wcCamState(),
         },
       ),

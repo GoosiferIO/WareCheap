@@ -2,13 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:warecheap/widgets/wcCore.dart';
 
 class GroceryDepartmentSelector extends StatefulWidget {
+  final Function(String) onDeptUpdate;
+  final String? deptartment;
+
+  const GroceryDepartmentSelector(
+      {Key? key, required this.onDeptUpdate, required this.deptartment})
+      : super(key: key);
   @override
   _GroceryDepartmentSelectorState createState() =>
       _GroceryDepartmentSelectorState();
 }
 
 class _GroceryDepartmentSelectorState extends State<GroceryDepartmentSelector> {
-  String? selectedDepartment;
+  late String? selectedDepartment;
 
   // grocery department list
   List<String> groceryDepartments = [
@@ -25,6 +31,19 @@ class _GroceryDepartmentSelectorState extends State<GroceryDepartmentSelector> {
     'Breakfast & Cereal',
     'Coffee & Tea',
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    selectedDepartment = widget.deptartment;
+  }
+
+  void _updateGroceryDepartment(String _dpt) {
+    setState(() {
+      selectedDepartment = _dpt;
+    });
+    widget.onDeptUpdate(selectedDepartment!);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,11 +70,8 @@ class _GroceryDepartmentSelectorState extends State<GroceryDepartmentSelector> {
                   style: TextStyle(
                     color: wcColors.secondaryText,
                   )),
-              onChanged: (String? newValue) {
-                setState(() {
-                  selectedDepartment = newValue;
-                });
-              },
+              onChanged: (String? _dpt) => _updateGroceryDepartment(_dpt!),
+
               items: groceryDepartments
                   .map<DropdownMenuItem<String>>((String department) {
                 return DropdownMenuItem<String>(

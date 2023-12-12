@@ -3,10 +3,15 @@ import 'package:warecheap/widgets/wcCore.dart';
 import 'package:warecheap/listeners/wcPlacesListener.dart';
 
 class wcTextField {
-  static Widget tField({Icon? icon, String? label, String? hint}) {
+  static Widget tField(
+      {Icon? icon,
+      String? label,
+      String? hint,
+      TextEditingController? controller}) {
     return Card(
       elevation: 2.0,
       child: TextField(
+        controller: controller ?? TextEditingController(),
         textCapitalization: TextCapitalization.words,
         decoration: InputDecoration(
           prefixIcon: icon,

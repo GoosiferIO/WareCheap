@@ -65,7 +65,7 @@ class wcCamState {
               create: (context) => ImageModel(
                     imageFile: image,
                   ),
-              child: AddProduct()),
+              child: AddProduct(imgDir: image!.path)),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         const begin = Offset(1.0, 0.0);
         const end = Offset.zero;

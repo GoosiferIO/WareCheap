@@ -19,13 +19,12 @@ class AddProductLocation extends StatefulWidget {
 }
 
 class _AddProductLocationState extends State<AddProductLocation> {
-  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _locationController = TextEditingController();
 
   void _submitForm() {
     try {
       // add product to Firebase
-      FirebaseFirestore.instance.collection('products').add({
+      FirebaseFirestore.instance.collection('wcProducts').add({
         'name': widget.product.name,
         'price': widget.product.price,
         'storeID': widget.product.storeID,
