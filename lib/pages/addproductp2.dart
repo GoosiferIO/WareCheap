@@ -6,9 +6,12 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:warecheap/listeners/wcPlacesListener.dart';
 import 'package:provider/provider.dart';
 import 'package:warecheap/widgets/wcTextField.dart';
+import 'package:warecheap/models/wcProductModel.dart';
+import 'package:warecheap/pages/browse.dart';
 
 class AddProductLocation extends StatefulWidget {
-  const AddProductLocation({Key? key}) : super(key: key);
+  final ProductModel product;
+  const AddProductLocation({Key? key, required this.product}) : super(key: key);
 
   @override
   _AddProductLocationState createState() => _AddProductLocationState();
@@ -38,7 +41,11 @@ class _AddProductLocationState extends State<AddProductLocation> {
                           TextButton.icon(
                             icon: Icon(Icons.cancel, color: wcColors.linkText),
                             onPressed: () {
-                              Navigator.pop(context);
+                              Navigator.pushNamedAndRemoveUntil(
+                                context,
+                                '/Browse',
+                                (route) => false,
+                              );
                             },
                             label: const Text('Cancel',
                                 style: TextStyle(color: wcColors.linkText)),
@@ -165,11 +172,10 @@ class _AddProductLocationState extends State<AddProductLocation> {
                             ),
                           ),
                           onPressed: () {
-                            Navigator.push(
+                            Navigator.pushNamedAndRemoveUntil(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => AddProductLocation(),
-                              ),
+                              '/Browse',
+                              (route) => false,
                             );
                           },
                           child: const Text('Complete'),

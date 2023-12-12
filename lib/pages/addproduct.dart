@@ -11,6 +11,7 @@ import 'package:warecheap/listeners/wcPlacesListener.dart';
 import 'package:warecheap/pages/addproductp2.dart';
 import 'dart:io';
 import 'package:warecheap/models/wcImageModel.dart';
+import 'package:warecheap/models/wcProductModel.dart';
 
 class AddProduct extends StatefulWidget {
   const AddProduct({Key? key}) : super(key: key);
@@ -134,7 +135,14 @@ class _AddProductState extends State<AddProduct> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => AddProductLocation(),
+                        builder: (context) => AddProductLocation(
+                          product: ProductModel(
+                            name: 'test',
+                            price: 0.0,
+                            department: 'test',
+                            imageDir: 'test',
+                          ),
+                        ),
                       ),
                     );
                   },
