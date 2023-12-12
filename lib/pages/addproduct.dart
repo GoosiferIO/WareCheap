@@ -84,7 +84,7 @@ class _AddProductState extends State<AddProduct> {
                     Container(
                       margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
                       child: const Text(
-                        'Product Image',
+                        'Add New Ware',
                         style: TextStyle(
                           fontSize: 20.0,
                           color: wcColors.primaryText,
@@ -125,6 +125,11 @@ class _AddProductState extends State<AddProduct> {
                 GroceryDepartmentSelector(),
                 SizedBox(height: 16.0),
                 TextButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      wcColors.bgPrimaryAccent,
+                    ),
+                  ),
                   onPressed: () {
                     Navigator.push(
                       context,
