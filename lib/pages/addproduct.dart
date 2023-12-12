@@ -62,7 +62,7 @@ class _AddProductState extends State<AddProduct> {
         context: context,
         appbarTitle: 'Add Ware',
         bodyContext: Container(
-          width: 400.0,
+          width: double.infinity,
           padding: const EdgeInsets.all(20.0),
           child: SingleChildScrollView(
             child: ListBody(
