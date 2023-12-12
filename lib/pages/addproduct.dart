@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
-
+import 'package:warecheap/widgets/wcGroceryDepartmentSelector.dart';
 import 'package:provider/provider.dart';
 import 'package:warecheap/widgets/wcCore.dart';
-import 'package:warecheap/widgets/wcProducts.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:warecheap/widgets/wcTextField.dart';
-import 'package:warecheap/listeners/wcPlacesListener.dart';
 import 'package:warecheap/pages/addproductp2.dart';
-import 'dart:io';
 import 'package:warecheap/models/wcImageModel.dart';
+import 'package:warecheap/models/wcProductModel.dart';
 
 class AddProduct extends StatefulWidget {
-  const AddProduct({Key? key}) : super(key: key);
+  final String? imgDir;
+
+  const AddProduct({Key? key, required this.imgDir}) : super(key: key);
 
   @override
   State<AddProduct> createState() => _AddProductState();
@@ -46,6 +45,10 @@ class _AddProductState extends State<AddProduct> {
 
   @override
   Widget build(BuildContext build) {
+    TextEditingController _nameController = TextEditingController();
+    TextEditingController _priceController = TextEditingController();
+    String? _department;
+
     if (permission() == LocationPermission.denied ||
         permission() == LocationPermission.deniedForever) {
       Navigator.pushNamedAndRemoveUntil(
@@ -84,7 +87,7 @@ class _AddProductState extends State<AddProduct> {
                     Container(
                       margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
                       child: const Text(
-                        'Product Image',
+                        'Add New Ware',
                         style: TextStyle(
                           fontSize: 20.0,
                           color: wcColors.primaryText,
@@ -111,23 +114,46 @@ class _AddProductState extends State<AddProduct> {
                 ),
                 SizedBox(height: 16.0),
                 wcTextField.tField(
+                  controller: _nameController,
                   icon: const Icon(Icons.text_fields, color: wcColors.linkText),
                   label: 'Product Name',
                   hint: 'Enter product name',
                 ),
                 SizedBox(height: 16.0),
                 wcTextField.tField(
+                  controller: _priceController,
                   icon: const Icon(Icons.money, color: wcColors.linkText),
                   label: 'Price',
                   hint: 'Enter product price',
                 ),
                 SizedBox(height: 16.0),
+                GroceryDepartmentSelector(
+                  deptartment: _department,
+                  onDeptUpdate: (String _dpt) {
+                    _department = _dpt;
+                  },
+                ),
+                SizedBox(height: 16.0),
                 TextButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      wcColors.bgPrimaryAccent,
+                    ),
+                  ),
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => AddProductLocation(),
+                        builder: (context) => AddProductLocation(
+                          product: ProductModel(
+                            name: _nameController.text,
+                            price: (_priceController.text == '')
+                                ? 0.0
+                                : double.parse(_priceController.text),
+                            department: _department,
+                            imageDir: widget.imgDir,
+                          ),
+                        ),
                       ),
                     );
                   },

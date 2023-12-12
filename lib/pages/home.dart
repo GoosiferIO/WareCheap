@@ -21,9 +21,9 @@ class Home extends StatelessWidget {
             // Reduce the gap between image and text
             SizedBox(
               width: 350,
-              height: 130,
+              height: 178,
               child: Image.asset(
-                'assets/Logo.png',
+                'assets/wcLogo.png',
                 fit: BoxFit.fill,
               ),
             ),

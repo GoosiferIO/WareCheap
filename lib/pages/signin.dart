@@ -40,9 +40,9 @@ class _SigninPageState extends State<SigninPage> {
           children: [
             SizedBox(
               width: 350,
-              height: 130,
+              height: 175,
               child: Image.asset(
-                'assets/Logo.png',
+                'assets/wcLogo.png',
                 fit: BoxFit.fill,
               ),
             ),

@@ -2,17 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:provider/provider.dart';
 import 'package:warecheap/widgets/wcCore.dart';
 import 'package:warecheap/widgets/wcProducts.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:warecheap/widgets/wcTextField.dart';
-import 'package:warecheap/listeners/wcPlacesListener.dart';
-import 'package:warecheap/pages/addproduct.dart';
-import 'package:warecheap/widgets/wcVoidWidget.dart';
 import 'package:warecheap/widgets/wcCam.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:warecheap/models/wcProductModel.dart';
 
 // Future main() async {
 //   await dotenv.load();
@@ -20,6 +14,7 @@ import 'package:warecheap/widgets/wcCam.dart';
 
 class Browse extends StatefulWidget {
   const Browse({Key? key});
+  // temporary list of products; will be replaced with Firebase integration
 
   @override
   // ignore: library_private_types_in_public_api
@@ -28,66 +23,74 @@ class Browse extends StatefulWidget {
 
 class _BrowseState extends State<Browse> {
   int _selectedSegment = 0;
+  List<ProductModel> _products = []; // list of products from Firestore
+  List<wcProduct> _prettyProducts = []; // list of products to display
 
-  // temporary list of products; will be replaced with Firebase integration
-  List<wcProduct> products = [
-    wcProduct(
-      name: 'Product 1',
-      brand: 'Product Brand',
-      date: 'Product Date',
-      price: 'Product Price',
-      image: 'assets/Logo.png',
-    ),
-    wcProduct(
-      name: 'Product 2',
-      brand: 'Product Brand',
-      date: 'Product Date',
-      price: 'Product Price',
-      image: 'assets/Logo.png',
-    ),
-    wcProduct(
-      name: 'Product 3',
-      brand: 'Product Brand',
-      date: 'Product Date',
-      price: 'Product Price',
-      image: 'assets/Logo.png',
-    ),
-    wcProduct(
-      name: 'Product 4',
-      brand: 'Product Brand',
-      date: 'Product Date',
-      price: 'Product Price',
-      image: 'assets/Logo.png',
-    ),
-    wcProduct(
-      name: 'Product 5',
-      brand: 'Product Brand',
-      date: 'Product Date',
-      price: 'Product Price',
-      image: 'assets/Logo.png',
-    ),
-    wcProduct(
-      name: 'Product 6',
-      brand: 'Product Brand',
-      date: 'Product Date',
-      price: 'Product Price',
-      image: 'assets/Logo.png',
-    ),
-    wcProduct(
-      name: 'Product 7',
-      brand: 'Product Brand',
-      date: 'Product Date',
-      price: 'Product Price',
-      image: 'assets/Logo.png',
-    ),
-    wcProduct(
-      name: 'Product 8',
-      brand: 'Product Brand',
-      date: 'Product Date',
-      price: 'Product Price',
-      image: 'assets/Logo.png',
-    ),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _fetchProductsFromFirestore(0);
+  }
+
+  void _fetchProductsFromFirestore(int segment) async {
+    Query query;
+    switch (segment) {
+      case 0: // Recent
+        query = FirebaseFirestore.instance
+            .collection('wcProducts')
+            .orderBy('dateAdded', descending: true)
+            .limit(10);
+        break;
+      case 1: // By Product
+        query = FirebaseFirestore.instance
+            .collection('wcProducts')
+            .orderBy('name')
+            .limit(10);
+        break;
+      case 2: // By Location
+        query = FirebaseFirestore.instance
+            .collection('wcProducts')
+            .orderBy('geoloc')
+            .limit(10);
+        break;
+      default:
+        return;
+    }
+
+    // grab product from Firestore
+    query.get().then((QuerySnapshot querySnapshot) {
+      print("QuerySnapshot length is:  ${querySnapshot.size}");
+
+      List<ProductModel> fetchedProducts = querySnapshot.docs
+          .map((doc) => ProductModel.fromFirestore(doc))
+          .toList();
+      print("Fetched product length is:  ${fetchedProducts.length}");
+      setState(() {
+        _products = fetchedProducts;
+        _prettyProducts = _products
+            .map((product) => wcProduct(
+                  name: (product.name == null ? 'Unknown' : product.name!),
+                  price: (product.price == null ? 0.0 : product.price!),
+                  store: (product.storeName == null
+                      ? 'Unknown'
+                      : product.storeName!),
+                  image: (product.imageDir == null
+                      ? 'assets/images/placeholder.png'
+                      : product.imageDir!),
+                  dept: (product.department == null
+                      ? 'Unknown'
+                      : product.department!),
+                  date: (product.dateAdded == null
+                      ? DateTime.now()
+                      : product.dateAdded!),
+                ))
+            .toList();
+        print("Pretty products length is:  ${_prettyProducts.length}");
+      });
+    }).catchError((error) {
+      print(error);
+    });
+  }
 
   // Future<void> _addProductPopup(BuildContext context) async {
   //   LocationPermission? permission = await Geolocator.checkPermission();
@@ -158,6 +161,7 @@ class _BrowseState extends State<Browse> {
                       onValueChanged: (value) {
                         setState(() {
                           _selectedSegment = value!;
+                          _fetchProductsFromFirestore(_selectedSegment);
                         });
                       },
                       groupValue: _selectedSegment,
@@ -186,9 +190,9 @@ class _BrowseState extends State<Browse> {
              NeverScrollableScrollPhysics() to disable scrolling */
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
-                  itemCount: products.length,
+                  itemCount: _prettyProducts.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return products[index].pCard(products[index]);
+                    return _prettyProducts[index].pCard(_prettyProducts[index]);
                   },
                 ),
               ),

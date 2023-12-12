@@ -16,13 +16,15 @@ import 'package:warecheap/widgets/wcCore.dart';
 class wcProduct {
   // properties
   String? name;
-  String? brand;
-  String? date;
-  String? price;
+  DateTime? date;
+  double? price;
   String? image;
+  String? store;
+  String? dept;
 
   // constructor; defines named parameters
-  wcProduct({this.name, this.brand, this.date, this.price, this.image});
+  wcProduct(
+      {this.dept, this.name, this.store, this.date, this.price, this.image});
 
   Widget pCard(wcProduct product) {
     return Card(
@@ -32,19 +34,31 @@ class wcProduct {
         mainAxisSize: MainAxisSize.min,
         children: [
           ListTile(
-            leading: Image.asset(
+            leading: Image.network(
               product.image!,
               width: 100,
               height: 100,
+              errorBuilder: (BuildContext context, Object exception,
+                  StackTrace? stackTrace) {
+                return Image.asset('assets/placeholder.png');
+              },
             ),
             title: Text(product.name!),
             titleTextStyle: const TextStyle(
               color: wcColors.linkText,
               fontWeight: FontWeight.bold,
             ),
-            subtitle: Text(product.brand!),
+            subtitle: Container(
+                width: 50,
+                margin: EdgeInsets.only(top: 5),
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: wcColors.bgAlert,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Text("\$${product.price!.toString()}")),
             subtitleTextStyle: const TextStyle(
-              color: wcColors.secondaryText,
+              color: wcColors.bgPrimary,
             ),
           ),
           Row(
