@@ -37,10 +37,12 @@ class wcTextField {
     String? label,
     String? hint,
     required PlacesListener placesListener,
+    TextEditingController? controller,
   }) {
     return Card(
       elevation: 2.0,
       child: TextField(
+        controller: controller ?? TextEditingController(),
         decoration: InputDecoration(
           suffixIcon: icon,
           suffixIconColor: const Color.fromARGB(255, 169, 179, 139),

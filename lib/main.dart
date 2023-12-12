@@ -15,6 +15,7 @@ import 'firebase_options.dart';
 import 'package:warecheap/pages/signin.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:warecheap/pages/addproduct.dart';
+import 'package:warecheap/pages/product.dart';
 
 // decide which page to go to based on if the user is logged in or not
 String _initRoute(User? user) {
@@ -62,6 +63,7 @@ void main() async {
           '/Author': (context) => const Page2(),
           '/Browse': (context) => const Browse(),
           '/AddProduct': (context) => AddProduct(imgDir: ''),
+          '/Product': (context) => ProductPage(),
           //'/CaptureImg': (context) => const wcCamState(),
         },
       ),

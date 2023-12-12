@@ -11,6 +11,7 @@ ideal solution will involve Firebase integration to pull data from the database.
 
 import 'package:flutter/material.dart';
 import 'package:warecheap/widgets/wcCore.dart';
+import 'package:warecheap/pages/product.dart';
 
 /// this class is used to test UI features by filling it with dummy data
 class wcProduct {
@@ -21,10 +22,17 @@ class wcProduct {
   String? image;
   String? store;
   String? dept;
+  BuildContext? context;
 
   // constructor; defines named parameters
   wcProduct(
-      {this.dept, this.name, this.store, this.date, this.price, this.image});
+      {this.context,
+      this.dept,
+      this.name,
+      this.store,
+      this.date,
+      this.price,
+      this.image});
 
   Widget pCard(wcProduct product) {
     return Card(
@@ -40,7 +48,11 @@ class wcProduct {
               height: 100,
               errorBuilder: (BuildContext context, Object exception,
                   StackTrace? stackTrace) {
-                return Image.asset('assets/placeholder.png');
+                return Image.asset(
+                  'assets/placeholder.png',
+                  width: 100,
+                  height: 100,
+                );
               },
             ),
             title: Text(product.name!),
@@ -70,7 +82,18 @@ class wcProduct {
                   primary: wcColors.linkText,
                 ),
                 child: const Text('View'),
-                onPressed: () {/* ... */},
+                onPressed: () {
+                  if (product.context != null)
+                    Navigator.pushAndRemoveUntil(
+                        context!,
+                        MaterialPageRoute(
+                            builder: (route) => ProductPage(
+                                  product: product,
+                                )),
+                        (route) => false);
+                  else
+                    print('Product page context is null');
+                },
               ),
               const SizedBox(width: 8),
               TextButton(
@@ -78,7 +101,8 @@ class wcProduct {
                   // ignore: deprecated_member_use
                   primary: wcColors.linkText,
                 ),
-                child: const Text('Add to Cart'),
+                child:
+                    Text('${product.store != null ? product.store : 'None'}'),
                 onPressed: () {/* ... */},
               ),
               const SizedBox(width: 8),
