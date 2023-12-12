@@ -151,7 +151,9 @@ class _AddProductState extends State<AddProduct> {
                         builder: (context) => AddProductLocation(
                           product: ProductModel(
                             name: _nameController.text,
-                            price: double.parse(_priceController.text),
+                            price: (_priceController.text == '')
+                                ? 0.0
+                                : double.parse(_priceController.text),
                             department: _department,
                             imageDir: widget.imgDir,
                           ),

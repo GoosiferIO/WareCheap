@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductModel {
@@ -33,8 +32,8 @@ class ProductModel {
       storeName: doc['storeName'],
       imageDir: doc['imageDir'],
       department: doc['department'],
-      dateAdded: doc['dateAdded'],
-      geoloc: doc['location'],
+      dateAdded: (doc['dateAdded'] as Timestamp).toDate(),
+      geoloc: doc['geoloc'],
       // Initialize other fields
     );
   }
