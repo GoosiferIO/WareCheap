@@ -34,6 +34,7 @@ class wcColors {
       Color.fromARGB(255, 233, 237, 201); // used: body
   static const Color bgTertiaryAccent =
       Color.fromARGB(255, 241, 238, 208); // used: browse product bg
+  static const Color bgAlert = Color.fromARGB(255, 140, 59, 65); // used: prices
 
   // card bg colors
   static const Color bgCard =

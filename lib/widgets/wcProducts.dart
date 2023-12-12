@@ -44,9 +44,17 @@ class wcProduct {
               color: wcColors.linkText,
               fontWeight: FontWeight.bold,
             ),
-            subtitle: Text(product.store!),
+            subtitle: Container(
+                width: 50,
+                margin: EdgeInsets.only(top: 5),
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: wcColors.bgAlert,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Text("\$${product.price!.toString()}")),
             subtitleTextStyle: const TextStyle(
-              color: wcColors.secondaryText,
+              color: wcColors.bgPrimary,
             ),
           ),
           Row(

@@ -26,6 +26,12 @@ class _BrowseState extends State<Browse> {
   List<ProductModel> _products = []; // list of products from Firestore
   List<wcProduct> _prettyProducts = []; // list of products to display
 
+  @override
+  void initState() {
+    super.initState();
+    _fetchProductsFromFirestore(0);
+  }
+
   void _fetchProductsFromFirestore(int segment) async {
     Query query;
     switch (segment) {
