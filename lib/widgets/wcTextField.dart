@@ -27,7 +27,12 @@ class wcTextField {
     );
   }
 
-  static Widget locationSearchField({Icon? icon, String? label, String? hint}) {
+  static Widget locationSearchField({
+    Icon? icon,
+    String? label,
+    String? hint,
+    required PlacesListener placesListener,
+  }) {
     return Card(
       elevation: 2.0,
       child: TextField(
@@ -47,7 +52,7 @@ class wcTextField {
           ),
         ),
         onChanged: (value) {
-          PlacesListener().searchGroceryStores(value);
+          placesListener.searchGroceryStores(value);
         },
       ),
     );

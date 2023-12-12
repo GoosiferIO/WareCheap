@@ -9,4 +9,5 @@ class ProductModel {
   String? imageDir;
 
   // Specific to 'add product' form
+  String? geoloc;
 }
