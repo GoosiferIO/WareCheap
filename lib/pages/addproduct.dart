@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 import 'package:provider/provider.dart';
 import 'package:warecheap/widgets/wcCore.dart';
 import 'package:warecheap/widgets/wcProducts.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:warecheap/widgets/wcTextField.dart';
 import 'package:warecheap/listeners/wcPlacesListener.dart';
-import 'package:warecheap/pages/addproductp1.dart';
+import 'package:warecheap/pages/addproductp2.dart';
 import 'dart:io';
 import 'package:warecheap/models/wcImageModel.dart';
 
@@ -58,169 +58,82 @@ class _AddProductState extends State<AddProduct> {
         enableDrawer: false,
         context: context,
         appbarTitle: 'Add Ware',
-        bodyContext: ChangeNotifierProvider(
-          create: (context) => PlacesListener(),
-          child: Container(
-            width: 400.0,
-            padding: const EdgeInsets.all(20.0),
-            child: SingleChildScrollView(
-              child: ListBody(
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Spacer(),
-                      TextButton.icon(
-                        icon: Icon(Icons.cancel, color: wcColors.linkText),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        label: const Text('Cancel',
-                            style: TextStyle(color: wcColors.linkText)),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
-                        child: const Text(
-                          'Product Image',
-                          style: TextStyle(
-                            fontSize: 20.0,
-                            color: wcColors.primaryText,
-                          ),
+        bodyContext: Container(
+          width: 400.0,
+          padding: const EdgeInsets.all(20.0),
+          child: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Spacer(),
+                    TextButton.icon(
+                      icon: Icon(Icons.cancel, color: wcColors.linkText),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      label: const Text('Cancel',
+                          style: TextStyle(color: wcColors.linkText)),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                      child: const Text(
+                        'Product Image',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          color: wcColors.primaryText,
                         ),
                       ),
-                    ],
-                  ),
-                  Container(
-                    color: wcColors.bgPrimaryAccent,
-                    child: SizedBox(
-                      child: Provider.of<ImageModel>(context).imageFile != null
-                          ? Image.file(
-                              Provider.of<ImageModel>(context).imageFile!)
-                          : Placeholder(
-                              fallbackHeight: 300,
-                              fallbackWidth: double.infinity,
-                              child: Image.network(
-                                'https://t3.ftcdn.net/jpg/03/46/83/96/240_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
-                              )),
-                      height: 300,
-                      width: double.infinity,
                     ),
+                  ],
+                ),
+                Container(
+                  color: wcColors.bgPrimaryAccent,
+                  child: SizedBox(
+                    child: Provider.of<ImageModel>(context).imageFile != null
+                        ? Image.file(
+                            Provider.of<ImageModel>(context).imageFile!)
+                        : Placeholder(
+                            fallbackHeight: 300,
+                            fallbackWidth: double.infinity,
+                            child: Image.network(
+                              'https://t3.ftcdn.net/jpg/03/46/83/96/240_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
+                            )),
+                    height: 300,
+                    width: double.infinity,
                   ),
-                  SizedBox(height: 16.0),
-                  wcTextField.tField(
-                    icon:
-                        const Icon(Icons.text_fields, color: wcColors.linkText),
-                    label: 'Product Name',
-                    hint: 'Enter product name',
-                  ),
-                  SizedBox(height: 16.0),
-                  wcTextField.tField(
-                    icon: const Icon(Icons.money, color: wcColors.linkText),
-                    label: 'Price',
-                    hint: 'Enter product price',
-                  ),
-                  Consumer<PlacesListener>(
-                    builder: (context, geoListener, child) {
-                      return (geoListener == null)
-                          ? Container(
-                              height: 300,
-                              child: const Center(
-                                child: Text('geoListener is null'),
-                              ),
-                            )
-                          : (geoListener.currentPosition == null)
-                              ? Container(
-                                  height: 300,
-                                  child: const Center(
-                                    child: CircularProgressIndicator(),
-                                  ),
-                                )
-                              : Column(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: TextField(
-                                        textCapitalization:
-                                            TextCapitalization.words,
-                                        decoration: InputDecoration(
-                                          hintText: 'Search Store',
-                                          suffixIcon: Icon(Icons.search),
-                                        ),
-                                        onChanged: (value) => geoListener
-                                            .searchGroceryStores(value),
-                                      ),
-                                    ),
-                                    SizedBox(height: 16.0),
-                                    Stack(
-                                      children: [
-                                        Container(
-                                          height: 300,
-                                          child: GoogleMap(
-                                            mapType: MapType.normal,
-                                            myLocationEnabled: true,
-                                            initialCameraPosition:
-                                                CameraPosition(
-                                              target: LatLng(
-                                                geoListener
-                                                    .currentPosition!.latitude,
-                                                geoListener
-                                                    .currentPosition!.longitude,
-                                              ),
-                                              zoom: 14.0,
-                                            ),
-                                          ),
-                                        ),
-                                        if (geoListener.searchResults != null &&
-                                            geoListener.searchResults!.length !=
-                                                0)
-                                          Container(
-                                              height: 300.0,
-                                              width: double.infinity,
-                                              decoration: BoxDecoration(
-                                                  color: Colors.black
-                                                      .withOpacity(.6),
-                                                  backgroundBlendMode:
-                                                      BlendMode.darken)),
-                                        if (geoListener.searchResults != null)
-                                          Positioned(
-                                            top: 0.0,
-                                            left: 0.0,
-                                            right: 0.0,
-                                            bottom: 0.0,
-                                            child: Container(
-                                              height: 300.0,
-                                              child: ListView.builder(
-                                                  itemCount: geoListener
-                                                      .searchResults!.length,
-                                                  itemBuilder:
-                                                      (context, index) {
-                                                    return ListTile(
-                                                      title: Text(
-                                                        geoListener
-                                                            .searchResults![
-                                                                index]
-                                                            .description,
-                                                        style: TextStyle(
-                                                            color:
-                                                                Colors.white),
-                                                      ),
-                                                    );
-                                                  }),
-                                            ),
-                                          ),
-                                      ],
-                                    ),
-                                  ],
-                                );
-                    },
-                  ),
-                ],
-              ),
+                ),
+                SizedBox(height: 16.0),
+                wcTextField.tField(
+                  icon: const Icon(Icons.text_fields, color: wcColors.linkText),
+                  label: 'Product Name',
+                  hint: 'Enter product name',
+                ),
+                SizedBox(height: 16.0),
+                wcTextField.tField(
+                  icon: const Icon(Icons.money, color: wcColors.linkText),
+                  label: 'Price',
+                  hint: 'Enter product price',
+                ),
+                SizedBox(height: 16.0),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddProductLocation(),
+                      ),
+                    );
+                  },
+                  child: const Text('Next'),
+                )
+              ],
             ),
           ),
         ));
