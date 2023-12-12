@@ -34,7 +34,7 @@ class wcProduct {
         mainAxisSize: MainAxisSize.min,
         children: [
           ListTile(
-            leading: Image.asset(
+            leading: Image.network(
               product.image!,
               width: 100,
               height: 100,

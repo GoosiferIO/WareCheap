@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:warecheap/widgets/wcCore.dart';
-import 'dart:io';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:warecheap/listeners/wcPlacesListener.dart';
 import 'package:provider/provider.dart';
 import 'package:warecheap/widgets/wcTextField.dart';
 import 'package:warecheap/models/wcProductModel.dart';
-import 'package:warecheap/pages/browse.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:warecheap/services/wcUploadFile.dart';
 
 class AddProductLocation extends StatefulWidget {
   final ProductModel product;
@@ -22,14 +20,16 @@ class _AddProductLocationState extends State<AddProductLocation> {
   final TextEditingController _locationController = TextEditingController();
 
   void _submitForm() {
+    String fileName = "${DateTime.now()}";
     try {
+      uploadFile(widget.product.imageDir ?? '', "${urlify(fileName)}.jpg");
       // add product to Firebase
       FirebaseFirestore.instance.collection('wcProducts').add({
         'name': widget.product.name,
         'price': widget.product.price,
         'storeID': widget.product.storeID,
         'storeName': widget.product.storeName,
-        'imageDir': widget.product.imageDir,
+        'imageDir': getGroceryPicture("${urlify(fileName)}.jpg"),
         'department': widget.product.department,
         'geoloc': widget.product.geoloc,
         'dateAdded': DateTime.now(),

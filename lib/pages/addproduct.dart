@@ -4,12 +4,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:warecheap/widgets/wcGroceryDepartmentSelector.dart';
 import 'package:provider/provider.dart';
 import 'package:warecheap/widgets/wcCore.dart';
-import 'package:warecheap/widgets/wcProducts.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:warecheap/widgets/wcTextField.dart';
-import 'package:warecheap/listeners/wcPlacesListener.dart';
 import 'package:warecheap/pages/addproductp2.dart';
-import 'dart:io';
 import 'package:warecheap/models/wcImageModel.dart';
 import 'package:warecheap/models/wcProductModel.dart';
 

@@ -14,13 +14,17 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+String urlify(String url) {
+  return Uri.encodeFull(url);
+}
+
 Future<void> main() async {
   await uploadFile('', '');
   await dotenv.load(fileName: 'serviceKeys.env');
 }
 
 Future<void> uploadFile(String dir, String fileName) async {
-  String filePath = "assets$dir/$fileName";
+  String filePath = "$dir";
   const String region = "";
   String? baseHostname = dotenv.env['baseHostname'];
   String hostname = region.isEmpty ? baseHostname! : "$region.$baseHostname";
@@ -29,10 +33,13 @@ Future<void> uploadFile(String dir, String fileName) async {
   String? accessKey = dotenv.env['bunnyAccessKey'];
   String? contentType = dotenv.env["contentType"];
 
-  String url = "https://$hostname/$storageZoneName$dir/$fileNameToUpload";
+  String url =
+      "https://$hostname/$storageZoneName/warecheap/wcProducts/$fileNameToUpload";
 
   // assets loaded through rootBundle.load
-  ByteData data = await rootBundle.load(filePath);
+  File file = File(filePath);
+  Uint8List bytes = await file.readAsBytes();
+  ByteData data = ByteData.sublistView(bytes);
   List<int> fileBytes = data.buffer.asUint8List();
 
   var request = http.Request('PUT', Uri.parse(url));
@@ -48,4 +55,8 @@ Future<void> uploadFile(String dir, String fileName) async {
 
   // ignore: avoid_print
   print(responseString);
+}
+
+String getGroceryPicture(String fileName) {
+  return "https://cdn.goosifer.io/warecheap/wcProducts/$fileName";
 }
