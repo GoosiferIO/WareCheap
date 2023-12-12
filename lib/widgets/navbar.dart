@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:warecheap/storereview.dart';
+import 'package:warecheap/pages/storereview.dart';
 import 'package:warecheap/pages/itemreview.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:warecheap/widgets/wcCore.dart';
@@ -9,6 +9,7 @@ import 'package:warecheap/widgets/wcCore.dart';
 @override
 Widget navBar(context) {
   return Drawer(
+    width: 200,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.zero,
     ),
@@ -17,11 +18,12 @@ Widget navBar(context) {
       padding: EdgeInsets.zero,
       children: [
         Container(
-          padding: EdgeInsets.only(top: 20),
+          width: 120,
+          height: 120,
+          padding: EdgeInsets.only(top: 30),
+          margin: EdgeInsets.only(bottom: 10),
           child: Image.asset(
-            'assets/Logo.png',
-            width: 150,
-            height: 100,
+            'assets/navLogo.png',
           ),
         ),
         ListTile(
@@ -59,7 +61,11 @@ Widget navBar(context) {
           ),
           child: ExpansionTile(
             leading: const Icon(Icons.format_list_bulleted),
-            title: const Text('Forum'),
+            title: const Text('Forum',
+                style: TextStyle(
+                    fontSize: 16,
+                    color: wcColors.primaryText,
+                    fontWeight: FontWeight.normal)),
             backgroundColor: wcColors.bgPrimary,
             children: [
               ListTile(

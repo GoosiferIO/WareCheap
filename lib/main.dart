@@ -5,7 +5,7 @@ import 'package:warecheap/loginwid.dart';
 import 'package:warecheap/pages/home.dart';
 import 'package:warecheap/pages/page2.dart';
 import 'package:warecheap/pages/itemreview.dart';
-import 'package:warecheap/storereview.dart';
+import 'package:warecheap/pages/storereview.dart';
 import 'package:warecheap/pages/browse.dart';
 import 'package:provider/provider.dart';
 import 'package:warecheap/services/signinprovider.dart';

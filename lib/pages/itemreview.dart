@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:warecheap/widgets/wcCore.dart';
+import 'package:warecheap/widgets/wcTextField.dart';
 
 class reviewItem extends StatelessWidget {
   const reviewItem({super.key});
@@ -25,19 +26,30 @@ class reviewItem extends StatelessWidget {
       context: context,
       appbarTitle: 'Review for Items',
       bodyContext: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            TextFormField(
+            wcTextField.tField(
               controller: _textEditingController,
-              decoration: InputDecoration(labelText: 'Enter Review'),
+              icon: const Icon(Icons.text_fields, color: wcColors.linkText),
+              label: 'Enter Review',
+              hint: 'Enter Review',
             ),
-            ElevatedButton(
+            const SizedBox(height: 16),
+            TextButton.icon(
+              icon: Icon(Icons.edit_document, color: wcColors.primaryText),
+              style: ButtonStyle(
+                padding: MaterialStateProperty.all<EdgeInsets>(
+                    const EdgeInsets.all(20)),
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  wcColors.bgPrimaryAccent,
+                ),
+              ),
               onPressed: () {
                 _submitForm(firestore, _textEditingController.text);
                 _textEditingController.clear();
               },
-              child: const Text('Submit Review'),
+              label: const Text('Submit Review'),
             ),
             SizedBox(height: 20),
             StreamBuilder<QuerySnapshot>(
@@ -56,6 +68,7 @@ class reviewItem extends StatelessWidget {
                           margin: const EdgeInsets.symmetric(
                               vertical: 8.0, horizontal: 16.0),
                           elevation: 2.0,
+                          color: wcColors.bgSecondary,
                           child: Padding(
                             padding: EdgeInsets.all(12.0),
                             child: Row(
@@ -79,7 +92,8 @@ class reviewItem extends StatelessWidget {
                                             data['user']['displayName'] ??
                                                 'No Name',
                                             style: const TextStyle(
-                                                fontWeight: FontWeight.bold),
+                                                fontWeight: FontWeight.bold,
+                                                color: wcColors.primaryText),
                                           ),
                                           Text(
                                             createdAt != null
@@ -93,7 +107,9 @@ class reviewItem extends StatelessWidget {
                                       const SizedBox(height: 8.0),
                                       Text(
                                         data['text'],
-                                        style: const TextStyle(fontSize: 16.0),
+                                        style: const TextStyle(
+                                            fontSize: 16.0,
+                                            color: wcColors.primaryText),
                                       ),
                                     ],
                                   ),

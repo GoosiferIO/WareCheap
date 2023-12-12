@@ -3,7 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:warecheap/pages/itemreview.dart';
-import 'package:warecheap/storereview.dart';
+import 'package:warecheap/pages/storereview.dart';
 import 'package:warecheap/widgets/wcCore.dart';
 
 class Home extends StatelessWidget {
@@ -29,7 +29,7 @@ class Home extends StatelessWidget {
                   fit: BoxFit.fill,
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 16),
               Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
@@ -45,14 +45,22 @@ class Home extends StatelessWidget {
                   textAlign: TextAlign.left,
                 ),
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 16),
               const Text('Forum Discussions:',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                  style: TextStyle(fontSize: 24, color: wcColors.primaryText)),
               const SizedBox(height: 10),
               Column(
                 //Price of items
                 children: <Widget>[
-                  ElevatedButton(
+                  TextButton.icon(
+                    icon: Icon(Icons.store, color: wcColors.primaryText),
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all<EdgeInsets>(
+                          const EdgeInsets.all(20)),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        wcColors.bgPrimaryAccent,
+                      ),
+                    ),
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -60,15 +68,19 @@ class Home extends StatelessWidget {
                             builder: (context) => const reviewStore()),
                       );
                     },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(
-                          255, 139, 204, 141), // Change button color
-                    ),
-                    child: const Text('Leave a review for a store',
-                        style: TextStyle(color: Colors.black, fontSize: 24)),
+                    label: const Text('Leave a review for a store.'),
                   ),
                   const SizedBox(height: 10),
-                  ElevatedButton(
+                  TextButton.icon(
+                    icon:
+                        Icon(Icons.edit_document, color: wcColors.primaryText),
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all<EdgeInsets>(
+                          const EdgeInsets.all(20)),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        wcColors.bgPrimaryAccent,
+                      ),
+                    ),
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -76,12 +88,7 @@ class Home extends StatelessWidget {
                             builder: (context) => const reviewItem()),
                       );
                     },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(
-                          255, 139, 204, 141), // Change button color
-                    ),
-                    child: const Text('Leave a review for an item',
-                        style: TextStyle(color: Colors.black, fontSize: 24)),
+                    label: const Text('Leave a review for an item.'),
                   ),
                 ],
               ),
