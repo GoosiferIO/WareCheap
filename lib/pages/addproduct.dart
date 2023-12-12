@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
-
+import 'package:warecheap/widgets/wcGroceryDepartmentSelector.dart';
 import 'package:provider/provider.dart';
 import 'package:warecheap/widgets/wcCore.dart';
 import 'package:warecheap/widgets/wcProducts.dart';
@@ -121,6 +121,8 @@ class _AddProductState extends State<AddProduct> {
                   label: 'Price',
                   hint: 'Enter product price',
                 ),
+                SizedBox(height: 16.0),
+                GroceryDepartmentSelector(),
                 SizedBox(height: 16.0),
                 TextButton(
                   onPressed: () {
