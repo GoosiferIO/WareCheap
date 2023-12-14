@@ -22,7 +22,7 @@ class wcProduct {
   String? image;
   String? store;
   String? dept;
-  BuildContext? context;
+  BuildContext? context; // context of the page that the product is displayed on
 
   // constructor; defines named parameters
   wcProduct(
@@ -42,18 +42,20 @@ class wcProduct {
         mainAxisSize: MainAxisSize.min,
         children: [
           ListTile(
-            leading: Image.network(
-              product.image!,
-              width: 100,
-              height: 100,
-              errorBuilder: (BuildContext context, Object exception,
-                  StackTrace? stackTrace) {
-                return Image.asset(
-                  'assets/placeholder.png',
-                  width: 100,
-                  height: 100,
-                );
-              },
+            leading: Expanded(
+              child: SizedBox(
+                width: 100,
+                height: 100,
+                child: Image.network(
+                  product.image!,
+                  errorBuilder: (BuildContext context, Object exception,
+                      StackTrace? stackTrace) {
+                    return Image.asset(
+                      'assets/placeholder.png',
+                    );
+                  },
+                ),
+              ),
             ),
             title: Text(product.name!),
             titleTextStyle: const TextStyle(

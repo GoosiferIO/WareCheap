@@ -1,6 +1,6 @@
 # warecheap
 
-WareCheap is a project that helps you find the cheapest grocery prices in your local community.
+WareCheap is a Flutter project that helps you find the cheapest grocery prices in your local community.
 
 ## Getting Started
 
@@ -19,3 +19,9 @@ samples, guidance on mobile development, and a full API reference.
 To use the Linter do the commands:
 - "Flutter pub get"
 - "dart analyze"
+
+# Project Authors
+
+- Eric Galvan
+- Alex Rosete
+- Nathan Mortell
