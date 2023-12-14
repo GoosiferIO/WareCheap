@@ -8,6 +8,7 @@ import 'package:warecheap/widgets/wcCore.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:warecheap/pages/product.dart';
 import 'package:warecheap/widgets/wcProducts.dart';
+import 'package:intl/intl.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -184,8 +185,98 @@ class _HomeState extends State<Home> {
                       style:
                           TextStyle(fontSize: 24, color: wcColors.primaryText)),
                   const SizedBox(height: 16),
+                  Container(
+                    height: 300,
+                    child: StreamBuilder<QuerySnapshot>(
+                        stream: firestore
+                            .collection('ItemReviews')
+                            .orderBy('createdAt', descending: true)
+                            .limit(5)
+                            .snapshots(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return ListView.builder(
+                              itemCount: snapshot.data!.docs.length,
+                              itemBuilder: (context, index) {
+                                var document = snapshot.data!.docs[index];
+                                var data =
+                                    document.data() as Map<String, dynamic>;
+                                var createdAt = data['createdAt'] as Timestamp?;
+
+                                return Card(
+                                  margin: const EdgeInsets.symmetric(
+                                      vertical: 8.0, horizontal: 16.0),
+                                  elevation: 2.0,
+                                  color: wcColors.bgSecondary,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(12.0),
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        CircleAvatar(
+                                          backgroundImage: NetworkImage(
+                                              data['user']['photoURL'] ?? ''),
+                                        ),
+                                        const SizedBox(width: 12.0),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    data['user']
+                                                            ['displayName'] ??
+                                                        'No Name',
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: wcColors
+                                                            .primaryText),
+                                                  ),
+                                                  Text(
+                                                    createdAt != null
+                                                        ? _formatTimestamp(
+                                                            createdAt)
+                                                        : 'No timestamp',
+                                                    style: const TextStyle(
+                                                        color: Colors.grey),
+                                                  ),
+                                                ],
+                                              ),
+                                              const SizedBox(height: 8.0),
+                                              Text(
+                                                data['text'],
+                                                style: const TextStyle(
+                                                    fontSize: 16.0,
+                                                    color:
+                                                        wcColors.primaryText),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          } else if (snapshot.hasError) {
+                            return Text('Error: ${snapshot.error}');
+                          } else {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                        }),
+                  ),
                   const SizedBox(height: 16),
-                  const Text('Forum Discussions:',
+                  const Text('Store Reviews',
                       style:
                           TextStyle(fontSize: 24, color: wcColors.primaryText)),
                   const SizedBox(height: 10),
@@ -220,6 +311,11 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
+  }
+
+  String _formatTimestamp(Timestamp timestamp) {
+    DateTime dateTime = timestamp.toDate();
+    return '${dateTime.day}/${dateTime.month}/${dateTime.year} ${dateTime.hour}:${dateTime.minute}';
   }
 }
 
