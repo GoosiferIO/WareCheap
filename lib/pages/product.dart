@@ -219,10 +219,12 @@ class _ProductPageState extends State<ProductPage> {
                               stream: firestore
                                   .collection('ItemReviews')
                                   .where('productId',
-                                      isEqualTo: widget.product!.id)
+                                      isEqualTo: (widget.product!.id) ?? '0')
                                   .snapshots(),
                               builder: (context, snapshot) {
-                                if (snapshot.hasData) {
+                                if (widget.product!.id == null) {
+                                  return const Text('No reviews found');
+                                } else if (snapshot.hasData) {
                                   print(snapshot.data!.docs.length);
                                   return ListView.builder(
                                     itemCount: snapshot.data!.docs.length,

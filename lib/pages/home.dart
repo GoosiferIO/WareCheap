@@ -138,19 +138,25 @@ class _HomeState extends State<Home> {
                                                             product: wcProduct(
                                                               context: context,
                                                               name: product[
-                                                                  'name'],
+                                                                      'name'] ??
+                                                                  'Unknown',
                                                               price: product[
-                                                                  'price'],
+                                                                      'price'] ??
+                                                                  '0.0',
                                                               store: product[
-                                                                  'storeName'],
+                                                                      'storeName'] ??
+                                                                  'Unknown',
                                                               image: product[
-                                                                  'imageDir'],
+                                                                      'imageDir'] ??
+                                                                  'assets/placeholder.png',
                                                               dept: product[
-                                                                  'department'],
+                                                                      'department'] ??
+                                                                  'Unknown',
                                                               date: (product[
                                                                           'dateAdded']
                                                                       as Timestamp)
                                                                   .toDate(),
+                                                              id: product.id,
                                                             ),
                                                           )),
                                                 );
@@ -177,7 +183,8 @@ class _HomeState extends State<Home> {
                   const Text('Recent Reviews',
                       style:
                           TextStyle(fontSize: 24, color: wcColors.primaryText)),
-                  const SizedBox(height: 1),
+                  const SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   const Text('Forum Discussions:',
                       style:
                           TextStyle(fontSize: 24, color: wcColors.primaryText)),
@@ -203,26 +210,6 @@ class _HomeState extends State<Home> {
                           );
                         },
                         label: const Text('Leave a review for a store.'),
-                      ),
-                      const SizedBox(height: 10),
-                      TextButton.icon(
-                        icon: const Icon(Icons.edit_document,
-                            color: wcColors.primaryText),
-                        style: ButtonStyle(
-                          padding: MaterialStateProperty.all<EdgeInsets>(
-                              const EdgeInsets.all(20)),
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                            wcColors.bgPrimaryAccent,
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const reviewItem()),
-                          );
-                        },
-                        label: const Text('Leave a review for an item.'),
                       ),
                     ],
                   ),
