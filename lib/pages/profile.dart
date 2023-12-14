@@ -41,7 +41,7 @@ class _LoggedInWidgetState extends State<LoggedInWidget> {
           await firestore.collection('users').doc(currentUser!.uid).get();
       if (userDoc.exists) {
         setState(() {
-          userDoc.reference.update({'displayName': currentName});
+          currentName = userDoc.data()!['displayName'] as String?;
         });
       }
     } catch (e) {
@@ -53,6 +53,7 @@ class _LoggedInWidgetState extends State<LoggedInWidget> {
   @override
   void initState() {
     super.initState();
+
     _updateCurrentName();
   }
 
@@ -176,13 +177,11 @@ class _LoggedInWidgetState extends State<LoggedInWidget> {
                     TextButton(
                         onPressed: () {
                           if (_usernameController.text.isNotEmpty) {
-                            currentName = _usernameController.text;
-                            _updateName(currentName ?? 'No Name');
+                            _updateName(_usernameController.text);
                             _updateCurrentName();
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                 content: Text(
-                                    "Profile updated! Changes will be reflected on future reviews posted.")));
-                            currentName = _usernameController.text;
+                                    "Profile updated! Changes will be reflected on future reviews posted. Please refresh the page to see changes.")));
 
                             _usernameController.clear();
                           }
