@@ -52,7 +52,8 @@ class wcCore {
       {required BuildContext context,
       String? appbarTitle,
       Widget? bodyContext,
-      bool? enableDrawer = true}) {
+      bool? enableDrawer = true,
+      GlobalKey<ScaffoldState>? scaffoldKey}) {
     if (enableDrawer == false) {
       return Scaffold(
         body: bodyContext,
@@ -60,6 +61,7 @@ class wcCore {
       );
     } else {
       return Scaffold(
+        key: scaffoldKey ?? GlobalKey<ScaffoldState>(),
         appBar: AppBar(
           iconTheme: IconThemeData(
             color: wcColors.primaryText, // Set the desired color here

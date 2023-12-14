@@ -2,13 +2,11 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 
 import 'package:flutter/material.dart';
-import 'package:warecheap/pages/itemreview.dart';
 import 'package:warecheap/pages/storereview.dart';
 import 'package:warecheap/widgets/wcCore.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:warecheap/pages/product.dart';
 import 'package:warecheap/widgets/wcProducts.dart';
-import 'package:intl/intl.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
