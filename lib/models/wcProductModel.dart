@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductModel {
-  // Specific to product
+  // properties
   String? name;
   double? price;
   String? storeID;
@@ -9,10 +9,12 @@ class ProductModel {
   String? imageDir;
   String? department;
   DateTime? dateAdded;
+  String? productID;
 
-  // Specific to 'add product' form
-  String? geoloc;
+  // // Specific to 'add product' form
+  // String? geoloc;
 
+  // named parameters in constructor
   ProductModel({
     this.name,
     this.price,
@@ -20,10 +22,12 @@ class ProductModel {
     this.storeName,
     this.imageDir,
     this.department,
-    this.geoloc,
+    // this.geoloc,
     this.dateAdded,
+    this.productID, // document ID on Firestore
   });
 
+  // assigns values from Firestore to ProductModel properties
   factory ProductModel.fromFirestore(DocumentSnapshot doc) {
     return ProductModel(
       name: doc['name'],
@@ -33,8 +37,8 @@ class ProductModel {
       imageDir: doc['imageDir'],
       department: doc['department'],
       dateAdded: (doc['dateAdded'] as Timestamp).toDate(),
-      geoloc: doc['geoloc'],
-      // Initialize other fields
+      // geoloc: doc['geoloc'],
+      productID: doc.id,
     );
   }
 }

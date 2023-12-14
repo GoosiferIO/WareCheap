@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:warecheap/loginwid.dart';
+import 'package:warecheap/pages/profile.dart';
 import 'package:warecheap/pages/home.dart';
 import 'package:warecheap/pages/page2.dart';
 import 'package:warecheap/pages/itemreview.dart';

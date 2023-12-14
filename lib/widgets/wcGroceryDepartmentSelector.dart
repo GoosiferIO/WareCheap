@@ -57,14 +57,14 @@ class _GroceryDepartmentSelectorState extends State<GroceryDepartmentSelector> {
         width: 100,
         child: Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(13, 18, 10, 18),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(13, 18, 10, 18),
               child: Icon(Icons.category, color: wcColors.linkText),
             ),
             DropdownButton<String>(
               dropdownColor: wcColors.bgTertiary,
               //underline: Container(),
-              padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+              padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
               value: selectedDepartment,
               hint: const Text('Select Department',
                   style: TextStyle(

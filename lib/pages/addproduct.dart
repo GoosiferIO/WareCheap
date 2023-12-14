@@ -72,7 +72,7 @@ class _AddProductState extends State<AddProduct> {
                   children: [
                     Spacer(),
                     TextButton.icon(
-                      icon: Icon(Icons.cancel, color: wcColors.linkText),
+                      icon: const Icon(Icons.cancel, color: wcColors.linkText),
                       onPressed: () {
                         Navigator.pop(context);
                       },
@@ -106,34 +106,34 @@ class _AddProductState extends State<AddProduct> {
                             fallbackHeight: 300,
                             fallbackWidth: double.infinity,
                             child: Image.network(
-                              'https://t3.ftcdn.net/jpg/03/46/83/96/240_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
+                              'assets/placeholder.png',
                             )),
                     height: 300,
                     width: double.infinity,
                   ),
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 wcTextField.tField(
                   controller: _nameController,
                   icon: const Icon(Icons.text_fields, color: wcColors.linkText),
                   label: 'Product Name',
                   hint: 'Enter product name',
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 wcTextField.tField(
                   controller: _priceController,
                   icon: const Icon(Icons.money, color: wcColors.linkText),
                   label: 'Price',
                   hint: 'Enter product price',
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 GroceryDepartmentSelector(
                   deptartment: _department,
                   onDeptUpdate: (String _dpt) {
                     _department = _dpt;
                   },
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 TextButton(
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(

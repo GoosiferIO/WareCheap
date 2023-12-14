@@ -42,6 +42,8 @@ class wcCamState {
   //   super.dispose();
   // }
 
+  // calls the camera to take a photo, the photo is then passed to the
+  // AddProduct page
   void getPhoto() async {
     final XFile? photo = await picker.pickImage(source: ImageSource.camera);
     final cameras = await availableCameras();
@@ -56,6 +58,7 @@ class wcCamState {
     }
   }
 
+  // slide animation for AddProduct page (comes in from the right)
   Route _createAddProductRoute(File? image) {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) =>
