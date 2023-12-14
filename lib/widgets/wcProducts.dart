@@ -99,14 +99,12 @@ class wcProduct {
                 },
               ),
               const SizedBox(width: 8),
-              TextButton(
-                style: TextButton.styleFrom(
+              Text(
+                style: const TextStyle(
                   // ignore: deprecated_member_use
-                  primary: wcColors.linkText,
+                  color: wcColors.primaryText,
                 ),
-                child:
-                    Text('${product.store != null ? product.store : 'None'}'),
-                onPressed: () {/* ... */},
+                '${product.store != null ? product.store : 'None'}',
               ),
               const SizedBox(width: 8),
             ],

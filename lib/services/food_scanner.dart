@@ -1,5 +1,10 @@
 // ignore_for_file: avoid_print
 
+// Note by Eric: This is deprecated code. Did not end up using this nor
+// the openfoodfacts api as interacting with the api involved too many
+// constraints and limitations. Instead, we used a firebase database to
+// store our product information.
+
 import 'dart:convert'; // to convert json to dart objects
 import 'package:http/http.dart' as http; // for http reqs
 import 'package:openfoodfacts/openfoodfacts.dart'; // open food facts api

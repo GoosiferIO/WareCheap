@@ -173,9 +173,9 @@ class _ProductPageState extends State<ProductPage> {
                               )),
                           const SizedBox(height: 16.0),
                           //--- Product Reviews ---
-                          const Text(
-                            'Reviews',
-                            style: TextStyle(
+                          Text(
+                            '${widget.product!.name!} Discussions',
+                            style: const TextStyle(
                               fontSize: 20.0,
                               color: wcColors.primaryText,
                             ),
