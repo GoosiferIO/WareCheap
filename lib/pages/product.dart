@@ -22,7 +22,7 @@ class ProductPage extends StatelessWidget {
                 margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: Text(
                   '${product!.name!}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 30.0,
                     fontWeight: FontWeight.bold,
                     color: wcColors.primaryText,
@@ -43,7 +43,7 @@ class ProductPage extends StatelessWidget {
                     children: <Widget>[
                       Column(
                         children: [
-                          SizedBox(height: 16.0),
+                          const SizedBox(height: 16.0),
                           Container(
                             decoration: BoxDecoration(
                               color: wcColors.bgTertiary,
@@ -64,7 +64,7 @@ class ProductPage extends StatelessWidget {
                               },
                             ),
                           ),
-                          SizedBox(height: 16.0),
+                          const SizedBox(height: 16.0),
                           //--- Product Name ---
                           Container(
                               decoration: BoxDecoration(
@@ -74,15 +74,15 @@ class ProductPage extends StatelessWidget {
                               padding: const EdgeInsets.all(20.0),
                               child: Row(
                                 children: [
-                                  Text('Product Name: ',
+                                  const Text('Product Name: ',
                                       style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold)),
                                   Text(product!.name!,
-                                      style: TextStyle(fontSize: 16)),
+                                      style: const TextStyle(fontSize: 16)),
                                 ],
                               )),
-                          SizedBox(height: 16.0),
+                          const SizedBox(height: 16.0),
                           //--- Product Price ---
                           Container(
                               decoration: BoxDecoration(
@@ -92,16 +92,16 @@ class ProductPage extends StatelessWidget {
                               padding: const EdgeInsets.all(20.0),
                               child: Row(
                                 children: [
-                                  Text('Price: ',
+                                  const Text('Price: ',
                                       style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold)),
                                   Text(
                                       "\$${product!.price!.toStringAsFixed(2)}",
-                                      style: TextStyle(fontSize: 16)),
+                                      style: const TextStyle(fontSize: 16)),
                                 ],
                               )),
-                          SizedBox(height: 16.0),
+                          const SizedBox(height: 16.0),
                           //--- Product Store ---
                           Container(
                               decoration: BoxDecoration(
@@ -111,15 +111,15 @@ class ProductPage extends StatelessWidget {
                               padding: const EdgeInsets.all(20.0),
                               child: Row(
                                 children: [
-                                  Text('Location: ',
+                                  const Text('Location: ',
                                       style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold)),
                                   Text(product!.store!,
-                                      style: TextStyle(fontSize: 16)),
+                                      style: const TextStyle(fontSize: 16)),
                                 ],
                               )),
-                          SizedBox(height: 16.0),
+                          const SizedBox(height: 16.0),
                           //--- Product Department ---
                           Container(
                               decoration: BoxDecoration(
@@ -129,15 +129,15 @@ class ProductPage extends StatelessWidget {
                               padding: const EdgeInsets.all(20.0),
                               child: Row(
                                 children: [
-                                  Text('Department: ',
+                                  const Text('Department: ',
                                       style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold)),
                                   Text(product!.dept!,
-                                      style: TextStyle(fontSize: 16)),
+                                      style: const TextStyle(fontSize: 16)),
                                 ],
                               )),
-                          SizedBox(height: 16.0),
+                          const SizedBox(height: 16.0),
                           //--- Product Date Published ---
                           Container(
                               decoration: BoxDecoration(
@@ -147,7 +147,7 @@ class ProductPage extends StatelessWidget {
                               padding: const EdgeInsets.all(20.0),
                               child: Row(
                                 children: [
-                                  Text('Published: ',
+                                  const Text('Published: ',
                                       style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold)),

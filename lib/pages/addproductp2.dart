@@ -67,9 +67,10 @@ class _AddProductLocationState extends State<AddProductLocation> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Spacer(),
+                          const Spacer(),
                           TextButton.icon(
-                            icon: Icon(Icons.cancel, color: wcColors.linkText),
+                            icon: const Icon(Icons.cancel,
+                                color: wcColors.linkText),
                             onPressed: () {
                               Navigator.pushNamedAndRemoveUntil(
                                 context,
@@ -121,7 +122,7 @@ class _AddProductLocationState extends State<AddProductLocation> {
                                         label: 'Search for Grocery Store',
                                         hint: 'Search for Grocery Store',
                                         placesListener: geoListener),
-                                    SizedBox(height: 16.0),
+                                    const SizedBox(height: 16.0),
                                     Stack(
                                       children: [
                                         Container(
@@ -178,7 +179,7 @@ class _AddProductLocationState extends State<AddProductLocation> {
                                                             .searchResults![
                                                                 index]
                                                             .description,
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                             color:
                                                                 Colors.white),
                                                       ),
@@ -192,7 +193,7 @@ class _AddProductLocationState extends State<AddProductLocation> {
                                 ),
                     ],
                   ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
                   Row(
                     children: [
                       Expanded(

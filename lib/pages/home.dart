@@ -36,7 +36,7 @@ class Home extends StatelessWidget {
                   color: wcColors.bgTertiary,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Text(
+                child: const Text(
                   GroceryAppText.groceryAppText,
                   style: TextStyle(
                     fontSize: 15,
@@ -53,7 +53,7 @@ class Home extends StatelessWidget {
                 //Price of items
                 children: <Widget>[
                   TextButton.icon(
-                    icon: Icon(Icons.store, color: wcColors.primaryText),
+                    icon: const Icon(Icons.store, color: wcColors.primaryText),
                     style: ButtonStyle(
                       padding: MaterialStateProperty.all<EdgeInsets>(
                           const EdgeInsets.all(20)),
@@ -72,8 +72,8 @@ class Home extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   TextButton.icon(
-                    icon:
-                        Icon(Icons.edit_document, color: wcColors.primaryText),
+                    icon: const Icon(Icons.edit_document,
+                        color: wcColors.primaryText),
                     style: ButtonStyle(
                       padding: MaterialStateProperty.all<EdgeInsets>(
                           const EdgeInsets.all(20)),
