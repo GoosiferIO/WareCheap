@@ -4,9 +4,7 @@ products in the app. These widgets are used in the 'Browse' page of the app,
 and are flexible enough to be used in other pages as well should the scope
 of the app be expanded.
 
-wcProduct: This class is used to test UI features by filling it with dummy data.
-In a final production version of the app (or rather, the one we turn in), the
-ideal solution will involve Firebase integration to pull data from the database.
+pCard: Styles each product as a card with a thumbnail, name, price, and store.
 */
 
 import 'package:flutter/material.dart';
@@ -23,16 +21,19 @@ class wcProduct {
   String? store;
   String? dept;
   BuildContext? context; // context of the page that the product is displayed on
+  String? id; // id of the product in the database
 
   // constructor; defines named parameters
-  wcProduct(
-      {this.context,
-      this.dept,
-      this.name,
-      this.store,
-      this.date,
-      this.price,
-      this.image});
+  wcProduct({
+    this.context,
+    this.dept,
+    this.name,
+    this.store,
+    this.date,
+    this.price,
+    this.image,
+    this.id,
+  });
 
   Widget pCard(wcProduct product) {
     return Card(

@@ -34,7 +34,7 @@ class _AddProductLocationState extends State<AddProductLocation> {
         'storeName': widget.product.storeName,
         'imageDir': getGroceryPicture("${urlify(fileName)}.jpg"),
         'department': widget.product.department,
-        'geoloc': widget.product.geoloc,
+        // 'geoloc': widget.product.geoloc,
         'dateAdded': DateTime.now(),
       });
       // go back to browse page

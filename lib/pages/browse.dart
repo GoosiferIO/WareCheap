@@ -78,6 +78,9 @@ class _BrowseState extends State<Browse> {
                   date: (product.dateAdded == null
                       ? DateTime.now()
                       : product.dateAdded!),
+                  id: (product.productID == null
+                      ? 'Unknown'
+                      : product.productID!),
                 ))
             .toList();
         print("Pretty products length is:  ${_prettyProducts.length}");
